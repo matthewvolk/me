@@ -17,6 +17,10 @@ const Home: NextPage = () => {
           {new Date().toLocaleString()}
         </pre>
         <pre>
+          <span style={{ color: "#D2B357", textShadow: "0 0 4px #D2B357" }}>
+            WARNING:
+          </span>
+          <br />
           This place is a message... and part of a system of messages... pay
           attention to it! <br />
           Sending this message was important to us. We considered ourselves to
