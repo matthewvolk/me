@@ -1,11 +1,111 @@
-html,
-body {
-  background-color: #1e1e1e;
-  color: white;
+html {
+  margin: 0;
 }
 
-@keyframes blinker {
+body {
+  background-color: black;
+  background-image: linear-gradient(rgb(0, 40, 0), black 120%);
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  color: white;
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 4px #c8c8c8;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(black, 0.15),
+      rgba(black, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: white;
+  text-shadow: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+main {
+  padding: 1rem;
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 1em;
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.blinking-cursor {
+  text-shadow: none;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
   50% {
-    opacity: 0;
+    color: white;
+  }
+}
+
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-ms-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-o-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: white;
   }
 }

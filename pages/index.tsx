@@ -11,19 +11,33 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>
-          &gt;
-          <span
-            style={{
-              animation: "blinker 1s linear infinite",
-              WebkitAnimation: "blinker 1s linear infinite",
-              MozAnimation: "blinker 1s linear infinite",
-            }}
-          >
-            _
-          </span>{" "}
-          volkalhost
-        </h1>
+        <pre>
+          Welcome to volkalhost (v1.0.0)
+          <br />
+          {new Date().toLocaleString()}
+        </pre>
+        <pre>
+          This place is a message... and part of a system of messages... pay
+          attention to it! <br />
+          Sending this message was important to us. We considered ourselves to
+          be a powerful culture. <br />
+          This place is not a place of honor... no highly esteemed deed is
+          commemorated here... nothing valued is here. <br />
+          {/* What is here was dangerous and repulsive to us. This message is a
+          warning about danger. <br />
+          The danger is in a particular location... it increases towards a
+          center... the center of danger is here... of a particular size and
+          shape, and below us. <br />
+          The danger is still present, in your time, as it was in ours. <br /> */}
+          {/* The danger is to the body, and it can kill. <br />
+          The form of the danger is an emanation of energy. <br />
+          The danger is unleashed only if you substantially disturb this place
+          physically. This place is best shunned and left uninhabited. */}
+        </pre>
+        <pre>
+          <span style={{ color: "#D2B357" }}>$&gt;</span> volkalhost{" "}
+          <span className="blinking-cursor">_</span>
+        </pre>
       </main>
     </div>
   );
