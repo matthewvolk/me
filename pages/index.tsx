@@ -16,7 +16,7 @@ const Home: NextPage = () => {
           <br />
           {new Date().toLocaleString()}
         </pre>
-        <pre>
+        {/* <pre>
           <span style={{ color: "#D2B357", textShadow: "0 0 4px #D2B357" }}>
             WARNING:
           </span>
@@ -27,17 +27,17 @@ const Home: NextPage = () => {
           be a powerful culture. <br />
           This place is not a place of honor... no highly esteemed deed is
           commemorated here... nothing valued is here. <br />
-          {/* What is here was dangerous and repulsive to us. This message is a
+          What is here was dangerous and repulsive to us. This message is a
           warning about danger. <br />
           The danger is in a particular location... it increases towards a
           center... the center of danger is here... of a particular size and
           shape, and below us. <br />
-          The danger is still present, in your time, as it was in ours. <br /> */}
-          {/* The danger is to the body, and it can kill. <br />
+          The danger is still present, in your time, as it was in ours. <br />
+          The danger is to the body, and it can kill. <br />
           The form of the danger is an emanation of energy. <br />
           The danger is unleashed only if you substantially disturb this place
-          physically. This place is best shunned and left uninhabited. */}
-        </pre>
+          physically. This place is best shunned and left uninhabited. 
+        </pre> */}
         <pre>
           <span style={{ color: "#D2B357" }}>$&gt;</span> volkalhost{" "}
           <span className="blinking-cursor">_</span>
