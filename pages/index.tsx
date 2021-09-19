@@ -60,9 +60,10 @@ const Home: NextPage = () => {
         <div className={styles.hero}>
           <div className={styles.heroTitle}>Hi.</div>
           <div className={styles.heroText}>
-            My name is Matt and I'm a software developer living in Austin, TX.
-            I'm currently working at BigCommerce, a NASDAQ-listed ecommerce
-            platform that provides a software as a service product to retailers.
+            My name is Matt and I&apos;m a software developer living in Austin,
+            TX. I&apos;m currently working at BigCommerce, a NASDAQ-listed
+            ecommerce platform that provides a software as a service product to
+            retailers.
           </div>
           <div className={styles.heroIcons}>
             <a
