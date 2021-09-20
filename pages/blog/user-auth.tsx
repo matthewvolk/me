@@ -46,19 +46,19 @@ const UserAuth = () => {
           <h2>Project Introduction</h2>
           <p>
             Chris Anderson from Microsoft once described Javascript as the
-            "English of Programming Languages" - a lot of people can speak at
-            least a little bit of it, even it it's bad. It's not a perfect
-            language, but it's a language which is relatively easy to learn for
-            a lot of people.
+            &quot;English of Programming Languages&quot; - a lot of people can
+            speak at least a little bit of it, even it it&apos;s bad. It&apos;s
+            not a perfect language, but it&apos;s a language which is relatively
+            easy to learn for a lot of people.
           </p>
           <p>
-            In this tutorial, I'll show you how to build a simple REST API using
-            Node.js, Express, MongoDB, and Mongoose.
+            In this tutorial, I&apos;ll show you how to build a simple REST API
+            using Node.js, Express, MongoDB, and Mongoose.
           </p>
           <h2>MongoDB</h2>
           <p>
-            For this project, I'm going to be using a cloud-hosted, free version
-            of MongoDB called{" "}
+            For this project, I&apos;m going to be using a cloud-hosted, free
+            version of MongoDB called{" "}
             <a
               href="https://www.mongodb.com/cloud/atlas"
               target="_blank"
@@ -82,8 +82,8 @@ const UserAuth = () => {
           <p>Copy that string to your clipboard and head into the next step.</p>
           <h2>Folder Structure &amp; Initial Routes</h2>
           <p>
-            Open up your terminal and navigate to the directory you'd like to
-            create your project folder in. Copy and paste the following line
+            Open up your terminal and navigate to the directory you&apos;d like
+            to create your project folder in. Copy and paste the following line
             into your terminal
           </p>
           <pre>
@@ -116,27 +116,34 @@ const UserAuth = () => {
           <p>
             Once installed, create an <kbd>index.js</kbd> file in the root
             directory of your project to serve as your main entry point file.
-            You'll want to import all of the modules you need for this file,
-            found below:
+            You&apos;ll want to import all of the modules you need for this
+            file, found below:
           </p>
           <pre>
             {/* file name: index.js */}
             {/* js */}
-            require("dotenv").config(); const passport = require("passport");
-            const express = require("express"); const path = require("path");
-            const bodyParser = require("body-parser"); const cors =
-            require("cors"); const mongoose = require("mongoose");
-            mongoose.set("useUnifiedTopology", true);
+            require(&quot;dotenv&quot;).config(); const passport =
+            require(&quot;passport&quot;); const express =
+            require(&quot;express&quot;); const path =
+            require(&quot;path&quot;); const bodyParser =
+            require(&quot;body-parser&quot;); const cors =
+            require(&quot;cors&quot;); const mongoose =
+            require(&quot;mongoose&quot;);
+            mongoose.set(&quot;useUnifiedTopology&quot;, true);
           </pre>
           <p>Below your imports, initialize your app variable:</p>
           <pre>
             {/* file name: index.js */}
             {/* js */}
-            require("dotenv").config(); const passport = require("passport");
-            const express = require("express"); const path = require("path");
-            const bodyParser = require("body-parser"); const cors =
-            require("cors"); const mongoose = require("mongoose");
-            mongoose.set("useUnifiedTopology", true); const app = express();
+            require(&quot;dotenv&quot;).config(); const passport =
+            require(&quot;passport&quot;); const express =
+            require(&quot;express&quot;); const path =
+            require(&quot;path&quot;); const bodyParser =
+            require(&quot;body-parser&quot;); const cors =
+            require(&quot;cors&quot;); const mongoose =
+            require(&quot;mongoose&quot;);
+            mongoose.set(&quot;useUnifiedTopology&quot;, true); const app =
+            express();
           </pre>
           <p>
             Right under that, create a variable for my port number so that it is
