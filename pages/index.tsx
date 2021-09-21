@@ -28,6 +28,7 @@ import {
 import path from "path";
 import { promises as fs } from "fs";
 import Nav from "../components/nav";
+import Footer from "../components/footer";
 
 const Home: NextPage = () => {
   return (
@@ -136,7 +137,7 @@ const Home: NextPage = () => {
             <FontAwesomeIcon className={styles.icon} icon={faFigma} />
           </div>
         </div>
-        <footer>&copy; {new Date().getFullYear()}, Matthew Volk</footer>
+        <Footer />
       </main>
     </div>
   );
