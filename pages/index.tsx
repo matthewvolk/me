@@ -25,14 +25,11 @@ import {
   faSass,
   faYarn,
 } from "@fortawesome/free-brands-svg-icons";
-import {} from "@fortawesome/free-solid-svg-icons";
+import path from "path";
+import { promises as fs } from "fs";
+import Nav from "../components/nav";
 
 const Home: NextPage = () => {
-  const contactMe = (event: any) => {
-    event.preventDefault();
-    window.open("mailto:matt@volk.dev", "_blank");
-  };
-
   return (
     <div>
       <Head>
@@ -42,21 +39,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.container}>
-        <header className={styles.header}>
-          <nav className={styles.nav}>
-            <Link href="/">
-              <a className={styles.logoLink}>
-                <h1 className={styles.logo}>volk.</h1>
-              </a>
-            </Link>
-
-            <div>
-              <button onClick={contactMe} className={styles.button}>
-                Contact Me
-              </button>
-            </div>
-          </nav>
-        </header>
+        <Nav />
         <div className={styles.hero}>
           <div className={styles.heroTitle}>Hi.</div>
           <div className={styles.heroText}>
@@ -158,5 +141,14 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const blogDirectory = path.join(process.cwd(), "_posts");
+  const blogFileNames = await fs.readdir(blogDirectory);
+
+  return {
+    props: {},
+  };
+}
 
 export default Home;

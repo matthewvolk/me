@@ -4,48 +4,6 @@
   font-family: "Be Vietnam Pro", sans-serif;
   color: #000034;
 
-  .header {
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 25px;
-
-      .button {
-        border: 1px solid #000034;
-        background-color: #000034;
-        font-size: 0.95rem;
-        color: white;
-        padding: 0.9rem;
-        margin-left: 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.15s, color 0.15s;
-        box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
-          0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
-          0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
-        transition: transform 0.25s;
-      }
-
-      .button:hover {
-        transform: translateY(-3px);
-        transition: transform 0.25s;
-      }
-
-      .logoLink {
-        text-decoration: none;
-        color: #000034;
-
-        .logo {
-          font-size: 2rem;
-          font-weight: 500;
-        }
-      }
-    }
-  }
-
   .hero {
     max-width: 1080px;
     margin: 0 auto;
