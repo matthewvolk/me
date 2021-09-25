@@ -119,7 +119,9 @@ const Home: NextPage = ({ blogs }: any) => {
         <div className={styles.blogSection}>
           <h2>Blogs</h2>
           {blogs.map((blog: any) => (
-            <Link href={blog.slug}>{blog.title}</Link>
+            <Link key={blog.slug} href={blog.slug}>
+              {blog.title}
+            </Link>
           ))}
         </div>
         <div className={styles.techSection}>

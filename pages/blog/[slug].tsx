@@ -73,7 +73,7 @@ const components = {
                   color: "#f8f8ff",
                 }}
               >
-                // {fileName}
+                &#47;&#47; {fileName}
               </div>
             )}
             <pre
@@ -105,13 +105,14 @@ const components = {
               {language && <div style={{ marginBottom: "1.65rem" }} />}
               {tokens.map((line, i) => (
                 <div
+                  key={i}
                   {...getLineProps({ line, key: i })}
                   style={{
                     display: "table-row",
                     // lineHeight: "1.45rem",
                     backgroundColor: linesToHighlight
                       ? linesToHighlight.includes(i + 1)
-                        ? "rgba(248, 248, 255, 0.25);"
+                        ? "rgba(248, 248, 255, 0.25)"
                         : ""
                       : "",
                   }}
@@ -134,7 +135,7 @@ const components = {
                     }}
                   >
                     {line.map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
+                      <span key={key} {...getTokenProps({ token, key })} />
                     ))}
                   </span>
                 </div>
