@@ -27,10 +27,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import path from "path";
 import { promises as fs } from "fs";
+import matter from "gray-matter";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ blogs }: any) => {
   return (
     <div>
       <Head>
@@ -115,6 +116,12 @@ const Home: NextPage = () => {
             </a>
           </div>
         </div>
+        <div className={styles.blogSection}>
+          <h2>Blogs</h2>
+          {blogs.map((blog: any) => (
+            <Link href={blog.slug}>{blog.title}</Link>
+          ))}
+        </div>
         <div className={styles.techSection}>
           <h2>Technologies</h2>
           <div className={styles.techIcons}>
@@ -145,10 +152,24 @@ const Home: NextPage = () => {
 
 export async function getStaticProps() {
   const blogDirectory = path.join(process.cwd(), "_posts");
-  const blogFileNames = await fs.readdir(blogDirectory);
+  let blogFileNames = await fs.readdir(blogDirectory);
+
+  const blogFiles = blogFileNames.map((fileName) =>
+    path.join(blogDirectory, fileName)
+  );
+
+  const blogs = await Promise.all(
+    blogFiles.map(async (blogFile) => {
+      const fileName = path.parse(blogFile).base;
+      const postFileContent = await fs.readFile(blogFile, "utf8");
+      const { data } = matter(postFileContent);
+      data.slug = "/blog/" + fileName.slice(0, -4);
+      return data;
+    })
+  );
 
   return {
-    props: {},
+    props: { blogs },
   };
 }
 
