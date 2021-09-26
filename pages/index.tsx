@@ -25,6 +25,7 @@ import {
   faSass,
   faYarn,
 } from "@fortawesome/free-brands-svg-icons";
+import { faCalendar, faClock, faUser } from "@fortawesome/free-solid-svg-icons";
 import path from "path";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
@@ -32,6 +33,7 @@ import Nav from "../components/nav";
 import Footer from "../components/footer";
 
 const Home: NextPage = ({ blogs }: any) => {
+  console.log(blogs);
   return (
     <div>
       <Head>
@@ -119,9 +121,40 @@ const Home: NextPage = ({ blogs }: any) => {
         <div className={styles.blogSection}>
           <h2>Blogs</h2>
           {blogs.map((blog: any) => (
-            <Link key={blog.slug} href={blog.slug}>
-              {blog.title}
-            </Link>
+            <div className={styles.blog}>
+              <Link key={blog.slug} href={blog.slug}>
+                <a className={styles.blogLink}>
+                  <h3 className={styles.blogTitle}>{blog.title}</h3>
+                  <div className={styles.blogInfo}>
+                    <div className={styles.blogInfoGroup}>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className={styles.blogInfoGroupIcon}
+                      />
+                      <p className={styles.blogInfoGroupText}>{blog.author}</p>
+                    </div>
+                    <div className={styles.blogInfoGroup}>
+                      <FontAwesomeIcon
+                        icon={faCalendar}
+                        className={styles.blogInfoGroupIcon}
+                      />
+                      <p className={styles.blogInfoGroupText}>
+                        {blog.published}
+                      </p>
+                    </div>
+                    <div className={styles.blogInfoGroup}>
+                      <FontAwesomeIcon
+                        icon={faClock}
+                        className={styles.blogInfoGroupIcon}
+                      />
+                      <p className={styles.blogInfoGroupText}>
+                        {blog.ttr.toString()} minute read
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            </div>
           ))}
         </div>
         <div className={styles.techSection}>
@@ -164,8 +197,9 @@ export async function getStaticProps() {
     blogFiles.map(async (blogFile) => {
       const fileName = path.parse(blogFile).base;
       const postFileContent = await fs.readFile(blogFile, "utf8");
-      const { data } = matter(postFileContent);
+      const { content, data } = matter(postFileContent);
       data.slug = "/blog/" + fileName.slice(0, -4);
+      data.ttr = Math.ceil(content.split(" ").length / 200);
       return data;
     })
   );
