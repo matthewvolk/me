@@ -10,6 +10,7 @@ import matter from "gray-matter";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
 import Image from "next/image";
+import SEO from "../../components/seo";
 const imageSize = require("rehype-img-size");
 
 const components = {
@@ -158,6 +159,7 @@ const components = {
 const Post = ({ source, frontMatter }: any) => {
   return (
     <div className={styles.font}>
+      <SEO title={frontMatter.title} />
       <Nav />
       <div className={styles.container}>
         <h1 className={styles.postTitle}>{frontMatter.title}</h1>

@@ -1,5 +1,5 @@
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
-import Head from "next/head";
+import SEO from "../components/seo";
 import Link from "next/link";
 import styles from "../styles/home.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,31 +35,7 @@ import Footer from "../components/footer";
 const Home: NextPage = ({ blogs }: any) => {
   return (
     <div>
-      <Head>
-        <title>Matthew Volk</title>
-        <meta
-          name="description"
-          content="My name is Matt and I'm a software developer living in Austin,
-            TX."
-        />
-        <meta name="image" content="/cover.png" />
-        <meta property="og:title" content="Matthew Volk" />
-        <meta property="og:url" content="https://volk.dev" />
-        <meta
-          property="og:description"
-          content="My name is Matt and I'm a software developer living in Austin,
-            TX."
-        />
-        <meta property="og:image" content="https://volk.dev/cover.png" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image:alt"
-          content="My name is Matt and I'm a software developer living in Austin,
-            TX."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <SEO />
       <main className={styles.container}>
         <Nav />
         <div className={styles.hero}>
