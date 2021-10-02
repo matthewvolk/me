@@ -20,9 +20,11 @@
     "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "rehype-img-size": "^0.0.1",
     "sass": "^1.38.2"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.7",
     "@types/react": "17.0.19",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",

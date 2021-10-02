@@ -1,7 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 import Nav from "../../components/nav";
-import styles from "../../styles/blog.module.scss";
+import styles from "../../styles/post.module.scss";
 import Footer from "../../components/footer";
 import { GetStaticPropsContext } from "next";
 import { serialize } from "next-mdx-remote/serialize";
@@ -9,6 +9,8 @@ import { MDXRemote } from "next-mdx-remote";
 import matter from "gray-matter";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import rangeParser from "parse-numeric-range";
+import Image from "next/image";
+const imageSize = require("rehype-img-size");
 
 const components = {
   h1: (props: any) => <h1 className={styles.postTitle}>{props.children}</h1>,
@@ -18,6 +20,11 @@ const components = {
   h5: (props: any) => <h5 className={styles.h5}>{props.children}</h5>,
   h6: (props: any) => <h6 className={styles.h6}>{props.children}</h6>,
   p: (props: any) => <p className={styles.postContent}>{props.children}</p>,
+  img: (props: any) => (
+    <div className={styles.img}>
+      <Image {...props} alt={props.alt} />
+    </div>
+  ),
   a: (props: any) => {
     return (
       <a
@@ -214,7 +221,10 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   const pathToPostFileName = path.join(blogPostsDirectoryPath, postFileName!);
   const postFileContent = await fs.readFile(pathToPostFileName, "utf8");
   const { content, data } = matter(postFileContent);
-  const mdxSource = await serialize(content, { scope: data });
+  const mdxSource = await serialize(content, {
+    scope: data,
+    mdxOptions: { rehypePlugins: [[imageSize, { dir: "public" }]] },
+  });
   data.ttr = Math.ceil(content.split(" ").length / 200);
 
   return { props: { source: mdxSource, frontMatter: data } };
