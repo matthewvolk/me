@@ -34,12 +34,25 @@
       font-size: 1rem;
     }
 
+    .code {
+      color: #000034;
+      background-color: #e4e4ff;
+      padding: 0.15rem 0.25rem 0.25rem 0.25rem;
+      border-radius: 5px;
+      font-size: 0.895rem;
+    }
+
     .img {
       div {
         box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
           0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
           0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
       }
+    }
+
+    .listItem {
+      font-weight: 300;
+      line-height: 1.75rem;
     }
 
     .postMeta {

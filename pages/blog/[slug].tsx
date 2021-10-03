@@ -21,6 +21,8 @@ const components = {
   h5: (props: any) => <h5 className={styles.h5}>{props.children}</h5>,
   h6: (props: any) => <h6 className={styles.h6}>{props.children}</h6>,
   p: (props: any) => <p className={styles.postContent}>{props.children}</p>,
+  li: (props: any) => <li className={styles.listItem}>{props.children}</li>,
+  kbd: (props: any) => <kbd className={styles.code}>{props.children}</kbd>,
   img: (props: any) => (
     <div className={styles.img}>
       <Image {...props} alt={props.alt} />
