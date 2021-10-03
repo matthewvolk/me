@@ -6,9 +6,10 @@ interface SEOProps {
   title?: string;
   description?: string;
   image?: string;
+  type?: string;
 }
 
-const SEO = ({ title, description, image }: SEOProps) => {
+const SEO = ({ title, description, image, type }: SEOProps) => {
   const router = useRouter();
 
   const seo = {
@@ -18,6 +19,7 @@ const SEO = ({ title, description, image }: SEOProps) => {
       : "My name is Matt and I'm a software developer living in Austin, TX.",
     image: image ? "https://volk.dev/" + image : "https://volk.dev/cover.png",
     url: "https://volk.dev" + router.asPath,
+    type: type ? type : "website",
   };
 
   return (
@@ -29,7 +31,7 @@ const SEO = ({ title, description, image }: SEOProps) => {
       <meta property="og:url" content={seo.url} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={seo.type} />
       <meta property="og:image:alt" content={seo.description} />
       <link
         rel="apple-touch-icon"

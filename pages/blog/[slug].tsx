@@ -163,6 +163,7 @@ const Post = ({ source, frontMatter }: any) => {
         title={frontMatter.title}
         description={frontMatter.abstract}
         image={frontMatter.image}
+        type="article"
       />
       <Nav />
       <div className={styles.container}>
