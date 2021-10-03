@@ -6,10 +6,11 @@ interface SEOProps {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   type?: string;
 }
 
-const SEO = ({ title, description, image, type }: SEOProps) => {
+const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
   const router = useRouter();
 
   const seo = {
@@ -20,6 +21,7 @@ const SEO = ({ title, description, image, type }: SEOProps) => {
     image: image ? "https://volk.dev/" + image : "https://volk.dev/cover.png",
     url: "https://volk.dev" + router.asPath,
     type: type ? type : "website",
+    imageAlt: imageAlt ? imageAlt : "The official logo for Volk.dev",
   };
 
   return (
@@ -32,7 +34,7 @@ const SEO = ({ title, description, image, type }: SEOProps) => {
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:type" content={seo.type} />
-      <meta property="og:image:alt" content={seo.description} />
+      <meta property="og:image:alt" content={seo.imageAlt} />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
