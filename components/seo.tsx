@@ -14,7 +14,9 @@ const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
   const router = useRouter();
 
   const seo = {
-    title: title ? title + " — Matthew Volk" : "Matthew Volk",
+    title: title
+      ? title + " — Matthew Volk"
+      : "Matthew Volk — Building Software That Makes Problems Go Away",
     description: description
       ? description
       : "My name is Matt and I'm a software developer living in Austin, TX.",
