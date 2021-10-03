@@ -159,7 +159,11 @@ const components = {
 const Post = ({ source, frontMatter }: any) => {
   return (
     <div className={styles.font}>
-      <SEO title={frontMatter.title} />
+      <SEO
+        title={frontMatter.title}
+        description={frontMatter.abstract}
+        image={frontMatter.image}
+      />
       <Nav />
       <div className={styles.container}>
         <h1 className={styles.postTitle}>{frontMatter.title}</h1>

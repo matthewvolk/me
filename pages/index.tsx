@@ -113,7 +113,7 @@ const Home: NextPage = ({ blogs }: any) => {
           </div>
         </div>
         <div className={styles.blogSection}>
-          <h2>Blogs</h2>
+          <h2>Featured Articles</h2>
           {blogs.map((blog: any) => (
             <div key={blog.slug} className={styles.blog}>
               <Link href={blog.slug}>
@@ -150,6 +150,9 @@ const Home: NextPage = ({ blogs }: any) => {
               </Link>
             </div>
           ))}
+          <Link href="/blog">
+            <a className={styles.viewAllBlogs}>View All</a>
+          </Link>
         </div>
         <div className={styles.techSection}>
           <h2>Technologies</h2>
@@ -187,7 +190,7 @@ export async function getStaticProps() {
     path.join(blogDirectory, fileName)
   );
 
-  const blogs = await Promise.all(
+  const blogData = await Promise.all(
     blogFiles.map(async (blogFile) => {
       const fileName = path.parse(blogFile).base;
       const postFileContent = await fs.readFile(blogFile, "utf8");
@@ -198,9 +201,16 @@ export async function getStaticProps() {
     })
   );
 
-  blogs.sort((a: any, b: any) => {
+  // Sort blogData in reverse chronological order (recent blog posts first)
+  blogData.sort((a: any, b: any) => {
     return new Date(b.published).getTime() - new Date(a.published).getTime();
   });
+
+  const blogs = blogData
+    // Do not display drafts
+    .filter((blog) => !blog.draft)
+    // Show only featured blogs
+    .filter((blog) => blog.featured);
 
   return {
     props: { blogs },

@@ -1,59 +1,36 @@
 import Head from "next/head";
 import React from "react";
+import { useRouter } from "next/router";
 
 interface SEOProps {
   title?: string;
   description?: string;
   image?: string;
-  url?: string;
 }
 
-const SEO = ({ title, description, image, url }: SEOProps) => {
+const SEO = ({ title, description, image }: SEOProps) => {
+  const router = useRouter();
+
+  const seo = {
+    title: title ? title + " — Matthew Volk" : "Matthew Volk",
+    description: description
+      ? description
+      : "My name is Matt and I'm a software developer living in Austin, TX.",
+    image: image ? "https://volk.dev/" + image : "https://volk.dev/cover.png",
+    url: "https://volk.dev" + router.asPath,
+  };
+
   return (
     <Head>
-      <title>{title ? title + " — Matthew Volk" : "Matthew Volk"}</title>
-      <meta
-        name="description"
-        content={
-          description
-            ? description
-            : "My name is Matt and I'm a software developer living in Austin, TX."
-        }
-      />
-      <meta
-        name="image"
-        content={
-          image ? "https://volk.dev/" + image : "https://volk.dev/cover.png"
-        }
-      />
-      <meta
-        property="og:title"
-        content={title ? title + " — Matthew Volk" : "Matthew Volk"}
-      />
-      <meta property="og:url" content={url ? url : "https://volk.dev"} />
-      <meta
-        property="og:description"
-        content={
-          description
-            ? description
-            : "My name is Matt and I'm a software developer living in Austin, TX."
-        }
-      />
-      <meta
-        property="og:image"
-        content={
-          image ? "https://volk.dev/" + image : "https://volk.dev/cover.png"
-        }
-      />
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <meta name="image" content={seo.image} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:image" content={seo.image} />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:image:alt"
-        content={
-          description
-            ? description
-            : "My name is Matt and I'm a software developer living in Austin, TX."
-        }
-      />
+      <meta property="og:image:alt" content={seo.description} />
       <link
         rel="apple-touch-icon"
         sizes="180x180"

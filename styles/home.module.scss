@@ -159,7 +159,7 @@
     }
 
     .blog {
-      margin: 1rem 0;
+      margin: 1rem 0 3.5rem 0;
 
       .blogLink {
         color: #000034;
@@ -208,6 +208,13 @@
           text-decoration: underline;
         }
       }
+    }
+
+    .viewAllBlogs {
+      margin: 2rem 0 1rem 0;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #8a8aa9;
     }
   }
 }

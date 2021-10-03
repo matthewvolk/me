@@ -17,7 +17,7 @@ const Blog: NextPage = ({ blogs }: any) => {
       <main className={styles.container}>
         <Nav />
         <div className={styles.blogSection}>
-          <h1>Blog Posts</h1>
+          <h1>Latest Blog Posts</h1>
           {blogs.map((blog: any) => (
             <div key={blog.slug} className={styles.blog}>
               <Link href={blog.slug}>
@@ -69,7 +69,7 @@ export async function getStaticProps() {
     path.join(blogDirectory, fileName)
   );
 
-  const blogs = await Promise.all(
+  const blogData = await Promise.all(
     blogFiles.map(async (blogFile) => {
       const fileName = path.parse(blogFile).base;
       const postFileContent = await fs.readFile(blogFile, "utf8");
@@ -80,9 +80,14 @@ export async function getStaticProps() {
     })
   );
 
-  blogs.sort((a: any, b: any) => {
+  // Sort blogs in reverse chronological order (recent blog posts first)
+  blogData.sort((a: any, b: any) => {
     return new Date(b.published).getTime() - new Date(a.published).getTime();
   });
+
+  const blogs = blogData
+    // Do not display drafts
+    .filter((blog) => !blog.draft);
 
   return {
     props: { blogs },
