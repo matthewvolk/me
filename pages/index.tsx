@@ -39,7 +39,7 @@ const Home: NextPage = ({ blogs }: any) => {
       <main className={styles.container}>
         <Nav />
         <div className={styles.hero}>
-          <div className={styles.heroTitle}>Hi.</div>
+          <h1 className={styles.heroTitle}>Hi.</h1>
           <div className={styles.heroText}>
             My name is Matt and I&apos;m a software developer living in Austin,
             TX. I&apos;m currently working at BigCommerce, a NASDAQ-listed
