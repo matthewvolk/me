@@ -35,6 +35,8 @@ const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
       <meta property="og:image" content={seo.image} />
       <meta property="og:type" content={seo.type} />
       <meta property="og:image:alt" content={seo.imageAlt} />
+      <meta name="robots" content="index" />
+      <link rel="canonical" href={seo.url} />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
