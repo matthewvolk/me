@@ -44,6 +44,7 @@ mkdir PROJECT_NAME && cd PROJECT_NAME && npm init
 ```
 
 Walk through each step of the <kbd>npm init</kbd> script (our entry point is going to be
+
 <kbd>index.js</kbd>).
 
 When you are done, create a <kbd>.env</kbd> file in the root of your project directory.
@@ -173,12 +174,13 @@ app.listen(port, () => {
 ```
 
 The module basically does us the favor of injecting different headers within our application using
+
 <kbd>res.header</kbd>, but you can read some more on that
-[here](https://enable-cors.org/server_expressjs.html). We'll be using this module with another
-module we installed called <kbd>body-parser</kbd>, which parses incoming request bodies. For
-example, when you receive a form submission, body-parser will help you parse the form input data.
-When you receive a <kbd>GET</kbd> request with a string query, body-parser will help you parse that
-URL parameter for validation.
+[here](https://enable-cors.org/server_expressjs.html). We'll be using this
+module with another module we installed called <kbd>body-parser</kbd>, which parses
+incoming request bodies. For example, when you receive a form submission, body-parser
+will help you parse the form input data. When you receive a <kbd>GET</kbd> request
+with a string query, body-parser will help you parse that URL parameter for validation.
 
 ```js:title=index.js {13}
 require("dotenv").config();
@@ -206,9 +208,10 @@ app.listen(port, () => {
 
 Next, let's make use of the Express router so that we can encapsulate all of the user routes in
 another file without cluttering our main entry file. Go ahead and create a new constant called
-<kbd>users</kbd> and have it require the file where we will store our routes. We also need to mount
-another piece of middleware on the <kbd>app</kbd> variable to add the <kbd>/users</kbd> prefix to
-all the routes in the file we create below.
+
+<kbd>users</kbd> and have it require the file where we will store our routes. We
+also need to mount another piece of middleware on the <kbd>app</kbd> variable to
+add the <kbd>/users</kbd> prefix to all the routes in the file we create below.
 
 ```js:title=index.js {11,15}
 require("dotenv").config();
@@ -237,9 +240,10 @@ app.listen(port, () => {
 ```
 
 If you look at nodemon, you'll notice that your app crashed, because it couldn't find the file
-<kbd>./routes/users</kbd> Create a new directory in your project to match that route we required
-just now, call it 'routes' and save it. Next, create a new file in that directory called 'users.js'
-and require the following modules:
+
+<kbd>./routes/users</kbd> Create a new directory in your project to match that route
+we required just now, call it 'routes' and save it. Next, create a new file in that
+directory called 'users.js' and require the following modules:
 
 ```js:title=routes/users.js {1-2,4}
 const express = require("express");
@@ -338,6 +342,7 @@ Next we'll be creating our user model file to handle data such as name, password
 username. We'll also have our functions that interact with the database in that file.
 
 Create a directory called <kbd>models</kbd> and require the following modules inside a file called
+
 <kbd>user.js</kbd>:
 
 ```js:title=models/user.js {1-2}
@@ -669,6 +674,7 @@ module.exports = router;
 
 Now, you should save the files we were just editing and go check nodemon to go make sure that
 nodemon isn't breaking. Once you've squashed any possible bugs, we are now going to our
+
 <kbd>routes</kbd> directory into the <kbd>users.js</kbd> file.
 
 ```js:title=routes/users.js {31-60}

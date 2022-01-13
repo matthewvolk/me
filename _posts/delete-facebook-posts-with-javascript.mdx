@@ -118,7 +118,7 @@ Then, we put it all together.
 6. Continue the loop
 
 ```js
-btns.forEach(btn => {
+btns.forEach((btn) => {
   btn.click();
   var deleteTextNode = $x("//span[text()='Delete']"); // traverse dom for DOM elements with innerText == "Delete"
   var deleteBtnNode = findDeleteButton(deleteTextNode, checkAttrVal); // traverse parent dom nodes until you find a parent node that you can fire an "click()" method on.
@@ -139,8 +139,8 @@ change any time. There are four "weak" points in this code:
    change at any time.
 2. In our <kbd>checkAttrVal</kbd> function, nobody can say that the clickable parent node will be
    found with that specific attribute/value pair. They could easily change, for example,
-   <kbd>role="menuitem"</kbd> to <kbd>role="button"</kbd> which would require you to modify this
-   code.
+   <kbd>role="menuitem"</kbd> to <kbd>role="button"</kbd> which would require you
+   to modify this code.
 3. The XPath selector we use to find the "Delete" text could change. Facebook could swap the
    <kbd>span</kbd> tag with another HTML element if they choose.
 4. The entire script is subject to fail if Facebook redesigns their Activity Log, they already did

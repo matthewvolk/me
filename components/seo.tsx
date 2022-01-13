@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 interface SEOProps {
   title?: string;
@@ -10,7 +10,7 @@ interface SEOProps {
   type?: string;
 }
 
-const SEO = ({title, description, image, imageAlt, type}: SEOProps) => {
+const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
   const router = useRouter();
 
   const seo = {
@@ -39,9 +39,23 @@ const SEO = ({title, description, image, imageAlt, type}: SEOProps) => {
       <meta property="og:image:alt" content={seo.imageAlt} />
       <meta name="robots" content="index" />
       <link rel="canonical" href={seo.url} />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
+      />
       <link rel="icon" href="/favicon.ico" />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="msapplication-TileColor" content="#000034" />

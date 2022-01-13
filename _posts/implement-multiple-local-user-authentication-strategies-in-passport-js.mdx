@@ -93,8 +93,9 @@ argument into our <kbd>config/passport.js</kbd> file which will initialize the s
 in the app's Passport object.
 
 In order to change the code above so that you can use multiple local strategies, is to add a
-<kbd>passport.use</kbd> method with names of the strategies we want to include. I have included an
-example below:
+
+<kbd>passport.use</kbd> method with names of the strategies we want to include. I
+have included an example below:
 
 ```js:title=app.js
 const passport = require("passport");
@@ -149,10 +150,13 @@ Before moving on, take a look at the serialization methods in the
 argument of the "done" function in the <kbd>serializeUser</kbd> method) is saved in the session and
 is later used to retrieve the whole object via the deserializeUser function. serializeUser
 determines, which data of the user object should be stored in the session. The result of the
-<kbd>serializeUser</kbd> method is attached to the session as <kbd>req.session.passport.user =
-{}</kbd>. The first argument of <kbd>deserializeUser</kbd> corresponds to the key of the user object
-that was given to the done function (see 1.). So your whole object is retrieved with help of that
-key.
+
+<kbd>serializeUser</kbd> method is attached to the session as <kbd>
+  req.session.passport.user ={}
+</kbd>
+. The first argument of <kbd>deserializeUser</kbd> corresponds to the key of the
+user object that was given to the done function (see 1.). So your whole object
+is retrieved with help of that key.
 
 If you do not make your user ID unique across each user Model, your <kbd>serializeUser</kbd>
 function will not know which database to query to retrieve the user you are trying to deserialize.
