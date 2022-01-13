@@ -1,8 +1,8 @@
-import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next";
-import SEO from "../components/seo";
-import Link from "next/link";
-import styles from "../styles/home.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type {NextPage} from 'next';
+import SEO from '../components/seo';
+import Link from 'next/link';
+import styles from '../styles/home.module.scss';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faGithub,
   faTwitter,
@@ -24,16 +24,16 @@ import {
   faReact,
   faSass,
   faYarn,
-} from "@fortawesome/free-brands-svg-icons";
-import { faCalendar, faClock, faUser } from "@fortawesome/free-solid-svg-icons";
-import path from "path";
-import { promises as fs } from "fs";
-import matter from "gray-matter";
-import Nav from "../components/nav";
-import Footer from "../components/footer";
-import Card from "../components/card";
+} from '@fortawesome/free-brands-svg-icons';
+import {faCalendar, faClock, faUser} from '@fortawesome/free-solid-svg-icons';
+import path from 'path';
+import {promises as fs} from 'fs';
+import matter from 'gray-matter';
+import Nav from '../components/nav';
+import Footer from '../components/footer';
+import Card from '../components/card';
 
-const Home: NextPage = ({ blogs }: any) => {
+const Home: NextPage = ({blogs}: any) => {
   return (
     <div>
       <SEO />
@@ -42,31 +42,18 @@ const Home: NextPage = ({ blogs }: any) => {
         <div className={styles.hero}>
           <h1 className={styles.heroTitle}>Hi.</h1>
           <div className={styles.heroText}>
-            My name is Matt and I&apos;m a software developer living in Austin,
-            TX. I&apos;m currently working at BigCommerce, a NASDAQ-listed
-            ecommerce platform that provides a software as a service product to
-            retailers.
+            My name is Matt and I&apos;m a software developer living in Austin, TX. I&apos;m
+            currently working at BigCommerce, a NASDAQ-listed ecommerce platform that provides a
+            software as a service product to retailers.
           </div>
           <div className={styles.heroIcons}>
-            <a
-              href="https://github.com/matthewvolk"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://github.com/matthewvolk" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon className={styles.heroIcon} icon={faGithub} />
             </a>
-            <a
-              href="https://twitter.com/volkmatt"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://twitter.com/volkmatt" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon className={styles.heroIcon} icon={faLinkedin} />
             </a>
-            <a
-              href="https://twitter.com/volkmatt"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://twitter.com/volkmatt" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon className={styles.heroIcon} icon={faTwitter} />
             </a>
           </div>
@@ -97,29 +84,16 @@ const Home: NextPage = ({ blogs }: any) => {
                   <h3 className={styles.blogTitle}>{blog.title}</h3>
                   <div className={styles.blogInfo}>
                     <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faUser}
-                        className={styles.blogInfoGroupIcon}
-                      />
+                      <FontAwesomeIcon icon={faUser} className={styles.blogInfoGroupIcon} />
                       <p className={styles.blogInfoGroupText}>{blog.author}</p>
                     </div>
                     <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faCalendar}
-                        className={styles.blogInfoGroupIcon}
-                      />
-                      <p className={styles.blogInfoGroupText}>
-                        {blog.published}
-                      </p>
+                      <FontAwesomeIcon icon={faCalendar} className={styles.blogInfoGroupIcon} />
+                      <p className={styles.blogInfoGroupText}>{blog.published}</p>
                     </div>
                     <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faClock}
-                        className={styles.blogInfoGroupIcon}
-                      />
-                      <p className={styles.blogInfoGroupText}>
-                        {blog.ttr.toString()} minute read
-                      </p>
+                      <FontAwesomeIcon icon={faClock} className={styles.blogInfoGroupIcon} />
+                      <p className={styles.blogInfoGroupText}>{blog.ttr.toString()} minute read</p>
                     </div>
                   </div>
                 </a>
@@ -159,20 +133,18 @@ const Home: NextPage = ({ blogs }: any) => {
 };
 
 export async function getStaticProps() {
-  const blogDirectory = path.join(process.cwd(), "_posts");
-  let blogFileNames = await fs.readdir(blogDirectory);
+  const blogDirectory = path.join(process.cwd(), '_posts');
+  const blogFileNames = await fs.readdir(blogDirectory);
 
-  const blogFiles = blogFileNames.map((fileName) =>
-    path.join(blogDirectory, fileName)
-  );
+  const blogFiles = blogFileNames.map(fileName => path.join(blogDirectory, fileName));
 
   const blogData = await Promise.all(
-    blogFiles.map(async (blogFile) => {
+    blogFiles.map(async blogFile => {
       const fileName = path.parse(blogFile).base;
-      const postFileContent = await fs.readFile(blogFile, "utf8");
-      const { content, data } = matter(postFileContent);
-      data.slug = "/blog/" + fileName.slice(0, -4);
-      data.ttr = Math.ceil(content.split(" ").length / 200);
+      const postFileContent = await fs.readFile(blogFile, 'utf8');
+      const {content, data} = matter(postFileContent);
+      data.slug = '/blog/' + fileName.slice(0, -4);
+      data.ttr = Math.ceil(content.split(' ').length / 200);
       return data;
     })
   );
@@ -184,12 +156,12 @@ export async function getStaticProps() {
 
   const blogs = blogData
     // Do not display drafts
-    .filter((blog) => !blog.draft)
+    .filter(blog => !blog.draft)
     // Show only featured blogs
-    .filter((blog) => blog.featured);
+    .filter(blog => blog.featured);
 
   return {
-    props: { blogs },
+    props: {blogs},
   };
 }
 

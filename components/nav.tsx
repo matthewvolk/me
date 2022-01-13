@@ -1,10 +1,10 @@
-import Link from "next/link";
-import styles from "../styles/nav.module.scss";
+import Link from 'next/link';
+import styles from '../styles/nav.module.scss';
 
 const Nav = () => {
   const contactMe = (event: any) => {
     event.preventDefault();
-    window.open("mailto:matt@volk.dev", "_blank");
+    window.open('mailto:matt@volk.dev', '_blank');
   };
 
   return (

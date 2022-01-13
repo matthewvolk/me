@@ -1,8 +1,8 @@
-import { GetServerSidePropsContext } from "next";
+import {GetServerSidePropsContext} from 'next';
 
 const Sitemap = () => {};
 
-export const getServerSideProps = ({ res }: GetServerSidePropsContext) => {
+export const getServerSideProps = ({res}: GetServerSidePropsContext) => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -47,7 +47,7 @@ export const getServerSideProps = ({ res }: GetServerSidePropsContext) => {
   </urlset>
   `;
 
-  res.setHeader("Content-Type", "text/xml");
+  res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);
   res.end();
 

@@ -58,7 +58,7 @@ const components = {
       ? (linesToHighlight = rangeParser(linesToHighlight))
       : linesToHighlight;
 
-    let fileName =
+    const fileName =
       meta && meta.indexOf("=") !== -1
         ? meta.substr(meta.indexOf("=") + 1, meta.length)
         : null;
@@ -70,7 +70,7 @@ const components = {
         code={props.children.props.children.slice(0, -1)}
         language={language}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        {({ className, tokens, getLineProps, getTokenProps }) => (
           <div>
             {fileName && (
               <div
