@@ -31,6 +31,7 @@ import { promises as fs } from "fs";
 import matter from "gray-matter";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
+import Card from "../components/card";
 
 const Home: NextPage = ({ blogs }: any) => {
   return (
