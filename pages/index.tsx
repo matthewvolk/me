@@ -73,43 +73,18 @@ const Home: NextPage = ({ blogs }: any) => {
         <div className={styles.projectSection}>
           <h2>Projects</h2>
           <div className={styles.projects}>
-            <a
+            <Card
+              title="BigReq"
+              description="Node.js HTTP Request Library for BigCommerce"
               href="https://www.npmjs.com/package/bigreq"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className={styles.project}>
-                <h3 className={styles.projectTitle}>BigReq</h3>
-                <p className={styles.projectDescription}>
-                  Node.js HTTP Request Library for BigCommerce
-                </p>
-                <div className={styles.tags}>
-                  <p className={styles.tag}>nodejs</p>
-                  <p className={styles.tag}>npm</p>
-                  <p className={styles.tag}>http</p>
-                  <p className={styles.tag}>cli</p>
-                </div>
-              </div>
-            </a>
-            <a
+              tags={['nodejs', 'npm', 'http', 'cli']}
+            />
+            <Card
+              title="CalendarNotes"
+              description="Small web application to generate meeting notes for your calendar events"
               href="https://github.com/matthewvolk/calendarnotes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className={styles.project}>
-                <h3 className={styles.projectTitle}>CalendarNotes</h3>
-                <p className={styles.projectDescription}>
-                  Small web application to generate meeting notes for your
-                  calendar events
-                </p>
-                <div className={styles.tags}>
-                  <p className={styles.tag}>expressjs</p>
-                  <p className={styles.tag}>nextjs</p>
-                  <p className={styles.tag}>oauth</p>
-                  <p className={styles.tag}>docker</p>
-                </div>
-              </div>
-            </a>
+              tags={['expressjs', 'nextjs', 'oauth', 'docker']}
+            />
           </div>
         </div>
         <div className={styles.blogSection}>

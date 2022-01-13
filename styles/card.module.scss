@@ -1,0 +1,46 @@
+.card {
+  text-decoration: none;
+  color: #000034;
+  margin-top: 3rem;
+  transition: transform 0.25s;
+
+  .project {
+    margin: 0 1.25rem 0 1.25rem;
+    padding: 1.5rem;
+    max-width: 325px;
+    background-color: #fefeff;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+    .projectTitle {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .projectDescription {
+      color: #8a8aa9;
+      font-size: 0.95rem;
+      font-weight: 200;
+    }
+
+    .tags {
+      display: flex;
+
+      .tag {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.45rem;
+        margin: 0 0.4rem 0 0;
+        border-radius: 8px;
+        background-color: rgba(228, 228, 255, 0.5);
+      }
+    }
+  }
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  transition: transform 0.25s;
+}
