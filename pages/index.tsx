@@ -1,37 +1,20 @@
+import path from 'path';
+import { promises as fs } from 'fs';
 import type { NextPage } from 'next';
-import SEO from '../components/seo';
 import Link from 'next/link';
-import styles from '../styles/home.module.scss';
+import matter from 'gray-matter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faGithub,
   faTwitter,
   faLinkedin,
-  faJsSquare,
-  faDocker,
-  faHtml5,
-  faBitbucket,
-  faBootstrap,
-  faCss3Alt,
-  faDigitalOcean,
-  faFigma,
-  faGit,
-  faGithubSquare,
-  faNode,
-  faNpm,
-  faPhp,
-  faPython,
-  faReact,
-  faSass,
-  faYarn,
 } from '@fortawesome/free-brands-svg-icons';
 import { faCalendar, faClock, faUser } from '@fortawesome/free-solid-svg-icons';
-import path from 'path';
-import { promises as fs } from 'fs';
-import matter from 'gray-matter';
+import SEO from '../components/seo';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
 import Card from '../components/card';
+import styles from '../styles/home.module.scss';
 
 const Home: NextPage = ({ blogs }: any) => {
   return (
@@ -129,28 +112,6 @@ const Home: NextPage = ({ blogs }: any) => {
           <Link href="/blog">
             <a className={styles.viewAllBlogs}>View All</a>
           </Link>
-        </div>
-        <div className={styles.techSection}>
-          <h2>Technologies</h2>
-          <div className={styles.techIcons}>
-            <FontAwesomeIcon className={styles.icon} icon={faHtml5} />
-            <FontAwesomeIcon className={styles.icon} icon={faCss3Alt} />
-            <FontAwesomeIcon className={styles.icon} icon={faJsSquare} />
-            <FontAwesomeIcon className={styles.icon} icon={faNode} />
-            <FontAwesomeIcon className={styles.icon} icon={faNpm} />
-            <FontAwesomeIcon className={styles.icon} icon={faPhp} />
-            <FontAwesomeIcon className={styles.icon} icon={faPython} />
-            <FontAwesomeIcon className={styles.icon} icon={faYarn} />
-            <FontAwesomeIcon className={styles.icon} icon={faSass} />
-            <FontAwesomeIcon className={styles.icon} icon={faReact} />
-            <FontAwesomeIcon className={styles.icon} icon={faBootstrap} />
-            <FontAwesomeIcon className={styles.icon} icon={faGit} />
-            <FontAwesomeIcon className={styles.icon} icon={faGithubSquare} />
-            <FontAwesomeIcon className={styles.icon} icon={faBitbucket} />
-            <FontAwesomeIcon className={styles.icon} icon={faDocker} />
-            <FontAwesomeIcon className={styles.icon} icon={faDigitalOcean} />
-            <FontAwesomeIcon className={styles.icon} icon={faFigma} />
-          </div>
         </div>
         <Footer />
       </main>
