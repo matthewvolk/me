@@ -15,8 +15,8 @@ const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
 
   const seo = {
     title: title
-      ? title + ' — Matthew Volk'
-      : 'Matthew Volk — Building Software That Makes Problems Go Away',
+      ? title + ' - Volk'
+      : 'Volk - Software that Solves Hard Problems',
     description: description
       ? description
       : "My name is Matt and I'm a software developer living in Austin, TX.",
