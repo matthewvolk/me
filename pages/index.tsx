@@ -39,7 +39,7 @@ const Home: NextPage = ({ blogs }: any) => {
               <FontAwesomeIcon className={styles.heroIcon} icon={faGithub} />
             </a>
             <a
-              href="https://twitter.com/volkmatt"
+              href="https://www.linkedin.com/in/mjvolk/"
               target="_blank"
               rel="noopener noreferrer"
             >
