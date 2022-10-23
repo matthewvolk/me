@@ -58,8 +58,8 @@ const SEO = ({ title, description, image, imageAlt, type }: SEOProps) => {
       />
       <link rel="icon" href="/favicon.ico" />
       <link rel="manifest" href="/site.webmanifest" />
-      <meta name="msapplication-TileColor" content="#000034" />
-      <meta name="theme-color" content="#000034"></meta>
+      <meta name="msapplication-TileColor" content="#111729" />
+      <meta name="theme-color" content="#111729"></meta>
     </Head>
   );
 };
