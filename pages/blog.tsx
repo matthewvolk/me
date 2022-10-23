@@ -1,63 +1,55 @@
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import styles from '../styles/blog.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SEO from '../components/seo';
-import { faCalendar, faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 import path from 'path';
 import { promises as fs } from 'fs';
 import matter from 'gray-matter';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
+import Layout from '../components/layout';
 
 const Blog: NextPage = ({ blogs }: any) => {
   return (
-    <div>
+    <Layout>
       <SEO title="Blog" description="Recent Blog Posts" />
-      <main className={styles.container}>
-        <Nav />
-        <div className={styles.blogSection}>
-          <h1>Latest Blog Posts</h1>
+      <Nav />
+      <main>
+        <div>
+          <h1 className="pt-8 pb-6 text-4xl font-extrabold">Blog Index</h1>
           {blogs.map((blog: any) => (
-            <div key={blog.slug} className={styles.blog}>
+            <div
+              key={blog.slug}
+              className="flex flex-row items-center content-center py-2"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
               <Link href={blog.slug}>
-                <a className={styles.blogLink}>
-                  <h3 className={styles.blogTitle}>{blog.title}</h3>
-                  <div className={styles.blogInfo}>
-                    <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faUser}
-                        className={styles.blogInfoGroupIcon}
-                      />
-                      <p className={styles.blogInfoGroupText}>{blog.author}</p>
-                    </div>
-                    <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faCalendar}
-                        className={styles.blogInfoGroupIcon}
-                      />
-                      <p className={styles.blogInfoGroupText}>
-                        {blog.published}
-                      </p>
-                    </div>
-                    <div className={styles.blogInfoGroup}>
-                      <FontAwesomeIcon
-                        icon={faClock}
-                        className={styles.blogInfoGroupIcon}
-                      />
-                      <p className={styles.blogInfoGroupText}>
-                        {blog.ttr.toString()} minute read
-                      </p>
-                    </div>
-                  </div>
+                <a className="flex flex-row">
+                  <p>
+                    <span className="underline font-medium">{blog.title}</span>
+                    <span className="ml-2 no-underline text-slate-500 italic text-sm">
+                      <span className="mr-2">[{blog.published}]</span>
+                      <span>[{blog.ttr.toString()} minute read]</span>
+                    </span>
+                  </p>
                 </a>
               </Link>
             </div>
           ))}
         </div>
-        <Footer />
       </main>
-    </div>
+      <Footer />
+    </Layout>
   );
 };
 

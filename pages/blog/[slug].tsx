@@ -1,51 +1,67 @@
-import path from "path";
-import { promises as fs } from "fs";
-import Nav from "../../components/nav";
-import styles from "../../styles/post.module.scss";
-import Footer from "../../components/footer";
-import { GetStaticPropsContext } from "next";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import matter from "gray-matter";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import rangeParser from "parse-numeric-range";
-import Image from "next/image";
-import SEO from "../../components/seo";
-const imageSize = require("rehype-img-size");
+import path from 'path';
+import { promises as fs } from 'fs';
+import Nav from '../../components/nav';
+import Footer from '../../components/footer';
+import { GetStaticPropsContext } from 'next';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
+import matter from 'gray-matter';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import rangeParser from 'parse-numeric-range';
+import Image from 'next/image';
+import SEO from '../../components/seo';
+import Layout from '../../components/layout';
+const imageSize = require('rehype-img-size');
 
 const components = {
-  h1: (props: any) => <h1 className={styles.postTitle}>{props.children}</h1>,
-  h2: (props: any) => <h2 className={styles.h2}>{props.children}</h2>,
-  h3: (props: any) => <h3 className={styles.h3}>{props.children}</h3>,
-  h4: (props: any) => <h4 className={styles.h4}>{props.children}</h4>,
-  h5: (props: any) => <h5 className={styles.h5}>{props.children}</h5>,
-  h6: (props: any) => <h6 className={styles.h6}>{props.children}</h6>,
-  p: (props: any) => <p className={styles.postContent}>{props.children}</p>,
-  li: (props: any) => <li className={styles.listItem}>{props.children}</li>,
-  kbd: (props: any) => <kbd className={styles.code}>{props.children}</kbd>,
+  h1: (props: any) => (
+    <h1 className="text-4xl lg:text-5xl my-4 lg:my-6 font-extrabold">
+      {props.children}
+    </h1>
+  ),
+  h2: (props: any) => (
+    <h2 className="text-3xl lg:text-4xl my-3 lg:my-5 font-bold">
+      {props.children}
+    </h2>
+  ),
+  h3: (props: any) => (
+    <h3 className="text-2xl lg:text-3xl my-2 lg:my-4 font-semibold">
+      {props.children}
+    </h3>
+  ),
+  h4: (props: any) => (
+    <h4 className="text-xl lg:text-2xl my-2 lg:my-4 font-medium">
+      {props.children}
+    </h4>
+  ),
+  h5: (props: any) => (
+    <h5 className="text-lg lg:text-xl my-2 lg:my-4 font-medium">
+      {props.children}
+    </h5>
+  ),
+  h6: (props: any) => (
+    <h6 className="text-base lg:text-lg my-2 lg:my-4 font-medium">
+      {props.children}
+    </h6>
+  ),
+  p: (props: any) => <p className="my-2 lg:my-3">{props.children}</p>,
   img: (props: any) => (
-    <div className={styles.img}>
+    <div>
       <Image {...props} alt={props.alt} />
     </div>
   ),
-  a: (props: any) => {
-    return (
-      <a
-        href={props.href}
-        className={styles.postLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {props.children}
-      </a>
-    );
-  },
+  kbd: (props: any) => (
+    // <kbd className="text-sm p-1 break-words rounded bg-slate-900 text-slate-200">
+    <kbd className="px-2 py-1 text-xs font-semibold text-slate-800 bg-slate-100 rounded border border-slate-200">
+      {props.children}
+    </kbd>
+  ),
   pre: (props: any) => {
     const meta = props.children.props.className;
 
-    let language: any = meta && meta.substr(meta.indexOf("-") + 1, meta.length);
-    language && language.indexOf(":") !== -1
-      ? (language = language.substr(0, language.indexOf(":")))
+    let language: any = meta && meta.substr(meta.indexOf('-') + 1, meta.length);
+    language && language.indexOf(':') !== -1
+      ? (language = language.substr(0, language.indexOf(':')))
       : language;
 
     let linesToHighlight: any;
@@ -59,8 +75,8 @@ const components = {
       : linesToHighlight;
 
     const fileName =
-      meta && meta.indexOf("=") !== -1
-        ? meta.substr(meta.indexOf("=") + 1, meta.length)
+      meta && meta.indexOf('=') !== -1
+        ? meta.substr(meta.indexOf('=') + 1, meta.length)
         : null;
 
     return (
@@ -70,80 +86,29 @@ const components = {
         code={props.children.props.children.slice(0, -1)}
         language={language}
       >
-        {({ className, tokens, getLineProps, getTokenProps }) => (
+        {({ tokens, getLineProps, getTokenProps }) => (
           <div>
-            {fileName && (
-              <div
-                style={{
-                  backgroundColor: "rgba(0, 0, 52, 0.75)",
-                  padding: "1em 1em 1em 1em",
-                  fontFamily: "monospace",
-                  fontSize: "1rem",
-                  borderRadius: "8px 8px 0 0",
-                  color: "#f8f8ff",
-                }}
-              >
-                &#47;&#47; {fileName}
-              </div>
-            )}
-            <pre
-              className={className}
-              style={{
-                // padding: "1rem",
-                overflowX: "auto",
-                marginTop: fileName ? "0" : "",
-                borderRadius: fileName ? "0 0 8px 8px" : "8px",
-              }}
-            >
+            <pre className="bg-slate-900 text-slate-50 text-sm leading-6 rounded-lg p-4 whitespace-pre text-left overflow-auto my-5">
               {language && (
-                <div
-                  style={{
-                    margin: "-1rem 1rem 1rem 0rem",
-                    padding: "0.25rem 0.5rem",
-                    backgroundColor: "rgb(247, 223, 30)",
-                    color: "#000034",
-                    fontSize: "12px",
-                    borderRadius: "0px 0px 0.25rem 0.25rem",
-                    position: "absolute",
-                    letterSpacing: "0.025rem",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {language}
+                <div className="bg-yellow-300 p-4 font-mono rounded-b-lg text-xs -mt-4 mr-4 mb-4 ml-0 py-1 px-2 text-slate-900 absolute">
+                  {fileName ? fileName : language}
                 </div>
               )}
-              {language && <div style={{ marginBottom: "1.65rem" }} />}
+              {language && <div className="mb-5" />}
               {tokens.map((line, i) => (
                 <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  style={{
-                    display: "table-row",
-                    // lineHeight: "1.45rem",
-                    backgroundColor: linesToHighlight
-                      ? linesToHighlight.includes(i + 1)
-                        ? "rgba(248, 248, 255, 0.25)"
-                        : ""
-                      : "",
-                  }}
+                  className={`${
+                    linesToHighlight &&
+                    linesToHighlight.includes(i + 1) &&
+                    'bg-slate-700/75'
+                  }`}
                 >
-                  <span
-                    style={{
-                      display: "table-cell",
-                      textAlign: "right",
-                      paddingRight: "1rem",
-                      userSelect: "none",
-                      opacity: "0.5",
-                    }}
-                  >
+                  <span className="table-cell text-right pr-4 select-none opacity-50">
                     {i + 1}
                   </span>
-                  <span
-                    style={{
-                      display: "table-cell",
-                      width: "100%",
-                    }}
-                  >
+                  <span className="table-cell w-full">
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
                     ))}
@@ -160,7 +125,7 @@ const components = {
 
 const Post = ({ source, frontMatter }: any) => {
   return (
-    <div className={styles.font}>
+    <Layout>
       <SEO
         title={frontMatter.title}
         description={frontMatter.abstract}
@@ -169,26 +134,30 @@ const Post = ({ source, frontMatter }: any) => {
         type="article"
       />
       <Nav />
-      <div className={styles.container}>
-        <h1 className={styles.postTitle}>{frontMatter.title}</h1>
-        <p className={styles.postMeta}>
+      <div className="max-w-screen-md mx-auto">
+        <h1 className="my-4 text-4xl font-extrabold leading-tight text-slate-900 lg:my-6 lg:text-5xl">
+          {frontMatter.title}
+        </h1>
+        <p className="text-sm text-slate-500">
           By {frontMatter.author} on {frontMatter.published}
         </p>
         {frontMatter.updated && (
-          <p className={styles.postMeta}>Updated {frontMatter.updated}</p>
+          <p className="text-sm text-slate-500">
+            Updated {frontMatter.updated}
+          </p>
         )}
-        <p className={styles.postMeta}>{frontMatter.ttr} min read</p>
-        <div className={styles.postContentContainer}>
+        <p className="text-sm text-slate-500">{frontMatter.ttr} min read</p>
+        <div>
           <MDXRemote {...source} components={components} />
         </div>
         <Footer />
       </div>
-    </div>
+    </Layout>
   );
 };
 
 export async function getStaticPaths() {
-  const blogPostsDirectoryPath = path.join(process.cwd(), "_posts");
+  const blogPostsDirectoryPath = path.join(process.cwd(), '_posts');
   const blogPostFileNames = await fs.readdir(blogPostsDirectoryPath);
 
   const allSlugs = blogPostFileNames.map((filename) => {
@@ -213,29 +182,29 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   let fileToFind: string;
   if (params) {
-    if (typeof params.slug === "string") {
-      fileToFind = params.slug + ".mdx";
+    if (typeof params.slug === 'string') {
+      fileToFind = params.slug + '.mdx';
     } else if (Array.isArray(params.slug)) {
-      fileToFind = params.slug[0] + ".mdx";
+      fileToFind = params.slug[0] + '.mdx';
     } else {
-      fileToFind = "";
+      fileToFind = '';
     }
   } else {
-    fileToFind = "";
+    fileToFind = '';
   }
 
-  const blogPostsDirectoryPath = path.join(process.cwd(), "_posts");
+  const blogPostsDirectoryPath = path.join(process.cwd(), '_posts');
   const blogPostFileNames = await fs.readdir(blogPostsDirectoryPath);
 
   const postFileName = blogPostFileNames.find((file) => file === fileToFind);
   const pathToPostFileName = path.join(blogPostsDirectoryPath, postFileName!);
-  const postFileContent = await fs.readFile(pathToPostFileName, "utf8");
+  const postFileContent = await fs.readFile(pathToPostFileName, 'utf8');
   const { content, data } = matter(postFileContent);
   const mdxSource = await serialize(content, {
     scope: data,
-    mdxOptions: { rehypePlugins: [[imageSize, { dir: "public" }]] },
+    mdxOptions: { rehypePlugins: [[imageSize, { dir: 'public' }]] },
   });
-  data.ttr = Math.ceil(content.split(" ").length / 200);
+  data.ttr = Math.ceil(content.split(' ').length / 200);
 
   return { props: { source: mdxSource, frontMatter: data } };
 }
