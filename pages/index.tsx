@@ -43,7 +43,7 @@ const Home: NextPage = ({ blogs }: any) => {
               Software that solves hard problems
             </h1>
             <p className="mb-8 text-lg font-normal text-slate-500 lg:text-xl sm:px-16 xl:px-48">
-              We build software solutions that ease the transition for
+              I build software solutions that ease the transition for
               traditional brick-and-mortar businesses to sell their products and
               services online.
             </p>
@@ -96,7 +96,7 @@ const Home: NextPage = ({ blogs }: any) => {
               </h2>
               <p className="font-light text-slate-500 sm:text-xl">
                 Musings from the mind of an engineer who needs to work on
-                writing blog posts more frequently
+                writing blog posts more frequently.
               </p>
             </div>
             <div className="grid gap-8 lg:grid-cols-2">
