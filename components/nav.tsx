@@ -3,23 +3,24 @@ import Link from 'next/link';
 const Nav = () => {
   return (
     <header className="py-8">
-      <nav className="flex flex-row justify-between items-center content-center">
-        <Link href="/">
-          <a className="text-3xl font-extrabold flex flex-row items-center content-center hover:text-slate-900/90">
-            <svg
-              className="w-8 h-8 -mb-1 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            volk
-          </a>
+      <nav className="flex flex-row content-center items-center justify-between">
+        <Link
+          href="/"
+          className="flex flex-row content-center items-center text-3xl font-extrabold hover:text-slate-900/90"
+        >
+          <svg
+            className="-mb-1 mr-2 h-8 w-8"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+          volk
         </Link>
 
         <div>
@@ -27,10 +28,10 @@ const Nav = () => {
             href="mailto:matt@volk.dev"
             target="_blank"
             rel="noreferrer"
-            className="text-white bg-slate-900 hover:bg-slate-900/90 focus:ring-4 focus:outline-none focus:ring-slate-900/50 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center "
+            className="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-slate-900/90 focus:outline-none focus:ring-4 focus:ring-slate-900/50 "
           >
             <svg
-              className="mr-2 -ml-1 w-4 h-4"
+              className="mr-2 -ml-1 h-4 w-4"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"

@@ -19,10 +19,10 @@ const Blog: NextPage = ({ blogs }: any) => {
           {blogs.map((blog: any) => (
             <div
               key={blog.slug}
-              className="flex flex-row items-center content-center py-2"
+              className="flex flex-row content-center items-center py-2"
             >
               <svg
-                className="w-5 h-5"
+                className="h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,16 +33,14 @@ const Blog: NextPage = ({ blogs }: any) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <Link href={blog.slug}>
-                <a className="flex flex-row">
-                  <p>
-                    <span className="underline font-medium">{blog.title}</span>
-                    <span className="ml-2 no-underline text-slate-500 italic text-sm">
-                      <span className="mr-2">[{blog.published}]</span>
-                      <span>[{blog.ttr.toString()} minute read]</span>
-                    </span>
-                  </p>
-                </a>
+              <Link href={blog.slug} className="flex flex-row">
+                <p>
+                  <span className="font-medium underline">{blog.title}</span>
+                  <span className="ml-2 text-sm italic text-slate-500 no-underline">
+                    <span className="mr-2">[{blog.published}]</span>
+                    <span>[{blog.ttr.toString()} minute read]</span>
+                  </span>
+                </p>
               </Link>
             </div>
           ))}

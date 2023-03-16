@@ -15,32 +15,32 @@ const imageSize = require('rehype-img-size');
 
 const components = {
   h1: (props: any) => (
-    <h1 className="text-4xl lg:text-5xl my-4 lg:my-6 font-extrabold">
+    <h1 className="my-4 text-4xl font-extrabold lg:my-6 lg:text-5xl">
       {props.children}
     </h1>
   ),
   h2: (props: any) => (
-    <h2 className="text-3xl lg:text-4xl my-3 lg:my-5 font-bold">
+    <h2 className="my-3 text-3xl font-bold lg:my-5 lg:text-4xl">
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 className="text-2xl lg:text-3xl my-2 lg:my-4 font-semibold">
+    <h3 className="my-2 text-2xl font-semibold lg:my-4 lg:text-3xl">
       {props.children}
     </h3>
   ),
   h4: (props: any) => (
-    <h4 className="text-xl lg:text-2xl my-2 lg:my-4 font-medium">
+    <h4 className="my-2 text-xl font-medium lg:my-4 lg:text-2xl">
       {props.children}
     </h4>
   ),
   h5: (props: any) => (
-    <h5 className="text-lg lg:text-xl my-2 lg:my-4 font-medium">
+    <h5 className="my-2 text-lg font-medium lg:my-4 lg:text-xl">
       {props.children}
     </h5>
   ),
   h6: (props: any) => (
-    <h6 className="text-base lg:text-lg my-2 lg:my-4 font-medium">
+    <h6 className="my-2 text-base font-medium lg:my-4 lg:text-lg">
       {props.children}
     </h6>
   ),
@@ -52,7 +52,7 @@ const components = {
   ),
   kbd: (props: any) => (
     // <kbd className="text-sm p-1 break-words rounded bg-slate-900 text-slate-200">
-    <kbd className="px-2 py-1 text-xs font-semibold text-slate-800 bg-slate-100 rounded border border-slate-200">
+    <kbd className="rounded border border-slate-200 bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-800">
       {props.children}
     </kbd>
   ),
@@ -88,9 +88,9 @@ const components = {
       >
         {({ tokens, getLineProps, getTokenProps }) => (
           <div>
-            <pre className="bg-slate-900 text-slate-50 text-sm leading-6 rounded-lg p-4 whitespace-pre text-left overflow-auto my-5">
+            <pre className="my-5 overflow-auto whitespace-pre rounded-lg bg-slate-900 p-4 text-left text-sm leading-6 text-slate-50">
               {language && (
-                <div className="bg-yellow-300 p-4 font-mono rounded-b-lg text-xs -mt-4 mr-4 mb-4 ml-0 py-1 px-2 text-slate-900 absolute">
+                <div className="absolute -mt-4 mr-4 mb-4 ml-0 rounded-b-lg bg-yellow-300 p-4 py-1 px-2 font-mono text-xs text-slate-900">
                   {fileName ? fileName : language}
                 </div>
               )}
@@ -105,7 +105,7 @@ const components = {
                     'bg-slate-700/75'
                   }`}
                 >
-                  <span className="table-cell text-right pr-4 select-none opacity-50">
+                  <span className="table-cell select-none pr-4 text-right opacity-50">
                     {i + 1}
                   </span>
                   <span className="table-cell w-full">
@@ -134,7 +134,7 @@ const Post = ({ source, frontMatter }: any) => {
         type="article"
       />
       <Nav />
-      <div className="max-w-screen-md mx-auto">
+      <div className="mx-auto max-w-screen-md">
         <h1 className="my-4 text-4xl font-extrabold leading-tight text-slate-900 lg:my-6 lg:text-5xl">
           {frontMatter.title}
         </h1>

@@ -151,12 +151,11 @@ argument of the "done" function in the <kbd>serializeUser</kbd> method) is saved
 is later used to retrieve the whole object via the deserializeUser function. serializeUser
 determines, which data of the user object should be stored in the session. The result of the
 
-<kbd>serializeUser</kbd> method is attached to the session as <kbd>
-  req.session.passport.user ={}
-</kbd>
-. The first argument of <kbd>deserializeUser</kbd> corresponds to the key of the
-user object that was given to the done function (see 1.). So your whole object
-is retrieved with help of that key.
+<kbd>serializeUser</kbd> method is attached to the session as
+<kbd>req.session.passport.user ={}</kbd>. The first argument of <kbd>
+  deserializeUser
+</kbd> corresponds to the key of the user object that was given to the done function
+(see 1.). So your whole object is retrieved with help of that key.
 
 If you do not make your user ID unique across each user Model, your <kbd>serializeUser</kbd>
 function will not know which database to query to retrieve the user you are trying to deserialize.

@@ -15,19 +15,19 @@ const Home: NextPage = ({ blogs }: any) => {
       <Nav />
       <main>
         <section>
-          <div className="pt-8 pb-6 px-4 lg:pb-8 lg:pt-10 lg:px-12 mx-auto max-w-screen-xl text-center">
+          <div className="mx-auto max-w-screen-xl px-4 pt-8 pb-6 text-center lg:px-12 lg:pb-8 lg:pt-10">
             <div
-              className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-slate-700 bg-slate-100 rounded-full cursor-default"
+              className="mb-7 inline-flex cursor-default items-center justify-between rounded-full bg-slate-100 py-1 px-1 pr-4 text-sm text-slate-700"
               role="alert"
             >
-              <span className="text-xs bg-slate-900 rounded-full text-white px-4 py-1.5 mr-3">
+              <span className="mr-3 rounded-full bg-slate-900 px-4 py-1.5 text-xs text-white">
                 New
               </span>{' '}
               <span className="text-sm font-medium">
                 Please enjoy the redesign!
               </span>
               <svg
-                className="ml-2 w-5 h-5"
+                className="ml-2 h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,24 +39,24 @@ const Home: NextPage = ({ blogs }: any) => {
                 ></path>
               </svg>
             </div>
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-slate-900 md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
               Software that solves hard problems
             </h1>
-            <p className="mb-8 text-lg font-normal text-slate-500 lg:text-xl sm:px-16 xl:px-48">
+            <p className="mb-8 text-lg font-normal text-slate-500 sm:px-16 lg:text-xl xl:px-48">
               I build software solutions that ease the transition for
               traditional brick-and-mortar businesses to sell their products and
               services online.
             </p>
-            <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+            <div className="mb-8 flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 lg:mb-16">
               <a
                 href="mailto:matt@volk.dev?subject=I'd%20like%20to%20chat%20about%20a%20project!&body=Quick%20Project%20Description%3A%0D%0A%0D%0A%0D%0AEstimated%20Budget%3A"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-slate-900 hover:bg-slate-800 focus:ring-4 focus:ring-slate-300"
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 py-3 px-5 text-center text-base font-medium text-white hover:bg-slate-800 focus:ring-4 focus:ring-slate-300"
               >
                 Get a Quote
                 <svg
-                  className="ml-2 -mr-1 w-5 h-5"
+                  className="ml-2 -mr-1 h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -72,13 +72,13 @@ const Home: NextPage = ({ blogs }: any) => {
                 href="https://github.com/matthewvolk"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-slate-900 rounded-lg border border-slate-300 hover:bg-slate-100 focus:ring-4 focus:ring-slate-100"
+                className="inline-flex items-center justify-center rounded-lg border border-slate-300 py-3 px-5 text-center text-base font-medium text-slate-900 hover:bg-slate-100 focus:ring-4 focus:ring-slate-100"
               >
                 <svg
                   fill="currentColor"
                   viewBox="0 0 16 16"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="mr-2 -ml-1 w-5 h-5"
+                  className="mr-2 -ml-1 h-5 w-5"
                 >
                   <path d="M7.975 16a9.39 9.39 0 003.169-.509c-.473.076-.652-.229-.652-.486l.004-.572c.003-.521.01-1.3.01-2.197 0-.944-.316-1.549-.68-1.863 2.24-.252 4.594-1.108 4.594-4.973 0-1.108-.39-2.002-1.032-2.707.1-.251.453-1.284-.1-2.668 0 0-.844-.277-2.77 1.032A9.345 9.345 0 008 .717c-.856 0-1.712.113-2.518.34C3.556-.24 2.712.025 2.712.025c-.553 1.384-.2 2.417-.1 2.668-.642.705-1.033 1.612-1.033 2.707 0 3.852 2.342 4.72 4.583 4.973-.29.252-.554.692-.642 1.347-.58.264-2.027.692-2.933-.831-.19-.302-.756-1.045-1.549-1.032-.843.012-.34.478.013.667.428.239.919 1.133 1.032 1.422.201.567.856 1.65 3.386 1.184 0 .55.006 1.079.01 1.447l.003.428c0 .265-.189.567-.692.479 1.007.34 1.926.516 3.185.516z"></path>
                 </svg>
@@ -89,9 +89,9 @@ const Home: NextPage = ({ blogs }: any) => {
         </section>
 
         <section>
-          <div className="pb-8 pt-6 px-4 lg:pt-8 lg:pb-16 lg:px-6 mx-auto max-w-screen-xl">
-            <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-              <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-slate-900">
+          <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-6 lg:px-6 lg:pt-8 lg:pb-16">
+            <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900 lg:text-4xl">
                 Stuff to Read
               </h2>
               <p className="font-light text-slate-500 sm:text-xl">
@@ -103,12 +103,12 @@ const Home: NextPage = ({ blogs }: any) => {
               {blogs.map((blog: any) => (
                 <article
                   key={blog.slug}
-                  className="p-6 bg-white rounded-lg border border-slate-200 shadow-md"
+                  className="rounded-lg border border-slate-200 bg-white p-6 shadow-md"
                 >
-                  <div className="flex justify-between items-center mb-5 text-slate-500">
-                    <span className="bg-slate-100 text-slate-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+                  <div className="mb-5 flex items-center justify-between text-slate-500">
+                    <span className="inline-flex items-center rounded bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-800">
                       <svg
-                        className="mr-1 w-3 h-3"
+                        className="mr-1 h-3 w-3"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -126,33 +126,32 @@ const Home: NextPage = ({ blogs }: any) => {
                     </span>
                   </div>
                   <h2 className="mb-2 text-2xl font-bold tracking-tight text-slate-900">
-                    <Link href={blog.slug}>
-                      <a>{blog.title}</a>
-                    </Link>
+                    <Link href={blog.slug}>{blog.title}</Link>
                   </h2>
                   <p className="mb-5 font-light text-slate-500">
                     {blog.abstract}
                   </p>
-                  <div className="flex justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <span className="font-medium">{blog.author}</span>
                     </div>
-                    <Link href={blog.slug}>
-                      <a className="inline-flex items-center font-medium text-slate-600 hover:underline">
-                        Read more
-                        <svg
-                          className="ml-2 w-4 h-4"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </a>
+                    <Link
+                      href={blog.slug}
+                      className="inline-flex items-center font-medium text-slate-600 hover:underline"
+                    >
+                      Read more
+                      <svg
+                        className="ml-2 h-4 w-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
                     </Link>
                   </div>
                 </article>
