@@ -3,8 +3,8 @@ title: Implement Multiple Local User Authentication Strategies in Passport.js
 description:
   A tutorial describing how to implement more than one local user authentication strategy using
   Node.js, Express.js, and Passport.js.
-published: Aug 07, 2018
-updated: Jun 09, 2020
+pubDate: Aug 07, 2018
+updatedDate: Jun 09, 2020
 ---
 
 ## Introduction

@@ -7,7 +7,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, published, updated, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,11 +19,11 @@ const { title, description, published, updated, heroImage } = Astro.props;
     <Header />
     <main class="my-24">
       <article class="mx-auto prose lg:prose-xl">
-        Published <FormattedDate date={published} />
+        Published <FormattedDate date={pubDate} />
         {
-          updated && (
+          updatedDate && (
             <div>
-              Last Updated on <FormattedDate date={updated} />
+              Last Updated on <FormattedDate date={updatedDate} />
             </div>
           )
         }

@@ -3,8 +3,8 @@ title: Delete All Your Old Facebook Posts with a Few Lines of Javascript
 description:
   In this blog post, I show you how you can mass delete posts you made in the past on your Facebook
   timeline.
-published: Oct 17, 2018
-updated: Jun 27, 2020
+pubDate: Oct 17, 2018
+updatedDate: Jun 27, 2020
 ---
 
 ## Intro
