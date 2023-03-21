@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Matthew Volk - Software Engineer";
 export const SITE_DESCRIPTION =
-  "A personal website for Matthew Volk, a software engineer based in Austin, TX.";
+  "Matthew Volk is a software engineer specializing in web technologies based in Austin, TX.";
