@@ -3,8 +3,8 @@ title: Applying Agile Methodologies to E-Commerce Platform Migrations
 description:
   When migrating e-commerce platforms, resist scope creep and focus on catering an excellent user
   experience through MVP's and iterative development.
-pubDate: Jun 27, 2020
-updatedDate: Jun 27, 2020
+published: Jun 27, 2020
+updated: Jun 27, 2020
 ---
 
 ## Simplicity

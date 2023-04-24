@@ -3,7 +3,7 @@ title: PHP/MySQL Compatibility Bug Fix in Magento 2.2.4 Installation Phase
 description:
   In this blog post, I explore a bug identified when connecting Magento 2.2.4 to a MySQL 8.0.11
   database using PHP version 7.0.40.
-pubDate: May 31, 2018
+published: May 31, 2018
 ---
 
 Recently I ran into a frustrating issue in the Magento 2.2.4 installation phase where you connect

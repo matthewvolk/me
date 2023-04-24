@@ -1,0 +1,23 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://volk.dev/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/bug-identified-in-magento-2-2-4-installation-phase/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/delete-facebook-posts-with-javascript/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/implement-multiple-local-user-authentication-strategies-in-passport-js/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/product-management-and-ecommerce-platform-migrations/</loc>
+  </url>
+  <url>
+    <loc>https://volk.dev/blog/user-auth/</loc>
+  </url>
+</urlset>

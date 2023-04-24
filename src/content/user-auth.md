@@ -3,8 +3,8 @@ title: Build your own user authentication REST API using Node and MongoDB
 description:
   A tutorial demonstrating how you can create your very own user authentication REST API using
   Node.js and MongoDB.
-pubDate: Apr 07, 2018
-updatedDate: Jun 20, 2020
+published: Apr 07, 2018
+updated: Jun 20, 2020
 ---
 
 ## Project Introduction
