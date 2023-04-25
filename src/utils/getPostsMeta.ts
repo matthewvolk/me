@@ -12,16 +12,27 @@ export interface PostMeta {
 }
 
 export const getPostsMeta = (): PostMeta[] =>
-  fs.readdirSync(contentDir).map((fileName) => {
-    const meta = matter(
-      fs.readFileSync(path.join(contentDir, fileName), "utf-8")
-    );
+  fs
+    .readdirSync(contentDir)
+    .map((fileName) => {
+      const meta = matter(
+        fs.readFileSync(path.join(contentDir, fileName), "utf-8")
+      );
 
-    return {
-      slug: fileName.replace(/\.md$/, ""),
-      title: meta.data.title,
-      description: meta.data.description,
-      published: meta.data.published,
-      updated: meta.data.updated,
-    };
-  });
+      return {
+        slug: fileName.replace(/\.md$/, ""),
+        title: meta.data.title,
+        description: meta.data.description,
+        published: meta.data.published,
+        updated: meta.data.updated,
+      };
+    })
+    .sort(
+      (a, b) =>
+        (b.updated
+          ? new Date(b.updated).valueOf()
+          : new Date(b.published).valueOf()) -
+        (a.updated
+          ? new Date(a.updated).valueOf()
+          : new Date(a.published).valueOf())
+    );

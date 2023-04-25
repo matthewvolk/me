@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="container mx-auto p-4">
         <Nav />
         {children}
       </body>

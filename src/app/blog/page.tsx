@@ -1,5 +1,5 @@
-import { getPostsMeta } from "@/utils/getPostsMeta";
 import Link from "next/link";
+import { getPostsMeta } from "@/utils/getPostsMeta";
 
 export default function Blog() {
   const posts = getPostsMeta();

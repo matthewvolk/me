@@ -34,7 +34,7 @@ export default async function Post({ params }: PostProps) {
   const post = await getPost(params.slug);
 
   return (
-    <main>
+    <main className="pt-4">
       <h1>{post.title}</h1>
       {post.updated && <p>Updated: {post.updated}</p>}
       <p>Published: {post.published}</p>
