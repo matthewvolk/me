@@ -19,7 +19,7 @@ export default async function Home() {
           target="_blank"
           className="pt-2"
         >
-          <h3 className="text-sky-600 underline">
+          <h3 className="text-sky-700 underline">
             {pinnedItem.owner.login}/{pinnedItem.name}
           </h3>
           <p>{pinnedItem.description}</p>
@@ -29,7 +29,7 @@ export default async function Home() {
       <Link
         href="https://github.com/matthewvolk"
         target="_blank"
-        className="text-sky-600 underline"
+        className="text-sky-700 underline"
       >
         {
           gitHubData.data.viewer.contributionsCollection.contributionCalendar
@@ -41,7 +41,7 @@ export default async function Home() {
       {posts.map((post) => (
         <Link href={`/blog/${post.slug}`} key={post.slug}>
           <h2>
-            <span className="text-sky-600 underline">{post.title}</span>
+            <span className="text-sky-700 underline">{post.title}</span>
             <span className="no-underline text-neutral-950 italic">
               {" "}
               — 
