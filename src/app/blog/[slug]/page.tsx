@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { Nav } from "@/components/nav";
 
 const contentDir = path.join(process.cwd(), "src/content");
 
@@ -90,11 +91,22 @@ const BlogPost = async ({ params }: PostProps) => {
   const post = await getPost(params.slug);
 
   return (
-    <main className="pt-4">
-      <h1>{post.title}</h1>
-      {post.updated && <p>Updated: {post.updated}</p>}
-      <p>Published: {post.published}</p>
-      <article dangerouslySetInnerHTML={{ __html: post.html }}></article>
+    <main className="mx-auto flex min-h-screen max-w-7xl flex-col p-4">
+      <Nav />
+      <div className="w-full max-w-3xl self-center">
+        <div className="py-4">
+          <h1 className="py-4 text-5xl font-bold">{post.title}</h1>
+          <div className="pt-2 text-sm italic text-neutral-600 dark:text-neutral-200">
+            {post.updated && <p>Updated: {post.updated}</p>}
+            <p>Published: {post.published}</p>
+          </div>
+        </div>
+        <div className="py-4"></div>
+        <article
+          className="prose dark:prose-invert lg:prose-xl"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        ></article>
+      </div>
     </main>
   );
 };
