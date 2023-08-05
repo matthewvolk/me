@@ -2,13 +2,27 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Theme } from "@/components/theme";
+import { Home } from "lucide-react";
 
 export const Nav = () => (
-  <nav className="flex justify-between">
+  <nav className="col-span-2 flex justify-between">
     <Link href="/" className="self-center">
-      <h1 className="font-bold">volk.dev</h1>
+      <div
+        className={cn(
+          buttonVariants({
+            variant: "ghost",
+          }),
+          "w-9 px-0 md:w-full md:px-4"
+        )}
+      >
+        <div className="flex gap-4">
+          <Home className="h-5 w-5" />
+          <p className="hidden md:block">Home</p>
+          <span className="sr-only">Homepage</span>
+        </div>
+      </div>
     </Link>
-    <div className="flex">
+    <div className="flex gap-2">
       <Link
         href="https://github.com/matthewvolk"
         target="_blank"
@@ -22,7 +36,7 @@ export const Nav = () => (
             "w-9 px-0"
           )}
         >
-          <Icons.gitHub className="h-4 w-4 fill-current" />
+          <Icons.gitHub className="h-5 w-5 fill-current" />
           <span className="sr-only">Twitter</span>
         </div>
       </Link>
@@ -35,7 +49,7 @@ export const Nav = () => (
             "w-9 px-0"
           )}
         >
-          <Icons.twitter className="h-4 w-4 fill-current" />
+          <Icons.twitter className="h-5 w-5 fill-current" />
           <span className="sr-only">Twitter</span>
         </div>
       </Link>
@@ -46,7 +60,7 @@ export const Nav = () => (
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
-const Icons = {
+export const Icons = {
   twitter: (props: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path d="M21.543 7.104c.015.211.015.423.015.636 0 6.507-4.954 14.01-14.01 14.01v-.003A13.94 13.94 0 0 1 0 19.539a9.88 9.88 0 0 0 7.287-2.041 4.93 4.93 0 0 1-4.6-3.42 4.916 4.916 0 0 0 2.223-.084A4.926 4.926 0 0 1 .96 9.167v-.062a4.887 4.887 0 0 0 2.235.616A4.928 4.928 0 0 1 1.67 3.148a13.98 13.98 0 0 0 10.15 5.144 4.929 4.929 0 0 1 8.39-4.49 9.868 9.868 0 0 0 3.128-1.196 4.941 4.941 0 0 1-2.165 2.724A9.828 9.828 0 0 0 24 4.555a10.019 10.019 0 0 1-2.457 2.549z" />
