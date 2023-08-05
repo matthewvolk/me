@@ -83,7 +83,7 @@ const Home = async () => {
                     "flex w-full items-center justify-center gap-2"
                   )}
                 >
-                  <Icons.gitHub className="h-4 w-4" />
+                  <Icons.gitHub className="hidden h-4 w-4 md:block" />
                   <p>View on Github</p>
                 </div>
               </Link>
@@ -100,7 +100,7 @@ const Home = async () => {
                     "flex w-full items-center justify-center gap-2"
                   )}
                 >
-                  <Package size={16} />
+                  <Package size={16} className="hidden md:block" />
                   <p>Download on NPM</p>
                 </div>
               </Link>
@@ -141,7 +141,7 @@ const Home = async () => {
                     "flex w-full items-center justify-center gap-2"
                   )}
                 >
-                  <Icons.gitHub className="h-4 w-4" />
+                  <Icons.gitHub className="hidden h-4 w-4 md:block" />
                   <p>View on Github</p>
                 </div>
               </Link>
@@ -158,7 +158,7 @@ const Home = async () => {
                     "flex w-full items-center justify-center gap-2"
                   )}
                 >
-                  <Package size={16} />
+                  <Package size={16} className="hidden md:block" />
                   <p>Download on NPM</p>
                 </div>
               </Link>
