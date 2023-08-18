@@ -1,9 +1,11 @@
-import path from "node:path";
 import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
+
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+
 import { NavBar } from "@/components/navbar";
 
 const contentDir = path.join(process.cwd(), "src/content");
@@ -20,7 +22,7 @@ const getPostsMeta = (): PostMeta[] =>
   readdirSync(contentDir)
     .map((fileName) => {
       const meta = matter(
-        readFileSync(path.join(contentDir, fileName), "utf-8")
+        readFileSync(path.join(contentDir, fileName), "utf-8"),
       );
 
       return {
@@ -38,7 +40,7 @@ const getPostsMeta = (): PostMeta[] =>
           : new Date(b.published).valueOf()) -
         (a.updated
           ? new Date(a.updated).valueOf()
-          : new Date(a.published).valueOf())
+          : new Date(a.published).valueOf()),
     );
 
 export function generateStaticParams() {
@@ -64,7 +66,7 @@ export function generateMetadata({ params }: PostProps) {
 
 const getPost = async (slug: string): Promise<PostMeta & { html: string }> => {
   const meta = matter(
-    readFileSync(path.join(contentDir, `${slug}.md`), "utf-8")
+    readFileSync(path.join(contentDir, `${slug}.md`), "utf-8"),
   );
 
   const content = await remark().use(remarkHtml).process(meta.content);

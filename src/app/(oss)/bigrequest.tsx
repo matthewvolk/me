@@ -1,14 +1,15 @@
+import { Download, Package, Star } from "lucide-react";
+import Link from "next/link";
+
 import { Icons } from "@/components/navbar";
 import { buttonVariants } from "@/components/ui/button";
 import { cs } from "@/lib/cs";
-import { Download, Package, Star } from "lucide-react";
-import Link from "next/link";
 
 export const BigRequest = async () => {
   const bigRequestDownloads = async () => {
     const response = await fetch(
       "https://api.npmjs.org/downloads/point/last-year/bigrequest",
-      { next: { revalidate: 60 * 60 * 24 } }
+      { next: { revalidate: 60 * 60 * 24 } },
     );
     const data = await response.json();
     return data.downloads as number;
@@ -17,14 +18,14 @@ export const BigRequest = async () => {
   const bigRequestStars = async () => {
     const response = await fetch(
       "https://api.github.com/repos/matthewvolk/bigrequest",
-      { next: { revalidate: 60 * 60 * 24 } }
+      { next: { revalidate: 60 * 60 * 24 } },
     );
     const data = await response.json();
     return data.stargazers_count as number;
   };
 
   return (
-    <li className="rounded-lg border border-neutral-300 dark:border-neutral-500 p-4">
+    <li className="rounded-lg border border-neutral-300 p-4 dark:border-neutral-500">
       <div className="flex items-center justify-between">
         <h3 className="font-mono text-base font-semibold">bigrequest</h3>
         <div className="flex gap-6 text-xs">
@@ -55,7 +56,7 @@ export const BigRequest = async () => {
               buttonVariants({
                 variant: "ghost",
               }),
-              "flex w-full items-center justify-center gap-2"
+              "flex w-full items-center justify-center gap-2",
             )}
           >
             <Icons.gitHub className="hidden h-4 w-4 md:block" />
@@ -72,7 +73,7 @@ export const BigRequest = async () => {
               buttonVariants({
                 variant: "ghost",
               }),
-              "flex w-full items-center justify-center gap-2"
+              "flex w-full items-center justify-center gap-2",
             )}
           >
             <Package size={16} className="hidden md:block" />

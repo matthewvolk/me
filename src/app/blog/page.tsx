@@ -1,9 +1,11 @@
-import { NavBar } from "@/components/navbar";
-import { Metadata } from "next";
-import path from "node:path";
 import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
+
 import matter from "gray-matter";
+import { Metadata } from "next";
 import Link from "next/link";
+
+import { NavBar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Blog - volk.dev",
@@ -24,7 +26,7 @@ const getPostsMeta = (): PostMeta[] =>
   readdirSync(contentDir)
     .map((fileName) => {
       const meta = matter(
-        readFileSync(path.join(contentDir, fileName), "utf-8")
+        readFileSync(path.join(contentDir, fileName), "utf-8"),
       );
 
       return {
@@ -42,7 +44,7 @@ const getPostsMeta = (): PostMeta[] =>
           : new Date(b.published).valueOf()) -
         (a.updated
           ? new Date(a.updated).valueOf()
-          : new Date(a.published).valueOf())
+          : new Date(a.published).valueOf()),
     );
 
 const Blog = () => {
