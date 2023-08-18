@@ -1,14 +1,14 @@
-import { cn } from "@/lib/utils";
+import { cs } from "@/lib/cs";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { Theme } from "@/components/theme";
+import { ThemeDropdown } from "@/components/theme-dropdown";
 import { Home } from "lucide-react";
 
-export const Nav = () => (
+export const NavBar = () => (
   <nav className="col-span-2 flex justify-between">
     <Link href="/" className="self-center">
       <div
-        className={cn(
+        className={cs(
           buttonVariants({
             variant: "ghost",
           }),
@@ -29,7 +29,7 @@ export const Nav = () => (
         rel="noreferrer"
       >
         <div
-          className={cn(
+          className={cs(
             buttonVariants({
               variant: "ghost",
             }),
@@ -42,7 +42,7 @@ export const Nav = () => (
       </Link>
       <Link href="https://twitter.com/mttvlk" target="_blank" rel="noreferrer">
         <div
-          className={cn(
+          className={cs(
             buttonVariants({
               variant: "ghost",
             }),
@@ -53,7 +53,7 @@ export const Nav = () => (
           <span className="sr-only">Twitter</span>
         </div>
       </Link>
-      <Theme />
+      <ThemeDropdown />
     </div>
   </nav>
 );

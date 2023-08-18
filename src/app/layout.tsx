@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/context/theme";
 import "./globals.css";
 import type { Metadata } from "next";
-import { GA } from "@/components/analytics";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 export const metadata: Metadata = {
   title: "volk.dev",
@@ -12,7 +12,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <GA />
+        <GoogleAnalytics />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

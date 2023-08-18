@@ -1,17 +1,17 @@
 import Image from "next/image";
 
-import { Nav } from "@/components/nav";
+import { NavBar } from "@/components/navbar";
 import { BigExec } from "@/app/(oss)/bigexec";
 import { BigRequest } from "@/app/(oss)/bigrequest";
 
 const Home = () => {
   return (
     <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-2 grid-rows-[min-content_1fr] gap-8 p-4">
-      <Nav />
+      <NavBar />
 
       <section className="col-span-2 grid grow place-items-center">
         <Image
-          src="/goose.gif"
+          src="/sillygoose.gif"
           width={187.5}
           height={187.5}
           alt="walkin goose"
