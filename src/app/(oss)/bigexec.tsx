@@ -1,6 +1,6 @@
-import { Icons } from "@/components/nav";
+import { Icons } from "@/components/navbar";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cs } from "@/lib/cs";
 import { Download, Package, Star } from "lucide-react";
 import Link from "next/link";
 
@@ -24,21 +24,21 @@ export const BigExec = async () => {
   };
 
   return (
-    <li className="rounded-lg border p-4">
+    <li className="rounded-lg border border-neutral-300 dark:border-neutral-500 p-4">
       <div className="flex items-center justify-between">
-        <h3 className="font-mono text-lg">bigexec</h3>
+        <h3 className="font-mono text-base font-semibold">bigexec</h3>
         <div className="flex gap-6 text-xs">
-          <span className="flex items-center gap-1 text-muted-foreground">
+          <span className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400">
             <Star size={14} />
             <p>{await bigRequestStars()} Stars</p>
           </span>
-          <span className="flex items-center gap-1 text-muted-foreground">
+          <span className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400">
             <Download size={14} />
             <p>{await bigExecDownloads()} Downloads</p>
           </span>
         </div>
       </div>
-      <p className="my-4 text-sm text-muted-foreground">
+      <p className="my-4 text-sm text-neutral-500 dark:text-neutral-400">
         A Node.js CLI utility written in Typescript designed to make it easier
         to run arbitrary tasks against the BigCommerce API. For example,
         creating a new storefront channel intended for use with headless
@@ -52,7 +52,7 @@ export const BigExec = async () => {
           className="flex items-center justify-center gap-2"
         >
           <div
-            className={cn(
+            className={cs(
               buttonVariants({
                 variant: "ghost",
               }),
@@ -69,7 +69,7 @@ export const BigExec = async () => {
           className="flex items-center justify-center gap-2"
         >
           <div
-            className={cn(
+            className={cs(
               buttonVariants({
                 variant: "ghost",
               }),

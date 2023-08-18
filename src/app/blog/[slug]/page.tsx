@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
-import { Nav } from "@/components/nav";
+import { NavBar } from "@/components/navbar";
 
 const contentDir = path.join(process.cwd(), "src/content");
 
@@ -92,7 +92,7 @@ const BlogPost = async ({ params }: PostProps) => {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-7xl flex-col p-4">
-      <Nav />
+      <NavBar />
       <div className="w-full max-w-3xl self-center">
         <div className="py-4">
           <h1 className="py-4 text-5xl font-bold">{post.title}</h1>

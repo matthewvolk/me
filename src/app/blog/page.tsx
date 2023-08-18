@@ -1,4 +1,4 @@
-import { Nav } from "@/components/nav";
+import { NavBar } from "@/components/navbar";
 import { Metadata } from "next";
 import path from "node:path";
 import { readdirSync, readFileSync } from "node:fs";
@@ -49,7 +49,7 @@ const Blog = () => {
   const posts = getPostsMeta();
   return (
     <main className="mx-auto flex min-h-screen max-w-7xl flex-col p-4">
-      <Nav />
+      <NavBar />
 
       <h1>Posts</h1>
       {posts.map((post) => (
