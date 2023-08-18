@@ -1,8 +1,10 @@
-import { cs } from "@/lib/cs";
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { ThemeDropdown } from "@/components/theme-dropdown";
 import { Home } from "lucide-react";
+import Link from "next/link";
+import * as React from "react";
+
+import { ThemeDropdown } from "@/components/theme-dropdown";
+import { buttonVariants } from "@/components/ui/button";
+import { cs } from "@/lib/cs";
 
 export const NavBar = () => (
   <nav className="col-span-2 flex justify-between">
@@ -12,7 +14,7 @@ export const NavBar = () => (
           buttonVariants({
             variant: "ghost",
           }),
-          "w-9 px-0 md:w-full md:px-4"
+          "w-9 px-0 md:w-full md:px-4",
         )}
       >
         <div className="flex gap-4">
@@ -33,7 +35,7 @@ export const NavBar = () => (
             buttonVariants({
               variant: "ghost",
             }),
-            "w-9 px-0"
+            "w-9 px-0",
           )}
         >
           <Icons.gitHub className="h-5 w-5 fill-current" />
@@ -46,7 +48,7 @@ export const NavBar = () => (
             buttonVariants({
               variant: "ghost",
             }),
-            "w-9 px-0"
+            "w-9 px-0",
           )}
         >
           <Icons.twitter className="h-5 w-5 fill-current" />

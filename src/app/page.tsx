@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { NavBar } from "@/components/navbar";
 import { BigExec } from "@/app/(oss)/bigexec";
 import { BigRequest } from "@/app/(oss)/bigrequest";
+import { NavBar } from "@/components/navbar";
 
 const Home = () => {
   return (

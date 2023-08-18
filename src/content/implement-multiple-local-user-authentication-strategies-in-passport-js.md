@@ -79,7 +79,7 @@ app.post(
   passport.authenticate("local-signup", {
     successRedirect: "/",
     failureRedirect: "/login",
-  })
+  }),
 );
 ```
 

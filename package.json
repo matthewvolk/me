@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier . --check"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.5",
@@ -31,6 +32,8 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.45.0",
     "eslint-config-next": "^13.4.12",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
     "postcss": "^8.4.27",
     "prettier-plugin-tailwindcss": "^0.4.1",
     "tailwindcss": "^3.3.3",

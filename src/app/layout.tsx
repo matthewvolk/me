@@ -1,7 +1,11 @@
-import { ThemeProvider } from "@/context/theme";
-import "./globals.css";
-import type { Metadata } from "next";
+import * as React from "react";
+
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ThemeProvider } from "@/context/theme";
+
+import "./globals.css";
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "volk.dev",
