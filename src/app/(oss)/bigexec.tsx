@@ -4,12 +4,13 @@ import Link from "next/link";
 import { Icons } from "@/components/navbar";
 import { buttonVariants } from "@/components/ui/button";
 import { cs } from "@/lib/cs";
+import { env } from "@/lib/env.mjs";
 
 export const BigExec = async () => {
   const bigExecDownloads = async () => {
     const response = await fetch(
       "https://api.npmjs.org/downloads/point/last-year/bigrequest",
-      { next: { revalidate: 60 * 60 * 24 } },
+      { cache: "no-store" },
     );
     const data = await response.json();
     return data.downloads as number;
@@ -18,7 +19,10 @@ export const BigExec = async () => {
   const bigRequestStars = async () => {
     const response = await fetch(
       "https://api.github.com/repos/matthewvolk/bigrequest",
-      { next: { revalidate: 60 * 60 * 24 } },
+      {
+        headers: { authorization: `bearer ${env.GITHUB_PAT}` },
+        cache: "no-store",
+      },
     );
     const data = await response.json();
     return data.stargazers_count as number;
