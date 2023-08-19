@@ -7,57 +7,63 @@ import { buttonVariants } from "@/components/ui/button";
 import { cs } from "@/lib/cs";
 
 export const NavBar = () => (
-  <nav className="col-span-2 flex justify-between">
-    <Link href="/" className="self-center">
-      <div
-        className={cs(
-          buttonVariants({
-            variant: "ghost",
-          }),
-          "w-9 px-0 md:w-full md:px-4",
-        )}
-      >
-        <div className="flex gap-4">
-          <Home className="h-5 w-5" />
-          <p className="hidden md:block">Home</p>
-          <span className="sr-only">Homepage</span>
+  <header className="sticky top-0 col-span-2 -mx-4 border-b bg-white/50 backdrop-blur-sm backdrop-saturate-200 dark:border-neutral-800 dark:bg-black/50">
+    <nav className="flex justify-between p-4">
+      <Link href="/" className="self-center">
+        <div
+          className={cs(
+            buttonVariants({
+              variant: "ghost",
+            }),
+            "w-9 px-0 md:w-full md:px-4",
+          )}
+        >
+          <div className="flex gap-4">
+            <Home className="h-5 w-5" />
+            <p className="hidden md:block">Home</p>
+            <span className="sr-only">Homepage</span>
+          </div>
         </div>
+      </Link>
+      <div className="flex gap-2">
+        <Link
+          href="https://github.com/matthewvolk"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div
+            className={cs(
+              buttonVariants({
+                variant: "ghost",
+              }),
+              "w-9 px-0",
+            )}
+          >
+            <Icons.gitHub className="h-5 w-5 fill-current" />
+            <span className="sr-only">Twitter</span>
+          </div>
+        </Link>
+        <Link
+          href="https://twitter.com/mttvlk"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div
+            className={cs(
+              buttonVariants({
+                variant: "ghost",
+              }),
+              "w-9 px-0",
+            )}
+          >
+            <Icons.twitter className="h-5 w-5 fill-current" />
+            <span className="sr-only">Twitter</span>
+          </div>
+        </Link>
+        <ThemeDropdown />
       </div>
-    </Link>
-    <div className="flex gap-2">
-      <Link
-        href="https://github.com/matthewvolk"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <div
-          className={cs(
-            buttonVariants({
-              variant: "ghost",
-            }),
-            "w-9 px-0",
-          )}
-        >
-          <Icons.gitHub className="h-5 w-5 fill-current" />
-          <span className="sr-only">Twitter</span>
-        </div>
-      </Link>
-      <Link href="https://twitter.com/mttvlk" target="_blank" rel="noreferrer">
-        <div
-          className={cs(
-            buttonVariants({
-              variant: "ghost",
-            }),
-            "w-9 px-0",
-          )}
-        >
-          <Icons.twitter className="h-5 w-5 fill-current" />
-          <span className="sr-only">Twitter</span>
-        </div>
-      </Link>
-      <ThemeDropdown />
-    </div>
-  </nav>
+    </nav>
+  </header>
 );
 
 type IconProps = React.HTMLAttributes<SVGElement>;

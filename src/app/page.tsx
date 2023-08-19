@@ -6,7 +6,7 @@ import { NavBar } from "@/components/navbar";
 
 const Home = () => {
   return (
-    <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-2 grid-rows-[min-content_1fr] gap-8 p-4">
+    <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-2 grid-rows-[min-content_1fr] gap-8 px-4 pb-4">
       <NavBar />
 
       <section className="col-span-2 grid grow place-items-center">

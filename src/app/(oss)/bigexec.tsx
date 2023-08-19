@@ -25,7 +25,7 @@ export const BigExec = async () => {
   };
 
   return (
-    <li className="rounded-lg border border-neutral-300 p-4 dark:border-neutral-500">
+    <li className="rounded-lg border border-neutral-300 p-4 dark:border-neutral-800">
       <div className="flex items-center justify-between">
         <h3 className="font-mono text-base font-semibold">bigexec</h3>
         <div className="flex gap-6 text-xs">
