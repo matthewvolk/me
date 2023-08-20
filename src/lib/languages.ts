@@ -73,6 +73,7 @@ const hexLookup: { [key: string]: string } = {
   Gosu: "#82937f",
   "Grammatical Framework": "#79aa7a",
   Groovy: "#e69f56",
+  Hack: "#878787",
   Handlebars: "#01a9d6",
   Harbour: "#0e60e3",
   Haskell: "#29b544",
@@ -210,6 +211,7 @@ export const languages = async () => {
       headers: {
         authorization: `bearer ${env.GITHUB_PAT}`,
       },
+      next: { revalidate: 60 * 60 * 24 },
     },
   );
 
@@ -219,15 +221,16 @@ export const languages = async () => {
 
   const repositoryNames = repositories.map((repo) => repo.name);
 
-  const repoLanguageReqs = repositories.map((repo) =>
+  const repoLanguageRequests = repositories.map((repo) =>
     fetch(repo.languages_url, {
       headers: {
         authorization: `bearer ${env.GITHUB_PAT}`,
       },
+      next: { revalidate: 60 * 60 * 24 },
     }),
   );
 
-  const languagesRes = await Promise.all(repoLanguageReqs);
+  const languagesRes = await Promise.all(repoLanguageRequests);
   const languagesJson = languagesRes.map((res) => res.json());
   const languages = await Promise.all(languagesJson);
 
