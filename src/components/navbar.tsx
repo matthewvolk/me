@@ -8,7 +8,7 @@ import { cs } from "@/lib/cs";
 
 export const NavBar = () => (
   <header className="sticky top-0 col-span-2 -mx-4 border-b bg-white/50 backdrop-blur-sm backdrop-saturate-200 dark:border-neutral-800 dark:bg-black/50">
-    <nav className="flex justify-between p-4">
+    <nav className="mx-auto flex max-w-7xl justify-between px-8 py-4 lg:px-4">
       <Link href="/" className="self-center">
         <div
           className={cs(

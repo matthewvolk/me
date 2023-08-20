@@ -35,108 +35,109 @@ const OSSCardLoading = () => (
 const Home = async () => {
   const { total, langs } = await languages();
   return (
-    <main className="mx-auto grid min-h-screen max-w-7xl grid-cols-2 grid-rows-[min-content_1fr] gap-8 px-4 pb-4">
+    <>
       <NavBar />
+      <main className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 pb-4 pt-12 lg:pt-16">
+        <section className="col-span-2 grid place-items-center">
+          <Image
+            src="/sillygoose.gif"
+            width={187.5}
+            height={187.5}
+            alt="walkin goose"
+          />
+        </section>
 
-      <section className="col-span-2 grid grow place-items-center">
-        <Image
-          src="/sillygoose.gif"
-          width={187.5}
-          height={187.5}
-          alt="walkin goose"
-        />
-      </section>
+        <section className="col-span-2">
+          <h2 className="mb-8 text-2xl font-bold tracking-tight">
+            Open Source Projects
+          </h2>
+          <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <Suspense fallback={<OSSCardLoading />}>
+              <BigRequest />
+            </Suspense>
+            <Suspense fallback={<OSSCardLoading />}>
+              <BigExec />
+            </Suspense>
+          </ul>
+        </section>
 
-      <section className="col-span-2">
-        <h2 className="mb-8 text-2xl font-bold tracking-tight">
-          Open Source Projects
-        </h2>
-        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <Suspense fallback={<OSSCardLoading />}>
-            <BigRequest />
-          </Suspense>
-          <Suspense fallback={<OSSCardLoading />}>
-            <BigExec />
-          </Suspense>
-        </ul>
-      </section>
-
-      <section className="col-span-2">
-        <h2 className="mb-8 text-2xl font-bold tracking-tight">
-          Public GitHub Stats
-        </h2>
-        <div className="flex overflow-hidden rounded-lg">
-          {langs.map((lang) => (
-            <TooltipProvider key={lang.lang} delayDuration={0}>
-              <Dialog>
-                <Tooltip>
-                  <DialogTrigger asChild>
-                    <TooltipTrigger
-                      className="h-20 brightness-125 transition-all hover:brightness-200 focus:brightness-200 md:h-12"
-                      style={{
-                        backgroundColor: lang.color || "white",
-                        width: `${lang.percent_of_total}%`,
-                      }}
-                    ></TooltipTrigger>
-                  </DialogTrigger>
-                  <TooltipContent className="m-1 flex flex-col gap-1">
-                    <h3 className="font-medium">{lang.lang}</h3>
-                    <p className="text-neutral-600 dark:text-neutral-400">
-                      {lang.bytes} bytes
+        <section className="col-span-2">
+          <h2 className="mb-8 text-2xl font-bold tracking-tight">
+            Public GitHub Stats
+          </h2>
+          <div className="flex overflow-hidden rounded-lg">
+            {langs.map((lang) => (
+              <TooltipProvider key={lang.lang} delayDuration={0}>
+                <Dialog>
+                  <Tooltip>
+                    <DialogTrigger asChild>
+                      <TooltipTrigger
+                        className="h-12 brightness-125 transition-all hover:brightness-200 focus:brightness-200"
+                        style={{
+                          backgroundColor: lang.color || "white",
+                          width: `${lang.percent_of_total}%`,
+                        }}
+                      ></TooltipTrigger>
+                    </DialogTrigger>
+                    <TooltipContent className="m-1 flex flex-col gap-1">
+                      <h3 className="font-medium">{lang.lang}</h3>
+                      <p className="text-neutral-600 dark:text-neutral-400">
+                        {lang.bytes} bytes
+                      </p>
+                      <p className="text-neutral-600 dark:text-neutral-400">
+                        {lang.percent_of_total}%
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <DialogContent>
+                    <h3 className="text-lg font-medium">
+                      {lang.lang} Statistics
+                    </h3>
+                    <p className="leading-6 text-neutral-600 dark:text-neutral-400">
+                      Found{" "}
+                      <span className="font-medium text-black dark:text-white">
+                        {lang.bytes}
+                      </span>{" "}
+                      bytes of {lang.lang} code across{" "}
+                      <span className="font-mono text-sm">matthewvolk</span>
+                      &apos;s{" "}
+                      <Link
+                        href="https://github.com/matthewvolk?tab=repositories"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-black underline decoration-1 underline-offset-2 dark:text-white"
+                      >
+                        public repositories
+                      </Link>
+                      .
                     </p>
-                    <p className="text-neutral-600 dark:text-neutral-400">
-                      {lang.percent_of_total}%
+                    <p className="leading-6 text-neutral-600 dark:text-neutral-400">
+                      {lang.lang} accounts for{" "}
+                      <span className="font-medium text-black dark:text-white">
+                        {lang.percent_of_total}%
+                      </span>{" "}
+                      of{" "}
+                      <span className="font-medium text-black dark:text-white">
+                        {total}
+                      </span>{" "}
+                      total bytes of code found in{" "}
+                      <span className="font-mono text-sm">matthewvolk</span>
+                      &apos;s public repositories.
                     </p>
-                  </TooltipContent>
-                </Tooltip>
-                <DialogContent>
-                  <h3 className="text-lg font-medium">
-                    {lang.lang} Statistics
-                  </h3>
-                  <p className="leading-6 text-neutral-600 dark:text-neutral-400">
-                    Found{" "}
-                    <span className="font-medium text-black dark:text-white">
-                      {lang.bytes}
-                    </span>{" "}
-                    bytes of {lang.lang} across{" "}
-                    <span className="font-mono text-sm">matthewvolk</span>
-                    &apos;s{" "}
-                    <Link
-                      href="https://github.com/matthewvolk?tab=repositories"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-black underline decoration-1 underline-offset-2 dark:text-white"
-                    >
-                      public repositories
-                    </Link>
-                    .
-                  </p>
-                  <p className="leading-6 text-neutral-600 dark:text-neutral-400">
-                    {lang.lang} accounts for{" "}
-                    <span className="font-medium text-black dark:text-white">
-                      {lang.percent_of_total}%
-                    </span>{" "}
-                    of{" "}
-                    <span className="font-medium text-black dark:text-white">
-                      {total}
-                    </span>{" "}
-                    total bytes of code found in{" "}
-                    <span className="font-mono text-sm">matthewvolk</span>
-                    &apos;s public repositories.
-                  </p>
-                </DialogContent>
-              </Dialog>
-            </TooltipProvider>
-          ))}
-        </div>
-      </section>
+                  </DialogContent>
+                </Dialog>
+              </TooltipProvider>
+            ))}
+          </div>
+        </section>
 
-      <footer className="col-span-2 py-4 text-center">
-        <p className="text-xs text-neutral-600 dark:text-neutral-400">
-          &copy; {new Date().getFullYear()} volk.dev
-        </p>
-      </footer>
-    </main>
+        <footer className="col-span-2 py-4 text-center">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400">
+            &copy; {new Date().getFullYear()} volk.dev
+          </p>
+        </footer>
+      </main>
+    </>
   );
 };
 
