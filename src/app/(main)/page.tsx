@@ -49,7 +49,7 @@ const Home = async () => {
 
   return (
     <>
-      <section className="space-y-6 pb-14 pt-6 md:pb-14 md:pt-10 lg:py-32">
+      <section className="space-y-6 pb-24 pt-12 md:pb-14 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link
             href="https://www.npmjs.com/package/bigrequest"
@@ -60,8 +60,8 @@ const Home = async () => {
             <span className="mr-1">🎉</span> BigRequest v0.0.8 released{" "}
             <ExternalLink height={14} />
           </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            Writing Software for Online Commerce
+          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl">
+            Software Engineering for Online Commerce
           </h1>
           <p className="max-w-3xl leading-normal text-slate-500 dark:text-slate-400 sm:text-xl sm:leading-8">
             Matthew Volk is a Software Engineer based in Austin, TX creating
@@ -93,7 +93,7 @@ const Home = async () => {
         id="products"
         className="container space-y-6 bg-slate-100/60 pb-10 pt-8 dark:bg-transparent md:py-12 lg:py-24"
       >
-        <div className="mx-auto mb-12 flex max-w-4xl flex-col items-center space-y-4 text-center">
+        <div className="mx-auto mb-6 flex max-w-4xl flex-col items-center space-y-4 text-center md:mb-12">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Open Source Software
           </h2>
