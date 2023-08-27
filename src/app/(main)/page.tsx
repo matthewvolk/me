@@ -57,7 +57,7 @@ const Home = async () => {
             rel="noreferrer"
             className="flex items-center rounded-2xl bg-slate-100 px-4 py-1.5 text-xs font-medium dark:bg-slate-800 md:text-sm"
           >
-            <span className="mr-1">🎉</span> BigRequest v0.0.8 released{" "}
+            <span className="mr-1">🎉</span> BigRequest v0.0.9 released{" "}
             <ExternalLink height={14} />
           </Link>
           <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl">
