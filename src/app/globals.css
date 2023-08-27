@@ -5,3 +5,56 @@
 body {
   @apply bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50;
 }
+
+code {
+  counter-reset: line;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 3rem;
+}
+
+code:not([data-language="shell"]) > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: white;
+}
+
+[data-language="sh"] > [data-line]::before,
+[data-language="shell"] > [data-line]::before {
+  content: "$";
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+
+[data-rehype-pretty-code-fragment] pre code {
+  @apply flex flex-col;
+}
+
+[data-highlighted-line] {
+  @apply w-full bg-white/10;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply bg-slate-950 !important;
+}
+
+span[data-rehype-pretty-code-fragment] code {
+  @apply rounded-md py-1.5 text-sm font-medium;
+  @apply bg-slate-950 !important;
+}

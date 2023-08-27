@@ -27,11 +27,11 @@ Before writing any code, you'll need to navigate to the dashboard in Facebook wh
 see your activity log. The Facebook UI has recently changed as of May 2020, but you should be able
 to navigate to your activity log by entering the following address in your browser's address bar:
 
-```
+```sh
 https://www.facebook.com/YOUR_FACEBOOK_USERNAME/allactivity
 ```
 
-Be sure to replace <kbd>YOUR_FACEBOOK_USERNAME</kbd> with your actual Facebook username.
+Be sure to replace `YOUR_FACEBOOK_USERNAME{:sh}` with your actual Facebook username.
 
 Once you land on that page, there should be a link that says "Filter" which you can click to filter
 the list of activity down to just "Posts". Once you click that filter, scroll all the way to the
@@ -59,7 +59,7 @@ This makes it virtually impossible to create a single way to detect all the "Del
 them individually, but essentially what you want to do is something like this:
 
 First, write a function in the Javascript console that loops through the DOM tree backwards starting
-with a node of your choice. The node we give this function will eventually be a <kbd>span</kbd>
+with a node of your choice. The node we give this function will eventually be a `span{:html}`
 element with the text of that element being "Delete". The reason we need to do this is because with
 Facebook's DOM structure, the element that has the text "Delete" is not the same element that you
 click to actually delete... thanks, Facebook.
@@ -83,7 +83,7 @@ var findDeleteButton = function (node, func) {
 ```
 
 Then write a function that checks for a specified attribute/value pair on a DOM element. Have it
-return <kbd>true</kbd> if the attribute/value pair is found, and <kbd>false</kbd> if it is not.
+return `true{:js}` if the attribute/value pair is found, and `false{:js}` if it is not.
 
 ```js
 var checkAttrVal = function (node, attr, val) {
@@ -103,13 +103,13 @@ Then, we put it all together.
 
 1. First, we loop through the array of button elements to open the prompt containing the "Delete"
    button for the post
-2. For each button element, we trigger a <kbd>click()</kbd> method
+2. For each button element, we trigger a `click(){:js}` method
 3. Once we have the prompt containing the "Delete" button open, we use an XPath selector to scan the
-   DOM for a <kbd>span</kbd> element with its text set to "Delete"
+   DOM for a `span{:html}` element with its text set to "Delete"
 4. Then, as mentioned above, we need to find the parent element that you actually need to click to
-   delete the post. Walk backwards from that <kbd>span</kbd> until you find an element with
+   delete the post. Walk backwards from that `span{:html}` until you find an element with
    attribute == "menuitem"
-5. Trigger another <kbd>click()</kbd> method to click the delete button element
+5. Trigger another `click(){:js}` method to click the delete button element
 6. Continue the loop
 
 ```js
@@ -130,13 +130,13 @@ This post was last updated June 27th, 2020, but Facebook's DOM structure changes
 DOM is built from tens of thousands of React components, and millions of DOM attributes that can
 change any time. There are four "weak" points in this code:
 
-1. In our <kbd>btns</kbd> array, the <kbd>aria-label</kbd> for the "Action options" button could
+1. In our `btns{:js}` array, the `aria-label{:html}` for the "Action options" button could
    change at any time.
-2. In our <kbd>checkAttrVal</kbd> function, nobody can say that the clickable parent node will be
+2. In our `checkAttrVal{:js}` function, nobody can say that the clickable parent node will be
    found with that specific attribute/value pair. They could easily change, for example,
-   <kbd>role="menuitem"</kbd> to <kbd>role="button"</kbd> which would require you
+   `role="menuitem"{:html}` to `role="button"{:html}` which would require you
    to modify this code.
 3. The XPath selector we use to find the "Delete" text could change. Facebook could swap the
-   <kbd>span</kbd> tag with another HTML element if they choose.
+   `span{:html}` tag with another HTML element if they choose.
 4. The entire script is subject to fail if Facebook redesigns their Activity Log, they already did
    it once in 2020.
