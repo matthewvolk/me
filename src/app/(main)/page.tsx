@@ -8,9 +8,11 @@ import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { blogs } from "@/content/generate";
 import { cs } from "@/lib/cs";
+import { descending, formatDate } from "@/lib/date";
 import { env } from "@/lib/env.mjs";
+
+import { allBlogs } from "contentlayer/generated";
 
 const Home = async () => {
   const bigRequestStars = async () => {
@@ -43,7 +45,7 @@ const Home = async () => {
     return data.downloads as number;
   };
 
-  const posts = blogs();
+  const posts = allBlogs.sort(descending).slice(0, 2);
 
   return (
     <>
@@ -59,7 +61,7 @@ const Home = async () => {
             <ExternalLink height={14} />
           </Link>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            Building Tools and Products for Online Commerce
+            Writing Software for Online Commerce
           </h1>
           <p className="max-w-3xl leading-normal text-slate-500 dark:text-slate-400 sm:text-xl sm:leading-8">
             Matthew Volk is a Software Engineer based in Austin, TX creating
@@ -91,7 +93,7 @@ const Home = async () => {
         id="products"
         className="container space-y-6 bg-slate-100/60 pb-10 pt-8 dark:bg-transparent md:py-12 lg:py-24"
       >
-        <div className="mx-auto flex max-w-4xl flex-col items-center space-y-4 text-center">
+        <div className="mx-auto mb-12 flex max-w-4xl flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Open Source Software
           </h2>
@@ -182,7 +184,7 @@ const Home = async () => {
 
       {/* Public GitHub Stats */}
 
-      <section className="container space-y-6 pb-8 pt-14 md:py-12 lg:py-24">
+      <section className="space-y-6 pb-8 pt-14 md:container md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-4xl flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Latest Articles
@@ -194,22 +196,23 @@ const Home = async () => {
               key={post.slug}
               className="group relative flex flex-col space-y-2 p-4"
             >
-              <h2 className="text-xl font-bold md:text-2xl">
-                {post.data.title}
-              </h2>
+              <h2 className="text-xl font-bold md:text-2xl">{post.title}</h2>
               <p className="text-slate-500 dark:text-slate-400">
-                {post.data.description}
+                {post.description}
               </p>
-              {post.data.updated ? (
+              {post.updated ? (
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {post.data.updated}
+                  {formatDate(post.updated)}
                 </p>
               ) : (
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {post.data.published}
+                  {formatDate(post.published)}
                 </p>
               )}
-              <Link href={`/blog/${post.slug}`} className="absolute inset-0">
+              <Link
+                href={`/blog/${post.slugAsParams}`}
+                className="absolute inset-0"
+              >
                 <span className="sr-only">View Article</span>
               </Link>
             </article>

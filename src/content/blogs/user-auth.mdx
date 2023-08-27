@@ -38,15 +38,13 @@ Copy and paste the following line into your terminal
 mkdir PROJECT_NAME && cd PROJECT_NAME && npm init
 ```
 
-Walk through each step of the <kbd>npm init</kbd> script (our entry point is going to be
+Walk through each step of the `npm init{:sh}` script (our entry point is going to be `index.js{:js}`).
 
-<kbd>index.js</kbd>).
+When you are done, create a `.env{:sh}` file in the root of your project directory.
 
-When you are done, create a <kbd>.env</kbd> file in the root of your project directory.
+Open the `.env{:sh}` file in your text editor and enter:
 
-Open the <kbd>.env</kbd> file in your text editor and enter:
-
-```
+```sh
 MONGODB_URI=URL_YOU_COPIED_FROM_EARLIER
 ```
 
@@ -56,11 +54,12 @@ Save that file, and head back to your terminal. Run the following:
 npm install express mongoose bcryptjs cors dotenv jsonwebtoken body-parser passport-jwt passport
 ```
 
-Once installed, create an <kbd>index.js</kbd> file in the root directory of your project to serve as
+Once installed, create an `index.js{:js}` file in the root directory of your project to serve as
 your main entry point file. You'll want to import all of the modules you need for this file, found
 below:
 
-```js
+```js {2-9}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -73,7 +72,8 @@ mongoose.set("useUnifiedTopology", true);
 
 Below your imports, initialize your app variable:
 
-```js
+```js {11}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -89,7 +89,8 @@ const app = express();
 Right under that, create a variable for my port number so that it is easily accessible and can be
 modified from one location in your file:
 
-```js
+```js {12}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -103,9 +104,10 @@ const app = express();
 const port = 3000;
 ```
 
-Then go ahead and use <kbd>app.listen</kbd> to tell your app which port to listen for:
+Then go ahead and use `app.listen{:js}` to tell your app which port to listen for:
 
-```js
+```js {13-15,17-19}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -132,10 +134,12 @@ this point.
 Now we want to install [Nodemon](https://nodemon.io/) globally, so that we don't need to stop and
 start our node server everytime we make a change to a file.
 
-<kbd>npm install -g nodemon</kbd>
+```shell
+npm install -g nodemon
+```
 
-Once installed, run <kbd>nodemon</kbd> in your terminal from within your application directory and
-wait for your <kbd>Server running at: ...</kbd> message to let you know your app is running on the
+Once installed, run `nodemon{:sh}` in your terminal from within your application directory and
+wait for your `Server running at: ...{:sh}` message to let you know your app is running on the
 port you specified earlier.
 
 Next, we'll go ahead and install our CORS middleware, so that we can make requests to this API from
@@ -145,7 +149,8 @@ a different domain name. If you'd like to learn more about CORS and what it does
 Since we installed the CORS npm module in the beginning of this project, integrating the CORS
 middleware is as simple as adding:
 
-```js
+```js {13}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -168,16 +173,15 @@ app.listen(port, () => {
 });
 ```
 
-The module basically does us the favor of injecting different headers within our application using
-
-<kbd>res.header</kbd>, but you can read some more on that
-[here](https://enable-cors.org/server_expressjs.html). We'll be using this
-module with another module we installed called <kbd>body-parser</kbd>, which parses
+The module basically does us the favor of injecting different headers within our application using `res.header{:js}`,
+but you can read some more on that [here](https://enable-cors.org/server_expressjs.html). We'll be using this
+module with another module we installed called `body-parser{:js}`, which parses
 incoming request bodies. For example, when you receive a form submission, body-parser
-will help you parse the form input data. When you receive a <kbd>GET</kbd> request
+will help you parse the form input data. When you receive a `GET{:js}` request
 with a string query, body-parser will help you parse that URL parameter for validation.
 
-```js
+```js {14}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -202,13 +206,13 @@ app.listen(port, () => {
 ```
 
 Next, let's make use of the Express router so that we can encapsulate all of the user routes in
-another file without cluttering our main entry file. Go ahead and create a new constant called
+another file without cluttering our main entry file. Go ahead and create a new constant called `users{:js}`
+and have it require the file where we will store our routes. We
+also need to mount another piece of middleware on the `app{:js}` variable to
+add the `/users{:js}` prefix to all the routes in the file we create below.
 
-<kbd>users</kbd> and have it require the file where we will store our routes. We
-also need to mount another piece of middleware on the <kbd>app</kbd> variable to
-add the <kbd>/users</kbd> prefix to all the routes in the file we create below.
-
-```js
+```js {12,16}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -234,13 +238,13 @@ app.listen(port, () => {
 });
 ```
 
-If you look at nodemon, you'll notice that your app crashed, because it couldn't find the file
-
-<kbd>./routes/users</kbd> Create a new directory in your project to match that route
+If you look at nodemon, you'll notice that your app crashed, because it couldn't find the file `./routes/users{:sh}`
+Create a new directory in your project to match that route
 we required just now, call it 'routes' and save it. Next, create a new file in that
 directory called 'users.js' and require the following modules:
 
-```js
+```js {2-3,5}
+// routes/users.js
 const express = require("express");
 const router = express.Router();
 
@@ -253,7 +257,8 @@ Next, we'll create the three routes that users should have the ability to intera
 registration route, an authentication route, and a profile route (which we will eventually protect
 via the JWT tokenization).
 
-```js
+```js {5-7,9-11,13-15}
+// routes/users.js
 const express = require("express");
 const router = express.Router();
 
@@ -275,14 +280,15 @@ module.exports = router;
 Of course, the parameters being passed into the .send methods are just placeholders, we'll go ahead
 and fill those out in just a minute.
 
-To test that everything works so far, navigate to <kbd>localhost:3000/users/authenticate</kbd>, and
-you should see <kbd>AUTHENTICATE</kbd> on the screen.
+To test that everything works so far, navigate to `localhost:3000/users/authenticate{:sh}`, and
+you should see `AUTHENTICATE{:sh}` on the screen.
 
 To connect to the database, Mongoose exposes a pretty straightforward 'connect' function that you
 add to your entry file which will run as soon as your start your application to open the port to
 your database.
 
-```js
+```js {18-23,25-27}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -326,28 +332,30 @@ If you are curious as to why there are two types of error methods that Mongo nee
 there are two classes of errors that can occur with a Mongoose connection.
 
 - Error on initial connection. If initial connection fails, Mongoose will not attempt to reconnect,
-  it will emit an <kbd>error</kbd> event, and the promise <kbd>mongoose.connect()</kbd> returns will
+  it will emit an `error{:js}` event, and the promise `mongoose.connect(){:js}` returns will
   reject.
 - Error after initial connection was established. Mongoose will attempt to reconnect, and it will
-  emit an <kbd>error</kbd> event.
+  emit an `error{:js}` event.
 
 ## Part 4 - User Model
 
 Next we'll be creating our user model file to handle data such as name, password, email, and
 username. We'll also have our functions that interact with the database in that file.
 
-Create a directory called <kbd>models</kbd> and require the following modules inside a file called
+Create a directory called `models{:sh}` and require the following modules inside a file called
 
-<kbd>user.js</kbd>:
+`user.js{:sh}`:
 
-```js
+```js {2-3}
+// models/user.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 ```
 
 Now let's create the user schema:
 
-```js
+```js {5-17,19}
+// models/user.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -370,10 +378,11 @@ module.exports = mongoose.model("User", UserSchema);
 
 ## Part 5 - The 'REGISTER' Path
 
-Back in the root directory of your file navigate to <kbd>routes/users.js</kbd> and require the
+Back in the root directory of your file navigate to `routes/users.js{:sh}` and require the
 schema we created in part 4 to the top of the file:
 
-```js
+```js {5}
+// routes/users.js
 const express = require("express");
 const router = express.Router();
 
@@ -394,10 +403,11 @@ router.get("/profile", (req, res, next) => {
 module.exports = router;
 ```
 
-Navigate down to the <kbd>router.post</kbd> request for the <kbd>/register</kbd> path and change the
+Navigate down to the `router.post{:js}` request for the `/register{:sh}` path and change the
 callback function body to:
 
-```js
+```js {8.26}
+// routes/users.js
 const express = require("express");
 const router = express.Router();
 
@@ -436,11 +446,12 @@ router.get("/profile", (req, res, next) => {
 module.exports = router;
 ```
 
-Head back to <kbd>models/user.js</kbd> and add the <kbd>pre</kbd>
+Head back to `models/user.js{:sh}` and add the `pre{:js}`
 [middleware function](https://mongoosejs.com/docs/middleware.html#pre) that we're using above at the
-bottom of the <kbd>user.js</kbd> model file:
+bottom of the `user.js{:sh}` model file:
 
-```js
+```js {19-32}
+// models/user.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -478,13 +489,13 @@ module.exports = mongoose.model("User", UserSchema);
 
 ## Part 6 - Try it Out
 
-At this point, we can go ahead and make a POST request to our application's <kbd>register</kbd>
+At this point, we can go ahead and make a POST request to our application's `register{:js}`
 endpoint with some user data in the POST body to ensure that the application properly saves it.
 
 I'll be using Postman, but feel free to user any other utility that is capable of sending HTTP
-requests like <kbd>curl</kbd> or [HTTPie](https://httpie.org/).
+requests like `curl{:sh}` or [HTTPie](https://httpie.org/).
 
-Make your POST request to <kbd>http://localhost:3000/users/register</kbd> and then for your post
+Make your POST request to `http://localhost:3000/users/register{:sh}` and then for your post
 body, go ahead and pass a JSON object that looks like:
 
 ```json
@@ -498,14 +509,14 @@ body, go ahead and pass a JSON object that looks like:
 
 You should receive a response body that looks like:
 
-```
+```sh
 User created!
 ```
 
 You can then log into your MongoDB Atlas account, find your cluster, click the button that says
 "Collections" and you should be able to view the information you just saved
 
-\*_Note: You can refactor the response on the <kbd>/register</kbd> <kbd>POST</kbd> method to keep
+\*_Note: You can refactor the response on the `/register{:sh}` `POST{:sh}` method to keep
 the user logged in after registering, because right now this endpoint just creates the user and the
 user would be expected to manually log in after creating their account. I suggest waiting until
 finishing the next section, Part 7 - Authentication before doing that._
@@ -515,9 +526,10 @@ finishing the next section, Part 7 - Authentication before doing that._
 In this part, we will set up Passport.js with a JWT strategy to authenticate users and receive
 tokens.
 
-In our <kbd>index.js</kbd> file, add the following lines of code:
+In our `index.js{:sh}` file, add the following lines of code:
 
-```js
+```js {18-19}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -559,11 +571,12 @@ app.listen(port, () => {
 
 Now, we are going to configure a strategy we'd like to use for the Passport tokenization.
 
-Create a folder in the root of your project directory called <kbd>config</kbd>, then inside it
-create a file called <kbd>passport.js</kbd>.  
+Create a folder in the root of your project directory called `config{:sh}`, then inside it
+create a file called `passport.js{:sh}`.  
 At the top of that file, require the following:
 
-```js
+```js {2-4}
+// config/passport.js
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
@@ -571,7 +584,8 @@ const User = require("../models/user");
 
 Then, export the following at the bottom of the file:
 
-```js
+```js {6-25}
+// config/passport.js
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
@@ -600,7 +614,8 @@ module.exports = function (passport) {
 
 You'll want to make sure you include the export above inside of your index.js file.
 
-```js
+```js {4}
+// index.js
 require("dotenv").config();
 const passport = require("passport");
 require("./config/passport")(passport);
@@ -641,10 +656,11 @@ app.listen(port, () => {
 });
 ```
 
-We should also import Passport.js and the JSON web token module into our <kbd>routes/users.js</kbd>
+We should also import Passport.js and the JSON web token module into our `routes/users.js{:sh}`
 file:
 
-```js
+```js {3-4}
+// routes/users.js
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -668,11 +684,11 @@ module.exports = router;
 ```
 
 Now, you should save the files we were just editing and go check nodemon to go make sure that
-nodemon isn't breaking. Once you've squashed any possible bugs, we are now going to our
+nodemon isn't breaking. Once you've squashed any possible bugs, we are now going to our `routes{:sh}`
+directory into the `users.js{:sh}` file.
 
-<kbd>routes</kbd> directory into the <kbd>users.js</kbd> file.
-
-```js
+```js {32-61}
+// routes/users.js
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -749,14 +765,15 @@ the passwords match, we are going to assign the client an authentication token t
 week, and then return some JSON containing a JSON Web Token ID to the request origin. If the
 password does not match, the user is not authenticated and will have to re-enter their password.
 
-We also created a function we have not yet defined, called <kbd>User.comparePassword()</kbd>. Let's
+We also created a function we have not yet defined, called `User.comparePassword(){:js}`. Let's
 go ahead and create this function in our User model, as to uphold the separation of concerns between
 files we have stayed true to throughout this project and make sure everything is encapsulated
 properly.
 
-At the bottom of the <kbd>models/user.js</kbd> file:
+At the bottom of the `models/user.js{:sh}` file:
 
-```js
+```js {34-39}
+// models/user.js
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -802,8 +819,8 @@ module.exports = mongoose.model("User", UserSchema);
 Alright, we should be okay now. That was quite a bit of code we just wrote, but let's go ahead and
 try to see if it still works.
 
-Open Postman, open a new tab and start drafting a new <kbd>POST</kbd> request. the address is going
-to be <kbd>http://localhost:3000/users/authenticate</kbd>. For the body of the request:
+Open Postman, open a new tab and start drafting a new `POST{:sh}` request. the address is going
+to be `http://localhost:3000/users/authenticate{:sh}`. For the body of the request:
 
 ```json
 {
@@ -827,9 +844,9 @@ If all goes well, you should see something that looks like:
 }
 ```
 
-##### Aside: Why is the end point called <kbd>/authenticate</kbd> and not <kbd>/login</kbd>?
+##### Aside: Why is the end point called `/authenticate{:sh}` and not `/login{:sh}`?
 
-At the moment, all the <kbd>/authenticate</kbd> endpoint does is return a JSON object with the JWT
+At the moment, all the `/authenticate{:sh}` endpoint does is return a JSON object with the JWT
 token. In order to make the token useful so that the user's login session persists from request to
 request, you'll need to tell the client to save that token in their auth headers with each request.
 Alternatively, and more efficiently, you can store the token into either a cookie, or the
