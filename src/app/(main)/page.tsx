@@ -193,7 +193,7 @@ const Home = async () => {
         <div className="container grid max-w-4xl gap-10 pt-2 sm:grid-cols-2 lg:pt-10">
           {posts.slice(0, 2).map((post) => (
             <article
-              key={post.slug}
+              key={post.slugAsParams}
               className="group relative flex flex-col space-y-2 p-4"
             >
               <h2 className="text-xl font-bold md:text-2xl">{post.title}</h2>
@@ -209,10 +209,7 @@ const Home = async () => {
                   {formatDate(post.published)}
                 </p>
               )}
-              <Link
-                href={`/blog/${post.slugAsParams}`}
-                className="absolute inset-0"
-              >
+              <Link href={post.slug} className="absolute inset-0">
                 <span className="sr-only">View Article</span>
               </Link>
             </article>
