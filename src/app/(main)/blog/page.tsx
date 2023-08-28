@@ -39,10 +39,7 @@ const Blog = () => {
                     {formatDate(post.published)}
                   </p>
                 )}
-                <Link
-                  href={`/blog/${post.slugAsParams}`}
-                  className="absolute inset-0"
-                >
+                <Link href={post.slug} className="absolute inset-0">
                   <span className="sr-only">View Article</span>
                 </Link>
               </article>

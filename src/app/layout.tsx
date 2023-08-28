@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     "Typescript",
     "Node.js",
   ],
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
     locale: "en_US",
