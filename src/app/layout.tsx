@@ -35,6 +35,27 @@ export const metadata: Metadata = {
     "Typescript",
     "Node.js",
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/og.png`],
+    creator: siteConfig.twitter_username,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
