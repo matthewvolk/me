@@ -7,4 +7,5 @@ export const siteConfig = {
     { title: "GitHub", href: "https://github.com/matthewvolk" },
     { title: "Twitter", href: "https://twitter.com/mttvlk" },
   ],
+  twitter_username: "@mttvlk",
 };
