@@ -9,10 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://volk.dev",
+      url: siteConfig.url,
     },
     {
-      url: "https://volk.dev/blog",
+      url: `${siteConfig.url}/blog`,
     },
     ...blogs.map((blog) => ({
       url: `${siteConfig.url}${blog.slug}`,
