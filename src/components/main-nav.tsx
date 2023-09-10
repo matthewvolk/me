@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 import { cs } from "@/lib/cs";
 
 const navItems = [
-  { title: "Products", href: "/#products" },
+  { title: "Projects", href: "/#projects" },
   { title: "Blog", href: "/blog" },
 ];
 

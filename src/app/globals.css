@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/*** Common ***/
 body {
   @apply bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50;
 }
 
+/*** Rehype Pre/Code Styles ***/
 code {
   counter-reset: line;
 }
@@ -21,8 +23,6 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 code:not([data-language="shell"]) > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-
-  /* Other styling */
   display: inline-block;
   width: 1rem;
   margin-right: 2rem;
@@ -33,8 +33,6 @@ code:not([data-language="shell"]) > [data-line]::before {
 [data-language="sh"] > [data-line]::before,
 [data-language="shell"] > [data-line]::before {
   content: "$";
-
-  /* Other styling */
   display: inline-block;
   width: 1rem;
   margin-right: 1rem;
@@ -57,4 +55,28 @@ code:not([data-language="shell"]) > [data-line]::before {
 span[data-rehype-pretty-code-fragment] code {
   @apply rounded-md py-1.5 text-sm font-medium;
   @apply bg-slate-950 !important;
+}
+
+/*** Loading Animation for BigExec ***/
+.bigexec-loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 900ms infinite;
+  font-size: 1rem;
+  content: "...";
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 40px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 40px;
+  }
 }
