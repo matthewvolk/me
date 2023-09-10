@@ -1,3 +1,4 @@
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
   ChevronRight,
   DownloadIcon,
@@ -6,9 +7,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { cs } from "@/lib/cs";
+import { BigExecCodeSample } from "@/components/bigexec-code-sample";
+import { BigRequestCodeSample } from "@/components/bigrequest-code-sample";
+import { CustomIcons } from "@/components/custom-icons";
+import { Button } from "@/components/ui/button";
 import { descending, formatDate } from "@/lib/date";
 import { env } from "@/lib/env.mjs";
 
@@ -24,7 +26,7 @@ const Home = async () => {
       },
     );
     const data = await response.json();
-    return data.stargazers_count as number;
+    return Intl.NumberFormat().format(data.stargazers_count) as string;
   };
 
   const bigRequestDownloads = async () => {
@@ -33,7 +35,7 @@ const Home = async () => {
       { cache: "no-store" },
     );
     const data = await response.json();
-    return data.downloads as number;
+    return Intl.NumberFormat().format(data.downloads) as string;
   };
 
   const bigExecDownloads = async () => {
@@ -42,7 +44,7 @@ const Home = async () => {
       { cache: "no-store" },
     );
     const data = await response.json();
-    return data.downloads as number;
+    return Intl.NumberFormat().format(data.downloads) as string;
   };
 
   const posts = allBlogs.sort(descending).slice(0, 2);
@@ -51,138 +53,214 @@ const Home = async () => {
     <>
       <section className="space-y-6 pb-24 pt-12 md:pb-14 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <Link
+          <a
             href="https://www.npmjs.com/package/bigrequest"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="flex items-center rounded-2xl bg-slate-100 px-4 py-1.5 text-xs font-medium dark:bg-slate-800 md:text-sm"
           >
-            <span className="mr-1">🎉</span> BigRequest v0.0.9 released{" "}
+            <span className="mr-1">🎉</span> BigRequest v0.0.12 released{" "}
             <ExternalLink height={14} />
-          </Link>
+          </a>
           <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl">
             Software Engineering for Online Commerce
           </h1>
-          <p className="max-w-3xl leading-normal text-slate-500 dark:text-slate-400 sm:text-xl sm:leading-8">
+          <p className="max-w-3xl text-xl leading-normal text-slate-500 dark:text-slate-400 sm:leading-8">
             Matthew Volk is a Software Engineer based in Austin, TX creating
             solutions that enable e-commerce retailers to sell more effectively.
           </p>
           <div className="space-x-4">
-            <Link
-              href="/#products"
-              className={cs(buttonVariants({ size: "lg" }))}
-            >
-              View Products
-            </Link>
-            <Link
-              href={
-                siteConfig.links.find((link) => link.title === "GitHub")
-                  ?.href || ""
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cs(buttonVariants({ variant: "outline", size: "lg" }))}
-            >
-              GitHub
-            </Link>
+            <Button asChild size="lg">
+              <Link href="/#projects">View Projects</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a
+                href="https://github.com/matthewvolk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </Button>
           </div>
         </div>
       </section>
+
+      {/* TODO - Work Experience */}
 
       <section
-        id="products"
-        className="container space-y-6 bg-slate-100/60 pb-10 pt-8 dark:bg-transparent md:py-12 lg:py-24"
+        id="projects"
+        className="container space-y-12 pb-10 pt-8 dark:bg-transparent md:py-12 lg:py-24"
       >
-        <div className="mx-auto mb-6 flex max-w-4xl flex-col items-center space-y-4 text-center md:mb-12">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+        <div className="mx-auto mb-6 flex max-w-4xl flex-col items-center space-y-4 text-center md:mb-[4.5rem]">
+          <h2 className="font-heading text-4xl leading-[1.1] md:text-6xl">
             Open Source Software
           </h2>
-          <p className="max-w-[85%] leading-normal text-slate-500 dark:text-slate-400 sm:text-lg sm:leading-7">
-            Open source software fosters collaboration, accelerates innovation,
-            and empowers collective problem-solving within the industry.
+          <p className="max-w-[85%] text-lg leading-normal text-slate-500 dark:text-slate-400 sm:leading-7 md:text-xl">
+            I believe open-source software accelerates innovation, fosters
+            collaboration, and empowers collective problem-solving within the
+            industry.
           </p>
         </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem]">
-          <div className="relative overflow-hidden rounded-lg border bg-white p-4 dark:border-slate-800 dark:bg-transparent">
-            <div className="space-y-3">
-              <div className="flex flex-col items-center justify-between lg:flex-row">
-                <h3 className="mb-1.5 font-bold">matthewvolk/bigrequest</h3>
-                <div className="flex gap-2">
-                  <Link
-                    href="https://github.com/matthewvolk/bigrequest/tree/main/packages/bigrequest"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cs(
-                      buttonVariants({ size: "sm", variant: "ghost" }),
-                      "flex items-center gap-1",
-                    )}
+        <div className="flex flex-col gap-20">
+          <div className="flex flex-col justify-between gap-12 lg:flex-row">
+            <div className="flex w-full max-w-xl items-center justify-center self-center lg:max-w-none">
+              <div className="flex flex-col lg:min-w-[29rem] lg:max-w-fit">
+                <div className="flex flex-col items-center justify-between md:flex-row">
+                  <h2 className="mb-2 text-center text-xl font-bold md:mb-0 md:text-left">
+                    matthewvolk/bigrequest
+                  </h2>
+                  <div className="flex gap-3 text-sm">
+                    <a
+                      href="https://github.com/matthewvolk/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
+                    >
+                      <StarIcon size={14} />
+                      <span>{await bigRequestStars()} Stars</span>
+                    </a>
+                    <a
+                      href="https://www.npmjs.com/package/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
+                    >
+                      <DownloadIcon size={14} />
+                      <span>{await bigRequestDownloads()} Downloads</span>
+                    </a>
+                  </div>
+                </div>
+                <p className="mb-8 mt-6 w-full text-left lg:max-w-xl">
+                  <span className="block text-center md:inline md:text-left">
+                    BigRequest is a lightweight Node.js API client for the
+                    BigCommerce API.{" "}
+                  </span>
+                  <span className="hidden md:inline">
+                    Written in Typescript, BigRequest features nightly builds
+                    via GitHub Actions that regenerate type definitions based on
+                    the latest commit found in the{" "}
+                    <a
+                      href="http://github.com/bigcommerce/api-specs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium underline underline-offset-4"
+                    >
+                      bigcommerce/api-specs repository
+                    </a>
+                    .
+                  </span>
+                </p>
+                <div className="flex justify-center gap-4 md:flex-row lg:justify-normal">
+                  <Button asChild className="w-1/2 md:w-fit md:px-5">
+                    <a
+                      href="https://github.com/matthewvolk/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GitHubLogoIcon className="h-5 w-5 md:hidden" />
+                      <span className="hidden md:inline">View Source Code</span>
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-1/2 font-mono md:w-fit md:px-5"
                   >
-                    <StarIcon height={14} />
-                    <span>{await bigRequestStars()} Stars</span>
-                  </Link>
-                  <Link
-                    href="https://www.npmjs.com/package/bigrequest"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cs(
-                      buttonVariants({ size: "sm", variant: "ghost" }),
-                      "flex items-center gap-1",
-                    )}
-                  >
-                    <DownloadIcon height={14} />
-                    <span>{await bigRequestDownloads()} Downloads</span>
-                  </Link>
+                    <a
+                      href="https://www.npmjs.com/package/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <CustomIcons.Npm className="h-10 w-10 dark:fill-white md:hidden" />
+                      <span className="hidden md:inline">
+                        $ npm i bigrequest
+                      </span>
+                    </a>
+                  </Button>
                 </div>
               </div>
-              <p className="text-muted-foreground text-center text-sm lg:text-left">
-                Typesafe BigCommerce HTTP request client for the REST management
-                API and OAuth2 flows.
-              </p>
+            </div>
+            <div className="flex justify-center drop-shadow-lg md:drop-shadow-2xl lg:w-full lg:max-w-[46.5%]">
+              <BigRequestCodeSample />
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-lg border bg-white p-4 dark:border-slate-800 dark:bg-transparent">
-            <div className="space-y-3">
-              <div className="flex flex-col items-center justify-between lg:flex-row">
-                <h3 className="mb-1.5 font-bold">matthewvolk/bigexec</h3>
-                <div className="flex gap-2">
-                  <Link
-                    href="https://github.com/matthewvolk/bigrequest/tree/main/packages/bigexec"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cs(
-                      buttonVariants({ size: "sm", variant: "ghost" }),
-                      "flex items-center gap-1",
-                    )}
+          <div className="flex flex-col-reverse justify-between gap-12 lg:flex-row">
+            <div className="flex justify-center drop-shadow-lg md:drop-shadow-2xl lg:w-full lg:max-w-[46.5%]">
+              <BigExecCodeSample />
+            </div>
+            <div className="flex w-full max-w-xl items-center justify-center self-center lg:max-w-none">
+              <div className="flex flex-col lg:min-w-[29rem] lg:max-w-fit">
+                <div className="flex flex-col items-center justify-between md:flex-row">
+                  <h2 className="mb-2 text-center text-lg font-bold md:mb-0 md:text-left md:text-xl">
+                    matthewvolk/bigexec
+                  </h2>
+                  <div className="flex gap-3 text-xs">
+                    <a
+                      href="https://github.com/matthewvolk/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
+                    >
+                      <StarIcon size={14} />
+                      <span>{await bigRequestStars()} Stars</span>
+                    </a>
+                    <a
+                      href="https://www.npmjs.com/package/bigexec"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
+                    >
+                      <DownloadIcon size={14} />
+                      <span>{await bigExecDownloads()} Downloads</span>
+                    </a>
+                  </div>
+                </div>
+                <p className="mb-8 mt-6 w-full text-left lg:max-w-xl">
+                  <span className="block text-center md:inline md:text-left">
+                    Running BigRequest under the hood, BigExec is a command-line
+                    utility for running tasks against the BigCommerce API.{" "}
+                  </span>
+                  <span className="hidden md:inline">
+                    Currently supports headless storefront channel management.
+                    Webhook management coming soon.
+                  </span>
+                </p>
+                <div className="flex justify-center gap-4 md:flex-row lg:justify-normal">
+                  <Button asChild className="w-1/2 md:w-fit md:px-5">
+                    <a
+                      href="https://github.com/matthewvolk/bigrequest"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GitHubLogoIcon className="h-5 w-5 md:hidden" />
+                      <span className="hidden md:inline">View Source Code</span>
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-1/2 font-mono md:w-fit md:px-5"
                   >
-                    <StarIcon height={14} />
-                    <span>{await bigRequestStars()} Stars</span>
-                  </Link>
-                  <Link
-                    href="https://www.npmjs.com/package/bigexec"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cs(
-                      buttonVariants({ size: "sm", variant: "ghost" }),
-                      "flex items-center gap-1",
-                    )}
-                  >
-                    <DownloadIcon height={14} />
-                    <span>{await bigExecDownloads()} Downloads</span>
-                  </Link>
+                    <a
+                      href="https://www.npmjs.com/package/bigexec"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <CustomIcons.Npm className="h-10 w-10 dark:fill-white md:hidden" />
+                      <span className="hidden md:inline">$ npx bigexec</span>
+                    </a>
+                  </Button>
                 </div>
               </div>
-              <p className="text-muted-foreground text-center text-sm lg:text-left">
-                Node.js CLI used to execute simple tasks against a store using
-                the BigCommerce API.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Changelog */}
+      {/* TODO - Changelog */}
 
-      {/* Public GitHub Stats */}
+      {/* TODO - Public GitHub Stats */}
 
       <section className="space-y-6 pb-8 pt-14 md:container md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-4xl flex-col items-center space-y-4 text-center">
@@ -216,16 +294,15 @@ const Home = async () => {
           ))}
         </div>
         <div className="flex justify-center pt-6 lg:pt-10">
-          <Link
-            href="/blog"
-            className={cs(buttonVariants({ variant: "ghost" }))}
-          >
-            See all articles <ChevronRight height={18} className="ml-2" />
-          </Link>
+          <Button asChild variant="ghost">
+            <Link href="/blog">
+              See all articles <ChevronRight height={18} className="ml-2" />
+            </Link>
+          </Button>
         </div>
       </section>
 
-      {/* Interesting Reads */}
+      {/* TODO - Interesting Reads */}
     </>
   );
 };
