@@ -143,6 +143,7 @@ export const BigRequestCodeSample = async () => (
   name: string;
   type: "physical" | "digital";
   sku?: string;
+  // etc.
 }`}
               </pre>
             </TooltipContent>

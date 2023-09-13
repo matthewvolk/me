@@ -48,6 +48,15 @@ const MainLayout = async ({ children }: React.PropsWithChildren) => {
               >
                 matthewvolk
               </a>
+              . Inspired by{" "}
+              <a
+                href="https://tx.shadcn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline underline-offset-4"
+              >
+                Taxonomy
+              </a>
               . The source code is available on{" "}
               <a
                 href="http://github.com/matthewvolk/me"
