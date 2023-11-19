@@ -1,7 +1,11 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { Code } from "bright";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { CopyButton } from "@/components/copy-button";
 import { cs } from "@/lib/cs";
+
+Code.theme = "github-dark";
+Code.lineNumbers = true;
 
 const components = {
   h1: ({ className, ...props }: { className?: string }) => (
@@ -64,20 +68,16 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ children, __raw__, ...props }: any) => (
+  pre: ({ children, ...props }: any) => (
     <div className="relative">
-      <pre {...props} className="dark:border dark:border-slate-800">
-        {children}
-      </pre>
+      <Code {...props}>{children}</Code>
       <div className="absolute right-0 top-0">
-        <CopyButton text={__raw__} />
+        <CopyButton text={children.props.children} />
       </div>
     </div>
   ),
 };
 
-export const Markdown = ({ code }: { code: string }) => {
-  const Component = useMDXComponent(code);
-
-  return <Component components={components} />;
+export const Markdown = ({ source }: { source: string }) => {
+  return <MDXRemote components={components} source={source} />;
 };

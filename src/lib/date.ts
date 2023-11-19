@@ -1,4 +1,4 @@
-import { type Blog } from "contentlayer/generated";
+import { type Blog } from "@/app/(main)/blog/blogs";
 
 export const formatDate = (input: string | number) => {
   const date = new Date(input);
@@ -9,7 +9,7 @@ export const formatDate = (input: string | number) => {
   });
 };
 
-export const descending = (a: Blog, b: Blog) =>
+export const latestFirst = (a: Blog, b: Blog) =>
   (b.updated
     ? new Date(b.updated).valueOf()
     : new Date(b.published).valueOf()) -

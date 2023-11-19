@@ -7,14 +7,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { blogs } from "@/app/(main)/blog/blogs";
 import { BigExecCodeSample } from "@/components/bigexec-code-sample";
 import { BigRequestCodeSample } from "@/components/bigrequest-code-sample";
 import { CustomIcons } from "@/components/custom-icons";
 import { Button } from "@/components/ui/button";
-import { descending, formatDate } from "@/lib/date";
+import { formatDate, latestFirst } from "@/lib/date";
 import { env } from "@/lib/env.mjs";
-
-import { allBlogs } from "contentlayer/generated";
 
 const Home = async () => {
   const bigRequestStars = async () => {
@@ -46,8 +45,6 @@ const Home = async () => {
     const data = await response.json();
     return Intl.NumberFormat().format(data.downloads) as string;
   };
-
-  const posts = allBlogs.sort(descending).slice(0, 2);
 
   return (
     <>
@@ -269,29 +266,32 @@ const Home = async () => {
           </h2>
         </div>
         <div className="container grid max-w-4xl gap-10 pt-2 sm:grid-cols-2 lg:pt-10">
-          {posts.slice(0, 2).map((post) => (
-            <article
-              key={post.slugAsParams}
-              className="group relative flex flex-col space-y-2 p-4"
-            >
-              <h2 className="text-xl font-bold md:text-2xl">{post.title}</h2>
-              <p className="text-slate-500 dark:text-slate-400">
-                {post.description}
-              </p>
-              {post.updated ? (
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {formatDate(post.updated)}
+          {blogs
+            .sort(latestFirst)
+            .slice(0, 2)
+            .map((blog) => (
+              <article
+                key={blog.slug}
+                className="group relative flex flex-col space-y-2 p-4"
+              >
+                <h2 className="text-xl font-bold md:text-2xl">{blog.title}</h2>
+                <p className="text-slate-500 dark:text-slate-400">
+                  {blog.description}
                 </p>
-              ) : (
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {formatDate(post.published)}
-                </p>
-              )}
-              <Link href={post.slug} className="absolute inset-0">
-                <span className="sr-only">View Article</span>
-              </Link>
-            </article>
-          ))}
+                {blog.updated ? (
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    {formatDate(blog.updated)}
+                  </p>
+                ) : (
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    {formatDate(blog.published)}
+                  </p>
+                )}
+                <Link href={blog.path} className="absolute inset-0">
+                  <span className="sr-only">View Article</span>
+                </Link>
+              </article>
+            ))}
         </div>
         <div className="flex justify-center pt-6 lg:pt-10">
           <Button asChild variant="ghost">

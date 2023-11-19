@@ -3,14 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { blogs } from "@/app/(main)/blog/blogs";
 import { Markdown } from "@/components/mark-down";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cs } from "@/lib/cs";
 import { formatDate } from "@/lib/date";
 import { env } from "@/lib/env.mjs";
-
-import { allBlogs } from "contentlayer/generated";
 
 interface BlogPostProps {
   params: {
@@ -19,7 +18,7 @@ interface BlogPostProps {
 }
 
 async function getPostFromParams(slug: string) {
-  const blog = allBlogs.find((blog) => blog.slugAsParams === slug);
+  const blog = blogs.find((blog) => blog.slug === slug);
 
   if (!blog) {
     null;
@@ -29,8 +28,8 @@ async function getPostFromParams(slug: string) {
 }
 
 export function generateStaticParams() {
-  return allBlogs.map((blog) => ({
-    slug: blog.slugAsParams,
+  return blogs.map((blog) => ({
+    slug: blog.slug,
   }));
 }
 
@@ -125,7 +124,7 @@ const BlogPost = async ({ params }: BlogPostProps) => {
       </div>
 
       <div className="prose mt-8 dark:prose-invert lg:prose-xl">
-        <Markdown code={post.body.code} />
+        <Markdown source={post.content} />
       </div>
 
       <hr className="mt-12 dark:border-slate-800" />
