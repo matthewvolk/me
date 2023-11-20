@@ -152,6 +152,7 @@ const Home = async () => {
                   <Button asChild className="w-1/2 md:w-fit md:px-5">
                     <a
                       href="https://github.com/matthewvolk/bigrequest"
+                      title="View Source Code"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -166,6 +167,7 @@ const Home = async () => {
                   >
                     <a
                       href="https://www.npmjs.com/package/bigrequest"
+                      title="View on NPM"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -227,6 +229,7 @@ const Home = async () => {
                   <Button asChild className="w-1/2 md:w-fit md:px-5">
                     <a
                       href="https://github.com/matthewvolk/bigrequest"
+                      title="View Source Code"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -241,6 +244,7 @@ const Home = async () => {
                   >
                     <a
                       href="https://www.npmjs.com/package/bigexec"
+                      title="View on NPM"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
