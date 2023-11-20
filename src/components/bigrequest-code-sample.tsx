@@ -92,7 +92,10 @@ export const BigRequestCodeSample = async () => (
           <Tooltip>
             <BigRequestCodeSampleDialog>
               <TooltipTrigger asChild>
-                <div className="relative -ml-2 w-fit min-w-full border-2 border-dashed border-slate-500 p-2">
+                <div
+                  className="relative -ml-2 w-fit min-w-full border-2 border-dashed border-slate-500 p-2"
+                  role="button"
+                >
                   {/* prettier-ignore */}
                   <span className="flex">
                       {cst} {pro} {eq} {aw} {cli}{p}{v3}{p}{get}{lp}
