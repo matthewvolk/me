@@ -169,7 +169,7 @@ const Home = async () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <CustomIcons.Npm className="h-10 w-10 dark:fill-white md:hidden" />
+                      <CustomIcons.npm className="h-10 w-10 dark:fill-white md:hidden" />
                       <span className="hidden md:inline">
                         $ npm i bigrequest
                       </span>
@@ -244,7 +244,7 @@ const Home = async () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <CustomIcons.Npm className="h-10 w-10 dark:fill-white md:hidden" />
+                      <CustomIcons.npm className="h-10 w-10 dark:fill-white md:hidden" />
                       <span className="hidden md:inline">$ npx bigexec</span>
                     </a>
                   </Button>
