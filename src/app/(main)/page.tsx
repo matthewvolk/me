@@ -56,15 +56,16 @@ const Home = async () => {
             rel="noopener noreferrer"
             className="flex items-center rounded-2xl bg-slate-100 px-4 py-1.5 text-xs font-medium dark:bg-slate-800 md:text-sm"
           >
-            <span className="mr-1">🎉</span> BigRequest v0.0.12 released{" "}
+            <span className="mr-1">🎉</span> BigRequest v0.0.17 released{" "}
             <ExternalLink height={14} />
           </a>
           <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl">
-            Software Engineering for Online Commerce
+            Software Engineering for Online Brands
           </h1>
           <p className="max-w-3xl text-xl leading-normal text-slate-500 dark:text-slate-400 sm:leading-8">
-            Matthew Volk is a Software Engineer based in Austin, TX creating
-            solutions that enable e-commerce retailers to sell more effectively.
+            I&apos;m Matt, a Software Engineer based in Austin, TX creating
+            solutions that enable companies to redefine their online presence
+            and accelerate business growth.
           </p>
           <div className="space-x-4">
             <Button asChild size="lg">
