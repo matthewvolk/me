@@ -6,46 +6,72 @@ import {
   StarIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { blogs } from "@/app/(main)/blog/blogs";
 import { BigExecCodeSample } from "@/components/bigexec-code-sample";
 import { BigRequestCodeSample } from "@/components/bigrequest-code-sample";
 import { CustomIcons } from "@/components/custom-icons";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { formatDate, latestFirst } from "@/lib/date";
 import { env } from "@/lib/env.mjs";
 
-const Home = async () => {
-  const bigRequestStars = async () => {
-    const response = await fetch(
-      "https://api.github.com/repos/matthewvolk/bigrequest",
-      {
-        headers: { authorization: `bearer ${env.GITHUB_PAT}` },
-        cache: "no-store",
-      },
-    );
-    const data = await response.json();
-    return Intl.NumberFormat().format(data.stargazers_count) as string;
-  };
+const BigRequestStars = async () => {
+  const response = await fetch(
+    "https://api.github.com/repos/matthewvolk/bigrequest",
+    {
+      headers: { authorization: `bearer ${env.GITHUB_PAT}` },
+      cache: "no-store",
+    },
+  );
 
-  const bigRequestDownloads = async () => {
-    const response = await fetch(
-      "https://api.npmjs.org/downloads/point/last-year/bigrequest",
-      { cache: "no-store" },
-    );
-    const data = await response.json();
-    return Intl.NumberFormat().format(data.downloads) as string;
-  };
+  const data = await response.json();
 
-  const bigExecDownloads = async () => {
-    const response = await fetch(
-      "https://api.npmjs.org/downloads/point/last-year/bigexec",
-      { cache: "no-store" },
-    );
-    const data = await response.json();
-    return Intl.NumberFormat().format(data.downloads) as string;
-  };
+  return <span>{Intl.NumberFormat().format(data.stargazers_count)} Stars</span>;
+};
 
+const BigRequestDownloads = async () => {
+  const response = await fetch(
+    "https://api.npmjs.org/downloads/point/last-year/bigrequest",
+    { cache: "no-store" },
+  );
+
+  const data = await response.json();
+
+  return <span>{Intl.NumberFormat().format(data.downloads)} Downloads</span>;
+};
+
+const BigExecDownloads = async () => {
+  const response = await fetch(
+    "https://api.npmjs.org/downloads/point/last-year/bigexec",
+    { cache: "no-store" },
+  );
+
+  const data = await response.json();
+
+  return <span>{Intl.NumberFormat().format(data.downloads)} Downloads</span>;
+};
+
+const BigRequestLatestVersion = async () => {
+  const response = await fetch(
+    "https://api.github.com/repos/matthewvolk/bigrequest/releases",
+    {
+      headers: { authorization: `bearer ${env.GITHUB_PAT}` },
+      next: { revalidate: 60 * 60 * 24 },
+    },
+  );
+
+  const data = await response.json();
+
+  const latest = data.find((release: { name: string }) =>
+    release.name.includes("bigrequest"),
+  );
+
+  return <>{latest.tag_name.split("@")[1]}</>;
+};
+
+const Home = () => {
   return (
     <>
       <section className="space-y-6 pb-24 pt-12 md:pb-14 lg:py-32">
@@ -56,8 +82,11 @@ const Home = async () => {
             rel="noopener noreferrer"
             className="flex items-center rounded-2xl bg-slate-100 px-4 py-1.5 text-xs font-medium dark:bg-slate-800 md:text-sm"
           >
-            <span className="mr-1">🎉</span> BigRequest v0.0.17 released{" "}
-            <ExternalLink height={14} />
+            <span className="mr-1">🎉</span> BigRequest{" "}
+            <Suspense fallback={<>Loading</>}>
+              <BigRequestLatestVersion />
+            </Suspense>{" "}
+            released <ExternalLink height={14} />
           </a>
           <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl">
             Software Engineering for Online Brands
@@ -116,7 +145,9 @@ const Home = async () => {
                       className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
                     >
                       <StarIcon size={14} />
-                      <span>{await bigRequestStars()} Stars</span>
+                      <Suspense fallback={<Skeleton className="h-4 w-12" />}>
+                        <BigRequestStars />
+                      </Suspense>
                     </a>
                     <a
                       href="https://www.npmjs.com/package/bigrequest"
@@ -125,7 +156,9 @@ const Home = async () => {
                       className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
                     >
                       <DownloadIcon size={14} />
-                      <span>{await bigRequestDownloads()} Downloads</span>
+                      <Suspense fallback={<Skeleton className="h-4 w-12" />}>
+                        <BigRequestDownloads />
+                      </Suspense>
                     </a>
                   </div>
                 </div>
@@ -203,7 +236,9 @@ const Home = async () => {
                       className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
                     >
                       <StarIcon size={14} />
-                      <span>{await bigRequestStars()} Stars</span>
+                      <Suspense fallback={<Skeleton className="h-4 w-12" />}>
+                        <BigRequestStars />
+                      </Suspense>
                     </a>
                     <a
                       href="https://www.npmjs.com/package/bigexec"
@@ -212,7 +247,9 @@ const Home = async () => {
                       className="flex items-center gap-1 underline-offset-2 hover:underline md:py-2"
                     >
                       <DownloadIcon size={14} />
-                      <span>{await bigExecDownloads()} Downloads</span>
+                      <Suspense fallback={<Skeleton className="h-4 w-12" />}>
+                        <BigExecDownloads />
+                      </Suspense>
                     </a>
                   </div>
                 </div>

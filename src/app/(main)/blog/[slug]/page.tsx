@@ -1,15 +1,16 @@
 import { ChevronLeft } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { blogs } from "@/app/(main)/blog/blogs";
+import { GitHubAvatar } from "@/components/github-avatar";
 import { Markdown } from "@/components/mark-down";
 import { buttonVariants } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { siteConfig } from "@/config/site";
 import { cs } from "@/lib/cs";
 import { formatDate } from "@/lib/date";
-import { env } from "@/lib/env.mjs";
 
 interface BlogPostProps {
   params: {
@@ -17,7 +18,7 @@ interface BlogPostProps {
   };
 }
 
-async function getPostFromParams(slug: string) {
+function getPostFromParams(slug: string) {
   const blog = blogs.find((blog) => blog.slug === slug);
 
   if (!blog) {
@@ -49,21 +50,12 @@ export async function generateMetadata({ params }: BlogPostProps) {
   };
 }
 
-const BlogPost = async ({ params }: BlogPostProps) => {
-  const post = await getPostFromParams(params.slug);
+const BlogPost = ({ params }: BlogPostProps) => {
+  const post = getPostFromParams(params.slug);
 
   if (!post) {
     return notFound();
   }
-
-  const githubAvatar = async () => {
-    const response = await fetch("https://api.github.com/users/matthewvolk", {
-      headers: { authorization: `bearer ${env.GITHUB_PAT}` },
-    });
-    const data = await response.json();
-
-    return data.avatar_url as string;
-  };
 
   return (
     <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -107,13 +99,11 @@ const BlogPost = async ({ params }: BlogPostProps) => {
           rel="noopenner noreferrer"
           className="flex items-center space-x-2 text-sm"
         >
-          <Image
-            src={await githubAvatar()}
-            alt="GitHub Profile Picture"
-            width={42}
-            height={42}
-            className="rounded-full bg-white"
-          />
+          <Suspense
+            fallback={<Skeleton className="h-[42px] w-[42px] rounded-full" />}
+          >
+            <GitHubAvatar />
+          </Suspense>
           <div className="flex-1 text-left leading-tight">
             <p className="font-medium">Matt</p>
             <p className="text-[12px] text-slate-500 dark:text-slate-400">
