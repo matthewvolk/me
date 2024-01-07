@@ -2,31 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/*** Common ***/
-body {
-  @apply bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50;
+// WCAG AAA contrast ratio of 7:1
+[data-bright-theme] {
+  --line-number-color: #999fa6 !important;
 }
 
-/*** Loading Animation for BigExec ***/
-.bigexec-loading:after {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
-  animation: ellipsis steps(4, end) 900ms infinite;
-  font-size: 1rem;
-  content: "...";
-  width: 0px;
+// WCAG AAA contrast ratio of 7:1
+[data-bright-theme] [data-bright-ln] {
+  --line-number-color: #999fa6 !important;
 }
 
-@keyframes ellipsis {
-  to {
-    width: 40px;
-  }
+// WCAG AAA contrast ratio of 7:1
+[data-bright-theme] [style*="color:#8B949E"] {
+  color: #999fa6 !important;
 }
 
-@-webkit-keyframes ellipsis {
-  to {
-    width: 40px;
-  }
+// WCAG AAA contrast ratio of 7:1
+[data-bright-theme] [style*="color: rgb(139, 148, 158);"] {
+  color: #999fa6 !important;
 }

@@ -4,7 +4,7 @@ import { parse } from "path";
 import matter from "gray-matter";
 import * as z from "zod";
 
-const contentSourceDir = `${process.cwd()}/src/content/blog`;
+const contentSourceDir = `${process.cwd()}/src/content`;
 
 const contentSourceFileNames = fs.readdirSync(contentSourceDir);
 
@@ -34,4 +34,19 @@ export const blogs = contentSourceFileNames.map((contentSourceFileName) => {
   };
 });
 
-export type Blog = (typeof blogs)[number];
+type Blog = (typeof blogs)[number];
+
+export const formatDate = (input: string | number) => {
+  const date = new Date(input);
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
+export const latestFirst = (a: Blog, b: Blog) =>
+  (b.updated
+    ? new Date(b.updated).valueOf()
+    : new Date(b.published).valueOf()) -
+  (a.updated ? new Date(a.updated).valueOf() : new Date(a.published).valueOf());

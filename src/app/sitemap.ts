@@ -1,17 +1,16 @@
 import { MetadataRoute } from "next";
 
-import { blogs } from "@/app/(main)/blog/blogs";
-import { siteConfig } from "@/config/site";
+import { blogs } from "@/app/blog/blogs";
 
 const sitemap = (): MetadataRoute.Sitemap => [
   {
-    url: siteConfig.url,
+    url: "https://volk.dev",
   },
   {
-    url: `${siteConfig.url}/blog`,
+    url: "https://volk.dev/blog",
   },
   ...blogs.map((blog) => ({
-    url: `${siteConfig.url}${blog.path}`,
+    url: `https://volk.dev${blog.path}`,
     lastModified: blog.updated ?? blog.published,
   })),
 ];
