@@ -173,8 +173,12 @@ app.listen(port, () => {
 });
 ```
 
-The module basically does us the favor of injecting different headers within our application using `res.header{:js}`,
-but you can read some more on that [here](https://enable-cors.org/server_expressjs.html). We'll be using this
+<a 
+  href="https://enable-cors.org/server_expressjs.html" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>The module basically does us the favor of injecting different headers within our application</a> 
+using `res.header{:js}`. We'll be using this
 module with another module we installed called `body-parser{:js}`, which parses
 incoming request bodies. For example, when you receive a form submission, body-parser
 will help you parse the form input data. When you receive a `GET{:js}` request
@@ -844,14 +848,12 @@ If all goes well, you should see something that looks like:
 }
 ```
 
-##### Aside: Why is the end point called `/authenticate{:sh}` and not `/login{:sh}`?
+## Aside: Why is the end point called `/authenticate{:sh}` and not `/login{:sh}`?
 
 At the moment, all the `/authenticate{:sh}` endpoint does is return a JSON object with the JWT
 token. In order to make the token useful so that the user's login session persists from request to
 request, you'll need to tell the client to save that token in their auth headers with each request.
-Alternatively, and more efficiently, you can store the token into either a cookie, or the
-localStorage object. More on that
-[here](https://stackoverflow.com/questions/39163413/node-js-passport-jwt-how-to-send-token-in-a-cookie).
+Alternatively, and more efficiently, you can <a href="https://stackoverflow.com/questions/39163413/node-js-passport-jwt-how-to-send-token-in-a-cookie" target="_blank" rel="noopener noreferrer">store the token into either a cookie, or the localStorage object</a>.
 
 ## Conclusion
 

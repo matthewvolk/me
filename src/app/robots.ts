@@ -1,14 +1,12 @@
 import { MetadataRoute } from "next";
 
-import { siteConfig } from "@/config/site";
-
 const robots = (): MetadataRoute.Robots => {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: "https://volk.dev/sitemap.xml",
   };
 };
 

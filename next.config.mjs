@@ -1,12 +1,4 @@
-await import("./src/lib/env.mjs");
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "avatars.githubusercontent.com" },
-    ],
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;

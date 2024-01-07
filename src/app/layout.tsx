@@ -1,32 +1,20 @@
-import { Inter as FontSans } from "next/font/google";
-import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
+import { Home } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
 import * as React from "react";
-
-import { GoogleAnalytics } from "@/components/google-analytics";
-import { siteConfig } from "@/config/site";
-import { ThemeProvider } from "@/context/theme";
-import { cs } from "@/lib/cs";
 
 import "./globals.css";
 
-import type { Metadata } from "next";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const fontHeading = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-heading",
-});
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Matthew Volk - Software Engineer",
+    template: "%s | Matthew Volk - Software Engineer",
   },
-  description: siteConfig.description,
+  description:
+    "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
   keywords: [
     "Matthew",
     "Volk",
@@ -35,46 +23,87 @@ export const metadata: Metadata = {
     "Typescript",
     "Node.js",
   ],
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL("https://volk.dev"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    url: "https://volk.dev",
+    title: "Matthew Volk - Software Engineer",
+    description:
+      "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
+    siteName: "Matthew Volk - Software Engineer",
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.png`],
-    creator: siteConfig.twitter_username,
+    title: "Matthew Volk - Software Engineer",
+    description:
+      "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
+    images: ["https://volk.dev/og.png"],
+    creator: "@mttvlk",
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: "https://volk.dev/site.webmanifest",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <GoogleAnalytics />
       </head>
       <body
-        className={cs(
-          "min-h-screen font-sans antialiased",
-          fontSans.variable,
-          fontHeading.variable,
-        )}
+        className={`container mx-auto flex min-h-screen max-w-2xl flex-col gap-12 px-8 font-sans antialiased ${GeistSans.variable}`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <header>
+          <a
+            className="absolute -top-full left-16 z-50 rounded-md bg-black px-3 py-2 font-semibold text-white transition-all focus:top-4"
+            href="#main-content"
+          >
+            Skip to content
+          </a>
+
+          <nav className="-mx-2 flex items-center justify-between pt-8 font-semibold md:pt-12">
+            <Link
+              aria-label="Home"
+              className="rounded-md p-2 hover:bg-gray-200/75"
+              href="/"
+              title="Home"
+            >
+              <Home size={20} />
+            </Link>
+
+            <ul>
+              <li>
+                <Link
+                  className="rounded-md p-2 hover:bg-gray-200/75"
+                  href="/blog"
+                >
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <main className="flex flex-1 flex-col gap-12">{children}</main>
+
+        <footer className="flex items-center justify-between pb-8 md:pb-12">
+          <Link className="text-sm font-medium" href="/">
+            &copy; {new Date().getFullYear()}, Matthew Volk
+          </Link>
+          <Link
+            aria-label="Home"
+            className="-mx-2 rounded-md p-2 hover:bg-gray-200/75"
+            href="/"
+            title="Home"
+          >
+            <Home size={20} />
+          </Link>
+        </footer>
       </body>
     </html>
   );
