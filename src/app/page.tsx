@@ -14,13 +14,11 @@ import { Suspense } from "react";
 import { blogs, formatDate, latestFirst } from "@/app/blog/blogs";
 
 const BigRequestStars = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   const response = await fetch(
     "https://api.github.com/repos/matthewvolk/bigrequest",
     {
       headers: { authorization: `bearer ${process.env.GITHUB_PAT}` },
-      cache: "no-store",
+      next: { revalidate: 60 * 60 * 24 },
     },
   );
 
@@ -35,11 +33,9 @@ const BigRequestStars = async () => {
 };
 
 const BigRequestDownloads = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   const response = await fetch(
     "https://api.npmjs.org/downloads/point/last-year/bigrequest",
-    { cache: "no-store" },
+    { next: { revalidate: 60 * 60 * 24 } },
   );
 
   const data = await response.json();
@@ -53,8 +49,6 @@ const BigRequestDownloads = async () => {
 };
 
 const BigRequestLatestVersion = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   const response = await fetch(
     "https://api.github.com/repos/matthewvolk/bigrequest/releases",
     {
