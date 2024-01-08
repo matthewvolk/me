@@ -8,6 +8,7 @@
     "format": "prettier . --check"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.2",
     "bright": "^0.8.4",
     "geist": "^1.2.0",
     "gray-matter": "^4.0.3",
