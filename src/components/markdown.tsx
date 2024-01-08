@@ -89,6 +89,14 @@ const components = {
 
   p: ({ ...props }) => <p className="mb-6 leading-7" {...props} />,
 
+  ul: ({ ...props }) => (
+    <ul className="mb-6 list-inside list-disc space-y-1" {...props} />
+  ),
+
+  ol: ({ ...props }) => (
+    <ol className="mb-6 list-inside list-decimal space-y-1" {...props} />
+  ),
+
   pre: ({ children, ...props }: any) => (
     <div className="relative mb-6">
       <Code className="[&>pre]:rounded-md" {...props} extensions={[highlight]}>
