@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import { Home } from "lucide-react";
 import type { Metadata } from "next";
@@ -104,6 +105,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <Home size={20} />
           </Link>
         </footer>
+
+        <SpeedInsights />
       </body>
     </html>
   );
