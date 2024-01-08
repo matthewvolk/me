@@ -58,8 +58,8 @@ Once installed, create an `index.js{:js}` file in the root directory of your pro
 your main entry point file. You'll want to import all of the modules you need for this file, found
 below:
 
-```js {2-9}
-// index.js
+```js
+// highlight(1:8)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -72,8 +72,8 @@ mongoose.set("useUnifiedTopology", true);
 
 Below your imports, initialize your app variable:
 
-```js {11}
-// index.js
+```js
+// highlight(10)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -89,8 +89,8 @@ const app = express();
 Right under that, create a variable for my port number so that it is easily accessible and can be
 modified from one location in your file:
 
-```js {12}
-// index.js
+```js
+// highlight(11)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -106,8 +106,9 @@ const port = 3000;
 
 Then go ahead and use `app.listen{:js}` to tell your app which port to listen for:
 
-```js {13-15,17-19}
-// index.js
+```js
+// highlight(12:14)
+// highlight(16:18)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -149,8 +150,8 @@ a different domain name. If you'd like to learn more about CORS and what it does
 Since we installed the CORS npm module in the beginning of this project, integrating the CORS
 middleware is as simple as adding:
 
-```js {13}
-// index.js
+```js
+// highlight(12)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -184,8 +185,8 @@ incoming request bodies. For example, when you receive a form submission, body-p
 will help you parse the form input data. When you receive a `GET{:js}` request
 with a string query, body-parser will help you parse that URL parameter for validation.
 
-```js {14}
-// index.js
+```js
+// highlight(13)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -215,8 +216,9 @@ and have it require the file where we will store our routes. We
 also need to mount another piece of middleware on the `app{:js}` variable to
 add the `/users{:js}` prefix to all the routes in the file we create below.
 
-```js {12,16}
-// index.js
+```js
+// highlight(11)
+// highlight(15)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -247,8 +249,9 @@ Create a new directory in your project to match that route
 we required just now, call it 'routes' and save it. Next, create a new file in that
 directory called 'users.js' and require the following modules:
 
-```js {2-3,5}
-// routes/users.js
+```js
+// highlight(1:2)
+// highlight(4)
 const express = require("express");
 const router = express.Router();
 
@@ -261,8 +264,10 @@ Next, we'll create the three routes that users should have the ability to intera
 registration route, an authentication route, and a profile route (which we will eventually protect
 via the JWT tokenization).
 
-```js {5-7,9-11,13-15}
-// routes/users.js
+```js
+// highlight(4:6)
+// highlight(8:10)
+// highlight(12:14)
 const express = require("express");
 const router = express.Router();
 
@@ -291,8 +296,9 @@ To connect to the database, Mongoose exposes a pretty straightforward 'connect' 
 add to your entry file which will run as soon as your start your application to open the port to
 your database.
 
-```js {18-23,25-27}
-// index.js
+```js
+// highlight(17:22)
+// highlight(24:26)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -350,16 +356,17 @@ Create a directory called `models{:sh}` and require the following modules inside
 
 `user.js{:sh}`:
 
-```js {2-3}
-// models/user.js
+```js
+// highlight(1:2)
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 ```
 
 Now let's create the user schema:
 
-```js {5-17,19}
-// models/user.js
+```js
+// highlight(4:16)
+// highlight(18)
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -385,8 +392,8 @@ module.exports = mongoose.model("User", UserSchema);
 Back in the root directory of your file navigate to `routes/users.js{:sh}` and require the
 schema we created in part 4 to the top of the file:
 
-```js {5}
-// routes/users.js
+```js
+// highlight(4)
 const express = require("express");
 const router = express.Router();
 
@@ -410,8 +417,8 @@ module.exports = router;
 Navigate down to the `router.post{:js}` request for the `/register{:sh}` path and change the
 callback function body to:
 
-```js {8.26}
-// routes/users.js
+```js
+// highlight(7:25)
 const express = require("express");
 const router = express.Router();
 
@@ -454,8 +461,8 @@ Head back to `models/user.js{:sh}` and add the `pre{:js}`
 [middleware function](https://mongoosejs.com/docs/middleware.html#pre) that we're using above at the
 bottom of the `user.js{:sh}` model file:
 
-```js {19-32}
-// models/user.js
+```js
+// highlight(18:31)
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -532,8 +539,8 @@ tokens.
 
 In our `index.js{:sh}` file, add the following lines of code:
 
-```js {18-19}
-// index.js
+```js
+// highlight(17:18)
 require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
@@ -579,8 +586,8 @@ Create a folder in the root of your project directory called `config{:sh}`, then
 create a file called `passport.js{:sh}`.  
 At the top of that file, require the following:
 
-```js {2-4}
-// config/passport.js
+```js
+// highlight(1:3)
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
@@ -588,8 +595,8 @@ const User = require("../models/user");
 
 Then, export the following at the bottom of the file:
 
-```js {6-25}
-// config/passport.js
+```js
+// highlight(5:24)
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
@@ -618,8 +625,8 @@ module.exports = function (passport) {
 
 You'll want to make sure you include the export above inside of your index.js file.
 
-```js {4}
-// index.js
+```js
+// highlight(3)
 require("dotenv").config();
 const passport = require("passport");
 require("./config/passport")(passport);
@@ -663,8 +670,8 @@ app.listen(port, () => {
 We should also import Passport.js and the JSON web token module into our `routes/users.js{:sh}`
 file:
 
-```js {3-4}
-// routes/users.js
+```js
+// highlight(2:3)
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -691,8 +698,8 @@ Now, you should save the files we were just editing and go check nodemon to go m
 nodemon isn't breaking. Once you've squashed any possible bugs, we are now going to our `routes{:sh}`
 directory into the `users.js{:sh}` file.
 
-```js {32-61}
-// routes/users.js
+```js
+// highlight(31:60)
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -776,8 +783,8 @@ properly.
 
 At the bottom of the `models/user.js{:sh}` file:
 
-```js {34-39}
-// models/user.js
+```js
+// highlight(33:38)
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 

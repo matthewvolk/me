@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { blogs, formatDate } from "@/app/blog/blogs";
-import { Markdown } from "@/components/mark-down";
+import { Markdown } from "@/components/markdown";
 
 interface BlogPostProps {
   params: {
