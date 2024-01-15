@@ -1,6 +1,7 @@
 import {
   AtSign,
   Calendar,
+  ChevronRight,
   DownloadCloud,
   ExternalLink,
   Github,
@@ -212,6 +213,15 @@ const Home = () => {
               <p className="text-sm">{blog.description}</p>
             </Link>
           ))}
+
+        <div className="flex justify-center pt-6 text-sm">
+          <Link
+            className="inline-flex items-center gap-1 rounded-md p-2 pl-5 text-sm font-medium hover:bg-gray-200/75"
+            href="/blog"
+          >
+            See all posts <ChevronRight height={14} strokeWidth={3} />
+          </Link>
+        </div>
       </section>
     </>
   );
