@@ -98,11 +98,11 @@ const components = {
   ),
 
   pre: ({ children, ...props }: any) => (
-    <div className="relative mb-6">
+    <div className="group relative mb-6">
       <Code className="[&>pre]:rounded-md" {...props} extensions={[highlight]}>
         {children}
       </Code>
-      <div className="absolute right-0 top-0">
+      <div className="absolute right-0 top-0 hidden group-hover:md:block">
         <CopyButton text={children.props.children} />
       </div>
     </div>
