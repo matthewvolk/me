@@ -21,3 +21,7 @@
 [data-bright-theme] [style*="color: rgb(139, 148, 158);"] {
   color: #999fa6 !important;
 }
+
+:not([data-bright-theme]) > code {
+  word-break: break-all;
+}
