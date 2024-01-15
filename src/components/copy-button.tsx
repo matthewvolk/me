@@ -16,21 +16,25 @@ export const CopyButton = ({ text }: { text: string }) => {
   };
 
   return (
-    <button
-      className="m-2 rounded-md border border-gray-700 bg-gray-950 px-3 py-2 transition-all duration-100 hover:border-gray-500 hover:bg-gray-800"
-      onClick={copy}
-    >
-      {isCopied ? (
-        <>
-          <CheckIcon className="stroke-green-500" width={18} />
-          <span className="sr-only">Copied</span>
-        </>
-      ) : (
-        <>
-          <CopyIcon className="stroke-gray-400" width={18} />
-          <span className="sr-only">Copy</span>
-        </>
-      )}
-    </button>
+    <div className="px-2 py-1.5">
+      <button
+        className={`mt-0.5 rounded-lg bg-[#0E1116] px-3 py-2 transition-all duration-100 hover:bg-gray-800 ${
+          isCopied && "bg-green-950 hover:bg-green-950"
+        }`}
+        onClick={copy}
+      >
+        {isCopied ? (
+          <>
+            <CheckIcon className="stroke-green-500" width={18} />
+            <span className="sr-only">Copied</span>
+          </>
+        ) : (
+          <>
+            <CopyIcon className="stroke-gray-400" width={18} />
+            <span className="sr-only">Copy</span>
+          </>
+        )}
+      </button>
+    </div>
   );
 };
