@@ -28,7 +28,7 @@ sessions.**
 
 ## Creating Local Strategies for Two User Types
 
-Although it isn't required, Passport.js's `passport.use();{:js}` method does take one optional
+Although it isn't required, Passport.js's `passport.use();` method does take one optional
 parameter that is not mentioned in the [documentation](http://www.passportjs.org/docs/configure/):
 
 ```js
@@ -39,14 +39,14 @@ parameter that is not mentioned in the [documentation](http://www.passportjs.org
 passport.use([ strategy-name,] new LocalStrategy);
 ```
 
-The `passport.use{:js}` method is similar to Express's `app.use{:js}` in that it mounts a
+The `passport.use` method is similar to Express's `app.use` in that it mounts a
 specified strategy to the Passport object, which is called when the route handler callback invokes
-the `authenticate();{:js}` method (e.g., `app.get( "/path",
-passport.authenticate('strategyName'));{:js}`).
+the `authenticate();` method (e.g., `app.get( "/path",
+passport.authenticate('strategyName'));`).
 
 So, you can add many different _named_ strategies to your app's Passport object to be used in other
 parts of your application, and Passport is programmed to validate requests using those strategies
-anytime you want via the `authenticate();{:js}` method.
+anytime you want via the `authenticate();` method.
 
 In a typical application that only needs one type of user authentication, you would see something
 like:
@@ -86,13 +86,13 @@ app.post(
 );
 ```
 
-In the `app.js{:js}` file, we are importing the passport object, and then passing it as an
-argument into our `config/passport.js{:js}` file which will initialize the specified strategies
+In the `app.js` file, we are importing the passport object, and then passing it as an
+argument into our `config/passport.js` file which will initialize the specified strategies
 in the app's Passport object.
 
 In order to change the code above so that you can use multiple local strategies, is to add a
 
-`passport.use{:js}` method with names of the strategies we want to include. I
+`passport.use` method with names of the strategies we want to include. I
 have included an example below:
 
 ```js
@@ -138,7 +138,7 @@ If you'd like more detail and examples than what is provided above,
 [issue #50](https://github.com/jaredhanson/passport/issues/50) from the Passport.js repository on
 GitHub shows Jared Hanson explaining the same concept.
 
-## Extending `passport.serializeUser();{:js}` and `passport.deserializeUser();{:js}`
+## Extending `passport.serializeUser();` and `passport.deserializeUser();`
 
 Once you've completed the steps above, you won't yet be able to use the named local authentication
 strategies from the config/passport.js file that you created above, and your application is likely
@@ -150,16 +150,16 @@ that user with so that they can be deserialized with each request thereafter.
 
 Before moving on, take a look at the serialization methods in the
 [documentation](http://www.passportjs.org/docs/configure/). The user ID (you provide as the second
-argument of the "done" function in the `serializeUser{:js}` method) is saved in the session and
+argument of the "done" function in the `serializeUser` method) is saved in the session and
 is later used to retrieve the whole object via the deserializeUser function. serializeUser
 determines, which data of the user object should be stored in the session. The result of the
 
-`serializeUser{:js}` method is attached to the session as
-`req.session.passport.user = {}{:js}`. The first argument of `deserializeUser{:js}`
+`serializeUser` method is attached to the session as
+`req.session.passport.user = {}`. The first argument of `deserializeUser`
 corresponds to the key of the user object that was given to the done
 function (see 1.). So your whole object is retrieved with help of that key.
 
-If you do not make your user ID unique across each user Model, your `serializeUser{:js}`
+If you do not make your user ID unique across each user Model, your `serializeUser`
 function will not know which database to query to retrieve the user you are trying to deserialize.
 
 There are a few ways to fix this, but I included a session ID constructor below:
