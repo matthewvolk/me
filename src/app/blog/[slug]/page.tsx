@@ -79,11 +79,10 @@ const BlogPost = ({ params }: BlogPostProps) => {
 
       <div className="flex justify-center py-6 lg:py-10">
         <Link
-          className="inline-flex items-center rounded-md p-2 pr-5 font-medium hover:bg-gray-200/75"
+          className="inline-flex items-center gap-2 rounded-md p-2 pr-5 font-medium hover:bg-gray-200/75"
           href="/blog"
         >
-          <ChevronLeft className="mr-2" height={16} strokeWidth={2.5} /> See all
-          posts
+          <ChevronLeft height={16} strokeWidth={2.75} /> See all posts
         </Link>
       </div>
     </article>
