@@ -13,6 +13,7 @@ const FrontMatterSchema = z.object({
   description: z.string(),
   published: z.string(),
   updated: z.string().optional(),
+  hidden: z.boolean().optional(),
 });
 
 export const blogs = contentSourceFileNames.map((contentSourceFileName) => {

@@ -194,6 +194,7 @@ const Home = () => {
 
         {blogs
           .sort(latestFirst)
+          .filter((blog) => !blog.hidden)
           .slice(0, 2)
           .map((blog) => (
             <Link
