@@ -6,9 +6,11 @@ import {
   ExternalLink,
   Github,
   Linkedin,
+  MapPin,
   Star,
   Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -186,6 +188,77 @@ const Home = () => {
             BigRequest is a lightweight, serverless-friendly Node.js API client
             for the BigCommerce API.
           </p>
+        </Link>
+      </section>
+
+      <section className="flex flex-col gap-2">
+        <h2 className="text-2xl font-extrabold">Recent Talks</h2>
+
+        <Link
+          className="relative mt-4 flex h-72 items-end rounded-md"
+          href="https://www.youtube.com/watch?v=EtjQoxNcnc4"
+          target="_blank"
+        >
+          <Image
+            alt="Next.js Conf Stage"
+            className="absolute inset-0 -z-20 rounded-md object-cover brightness-[.35]"
+            fill
+            priority
+            src="/nextjs-conf.jpeg"
+          />
+          <div className="z-10 flex w-full flex-col gap-2 p-6 text-white">
+            <p className="flex items-center gap-1.5 text-xs">
+              <MapPin size={12} />
+              <span>San Francisco, CA</span>
+            </p>
+            <p className="font-semibold">
+              Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
+              Performance in E-Commerce
+            </p>
+            <div className="flex items-center justify-between">
+              <p className="flex items-center gap-1.5 text-xs">
+                <span>Watch on YouTube</span>
+                <ExternalLink size={12} />
+              </p>
+              <p className="flex items-center gap-1.5 text-xs">
+                <Calendar size={12} />
+                <span>October 26th, 2023</span>
+              </p>
+            </div>
+          </div>
+        </Link>
+
+        <Link
+          className="relative mt-4 flex h-72 items-end rounded-md"
+          href="https://www.youtube.com/watch?v=l3l-5HLjOGo"
+          target="_blank"
+        >
+          <Image
+            alt="Next.js Conf Stage"
+            className="absolute inset-0 -z-20 rounded-md object-cover brightness-[.25]"
+            fill
+            priority
+            src="/app-extensions.jpg"
+          />
+          <div className="z-10 flex w-full flex-col gap-2 p-6 text-white">
+            <p className="flex items-center gap-1.5 text-xs">
+              <MapPin size={12} />
+              <span>Remote</span>
+            </p>
+            <p className="font-semibold">
+              Building BigCommerce Apps with App Extensions
+            </p>
+            <div className="flex items-center justify-between">
+              <p className="flex items-center gap-1.5 text-xs">
+                <span>Watch on YouTube</span>
+                <ExternalLink size={12} />
+              </p>
+              <p className="flex items-center gap-1.5 text-xs">
+                <Calendar size={12} />
+                <span>August 8th, 2023</span>
+              </p>
+            </div>
+          </div>
         </Link>
       </section>
 
