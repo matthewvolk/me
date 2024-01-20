@@ -69,7 +69,7 @@ const BigRequestLatestVersion = async () => {
   return (
     <div className="-mx-4">
       <Link
-        className="flex flex-col rounded-md p-4 hover:bg-gray-200/75"
+        className="flex flex-col rounded-md p-4 md:hover:bg-gray-200/75"
         href="https://www.npmjs.com/package/bigrequest"
         target="_blank"
       >
@@ -89,14 +89,15 @@ const BigRequestLatestVersion = async () => {
 const Home = () => {
   return (
     <>
-      <section className="flex flex-col gap-4" id="main-content">
+      <section className="flex flex-col gap-4">
         <div className="flex items-center justify-between pb-2">
           <h1 className="text-2xl font-extrabold">Hi, I&apos;m Matt</h1>
           <div className="flex items-center gap-2">
             <Link
               aria-label="GitHub"
-              className="rounded-md p-2 hover:bg-gray-200/75"
+              className="rounded-md p-2 md:hover:bg-gray-200/75"
               href="https://github.com/matthewvolk"
+              id="main-content"
               target="_blank"
               title="GitHub"
             >
@@ -104,7 +105,7 @@ const Home = () => {
             </Link>
             <Link
               aria-label="Twitter"
-              className="rounded-md p-2 hover:bg-gray-200/75"
+              className="rounded-md p-2 md:hover:bg-gray-200/75"
               href="https://twitter.com/mttvlk"
               target="_blank"
               title="Twitter"
@@ -113,7 +114,7 @@ const Home = () => {
             </Link>
             <Link
               aria-label="LinkedIn"
-              className="rounded-md p-2 hover:bg-gray-200/75"
+              className="rounded-md p-2 md:hover:bg-gray-200/75"
               href="https://linkedin.com/in/mjvolk"
               target="_blank"
               title="LinkedIn"
@@ -122,7 +123,7 @@ const Home = () => {
             </Link>
             <Link
               aria-label="Email"
-              className="rounded-md p-2 hover:bg-gray-200/75"
+              className="rounded-md p-2 md:hover:bg-gray-200/75"
               href="mailto:matt@volk.dev"
               target="_blank"
               title="Email"
@@ -160,7 +161,7 @@ const Home = () => {
         <h2 className="text-2xl font-extrabold">Open Source Projects</h2>
 
         <Link
-          className="-mx-4 rounded-md p-4 hover:bg-gray-200/75"
+          className="-mx-4 rounded-md p-4 md:hover:bg-gray-200/75"
           href="https://github.com/matthewvolk/bigrequest"
           target="_blank"
         >
@@ -271,7 +272,7 @@ const Home = () => {
           .slice(0, 2)
           .map((blog) => (
             <Link
-              className="-mx-4 rounded-md p-4 hover:bg-gray-200/75"
+              className="-mx-4 rounded-md p-4 md:hover:bg-gray-200/75"
               href={blog.path}
               key={blog.path}
             >

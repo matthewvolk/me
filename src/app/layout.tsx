@@ -70,7 +70,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <nav className="-mx-2 flex items-center justify-between pt-8 font-semibold md:pt-12">
             <Link
               aria-label="Home"
-              className="rounded-md p-2 hover:bg-gray-200/75"
+              className="rounded-md p-2 md:hover:bg-gray-200/75"
               href="/"
               title="Home"
             >
@@ -80,7 +80,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <ul>
               <li>
                 <Link
-                  className="rounded-md p-2 hover:bg-gray-200/75"
+                  className="rounded-md p-2 md:hover:bg-gray-200/75"
                   href="/blog"
                 >
                   Blog
