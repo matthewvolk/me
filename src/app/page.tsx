@@ -53,18 +53,14 @@ const BigRequestDownloads = async () => {
 
 const BigRequestLatestVersion = async () => {
   const response = await fetch(
-    "https://api.github.com/repos/matthewvolk/bigrequest/releases",
+    "https://api.github.com/repos/matthewvolk/bigrequest/releases/latest",
     {
       headers: { authorization: `bearer ${process.env.GITHUB_PAT}` },
       next: { revalidate: 60 * 60 * 24 },
     },
   );
 
-  const data = await response.json();
-
-  const latest = data.find((release: { name: string }) =>
-    release.name.includes("bigrequest"),
-  );
+  const latest = await response.json();
 
   return (
     <div className="-mx-4">
@@ -77,7 +73,7 @@ const BigRequestLatestVersion = async () => {
         <div className="flex items-baseline gap-1">
           <div className="flex items-center gap-1 text-sm font-medium">
             <span>🎉</span>
-            <span>BigRequest v{latest.tag_name.split("@")[1]} released!</span>
+            <span>BigRequest {latest.tag_name} released!</span>
           </div>
           <ExternalLink size={14} strokeWidth={2.25} />
         </div>
