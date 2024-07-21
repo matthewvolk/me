@@ -2,11 +2,12 @@ name: ci
 
 on:
   push:
-    branches:
-      - "**"
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  format:
+  lint-and-typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -21,21 +22,5 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm run format
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@main
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - uses: actions/setup-node@main
-        with:
-          node-version-file: ".nvmrc"
-          cache: "pnpm"
-
-      - run: pnpm install --frozen-lockfile
-
-      - run: SKIP_ENV_VALIDATION=true pnpm run lint
+      - run: pnpm run typecheck
+      - run: pnpm run lint
