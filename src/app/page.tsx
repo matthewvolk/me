@@ -62,6 +62,8 @@ const BigRequestLatestVersion = async () => {
 
   const latest = await response.json();
 
+  console.dir(latest, { depth: null });
+
   return (
     <div className="-mx-4">
       <Link
