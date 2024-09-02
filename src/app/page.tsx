@@ -56,7 +56,7 @@ const BigRequestLatestVersion = async () => {
     "https://api.github.com/repos/matthewvolk/bigrequest/releases/latest",
     {
       headers: { authorization: `bearer ${process.env.GITHUB_PAT}` },
-      next: { revalidate: 300 },
+      next: { revalidate: 60 * 60 * 24 },
     },
   );
 
