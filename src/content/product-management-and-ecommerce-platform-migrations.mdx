@@ -9,54 +9,59 @@ updated: Jun 27, 2020
 
 ## Simplicity
 
-One thing I’ve always loved about e-commerce is the underlying simplicity of what it takes to set up
-a functional, online storefront. As long as you’re not engineering your own custom e-commerce
-platform, there really are only four things you need to do before you can start selling online:
+One thing I’ve always loved about e-commerce is the underlying simplicity of setting up a
+functional online storefront. If we set aside the complex needs of external integrations that
+provide business-critical functionality and focus solely on launching an extremely basic, minimal
+representation of what the e-commerce site needs to function, we find that there are really only
+four things you need to do before you can start placing test transactions online:
 
 1. Choose a platform
 2. Add some products
 3. Add a payment gateway
 4. Add tax and shipping calculators
 
-That’s it. Those four steps are all that are required to build and publish a fully functional,
-transacting e-commerce store.
+By implementing these four features in the first sprint of an implementation project, we can
+concentrate on adding all the bells and whistles in future sprints. Since our MVP is now transacting,
+business stakeholders can see immediate value in Sprint 1, as they can now place test
+transactions on the MVP website, tangibly demonstrating the return on investment of the project
+from the start.
 
 When it comes to enterprise e-commerce store migrations, this inherent simplicity is often thrown
 out the window.
 
 ## The "Bells and Whistles" Mentality
 
-Fundamentally, there is a mindset that launching an e-commerce store means maintaining feature
+In my experience, there is a mindset that launching an e-commerce store means maintaining feature
 parity from the legacy platform to the new platform, under the belief that your store will not be
 successful without those features.
 
 Additionally, it's not uncommon for your existing e-commerce platform to have years, potentially
 decades worth of legacy integrations, custom features, and downstream dependencies. Untangling the
 intricacies of each and every one of those considerations equipped with only a small project team
-who are up against a tight timeline and budget is a bit intimidating.
+who are up against a tight timeline and budget is a bit intimidating — at worst, it's demotivating.
 
 I'm not discounting that these are valid concerns to have. Just consider that e-commerce website
-don't really need all these fancy bells and whistles to function well. Technology-forward companies
-are adopting "lean" methodologies to prototype quickly, and improve based on user interaction data
-instead of speculation. Technology companies have entered the age of agile development, iterative
-value, and minimum viable products. We test early and often, and invite beta users to do the same.
-Stakeholders get to immediately see the impacts of their decisions, and they are enabled to quickly
-change features and functionality, instead of waiting 9 months for the rest of the website to be
-finished as well. At the end of the day, e-commerce websites that have not launched simply cannot
-demonstrate tangible return on investment.
+don't really need all these fancy bells and whistles to function at the end of the first sprint.
+Technology-forward companies are adopting "lean" methodologies to prototype quickly, and improve
+based on user interaction data instead of speculation. Technology companies have entered the age
+of agile development, iterative value, and minimum viable products. We test early and often, and
+invite beta users to do the same. Stakeholders get to immediately see the impacts of their decisions,
+and they are enabled to quickly change features and functionality, instead of waiting 9 months for
+the rest of the website to be finished as well. At the end of the day, e-commerce websites that
+have not launched simply cannot demonstrate tangible return on investment.
 
 ## Communicate "Why"
 
 So the question becomes, how do you foster the shift in perspective to help your team view your
-e-commerce store as a technology product, and not just another sales channel? How do you inspire
+e-commerce store as a technology product, and not a years-long waterfall project? How do you inspire
 your team to lose their fear of launching with less, and to instead invite challenges to what they
 believe is the definition of a successful migration?
 
 You create context.
 
 You are not communicating to your team that you'd like to launch a new website with "less" of what
-the current website has — You are selling the idea of launching a website with less of what does
-less for your customers.
+the current website has — you are selling the idea of launching a website that can be tested by your team
+and beta users in the first sprint, and iteratively improved upon in the following weeks.
 
 Data is king, and the more data that you can collect from the current website to show what users are
 not touching, and to emphasize what they are using most is invaluable. Heatmap tools like Hotjar,
@@ -84,16 +89,16 @@ means forgoing the needs of others.
 
 Ask yourself, what are the most used features of your existing website today? Tools such as Google
 Analytics can help you understand where your users spend most of their time on your website, and
-what features they hardly ever touch. For example, before migrating my blog from Wordpress to
-Gatsby.js, I had 20+ blog posts I thought I needed to migrate from one website to the other. Turns
-out, only three of those posts accounted for 97% of the organic traffic that was hitting my website.
-I almost spent 10 hours migrating useless content that only drove 3% of traffic to my website —
-instead, I spent 2 hours migrating the most important content that drove 97%.
+what features they hardly ever touch. As a very small, anecdotal example, before migrating my blog
+from Wordpress to Next.js, I had 20+ blog posts I thought I needed to migrate from one website to
+the other. Turns out, only three of those posts accounted for 97% of the organic traffic that was
+hitting my website. I almost spent 10 hours migrating useless content that only drove 3% of traffic
+to my website — instead, I spent 2 hours migrating the most important content that drove 97%.
 
 ### Validate Your Assumptions
 
-Even when certain feature ideas get prioritized as candidates – serious features you’re considering
-building – it would be unwise to send them right to designers and engineers to begin working on
+Even when certain feature ideas get prioritized as candidates — serious features you’re considering
+building — it would be unwise to send them right to designers and engineers to begin working on
 them. Carrying out high fidelity designs and writing production code involve time-intensive work
 from highly skilled members of your team. It’s always best to take the features you’re considering
 working on and run them by customers first – particularly those who requested them in the first
@@ -155,35 +160,22 @@ the "what", and talked about the "how". What we never did was start with the "wh
 backwards to paint the picture of what was considered successful.
 
 All that website really needed was a redesign, and some improvements to the store's search engine.
-Most of the traffic came from Google Shopping, so all we needed to do was allow users to easily find
-the products they were looking for. The manual work it would have taken to import orders into the
-ERP system once a day instead of spending thousands of hours integrating the two systems to automate
-those processes would have been trivial.
+Most of the traffic came from Google Shopping, so all we needed to do was implement reliable product
+feeds so that users could easily find the products they were looking for before they left Google.
 
 ## Facing Reality
 
 This post is of course, theoretical in nature. In a perfect world, every large e-commerce website
-should have a product manager, a UX designer, a data scientist, and an engineer. This may be the
-case with larger companies like Nike, Bose, and other large D2C brands that boast the revenue to
-justify those hires, but unfortunately your average 20 person team doing \$20MM a year online
-selling auto parts online simply cannot afford to hire full on software engineers for their
-e-commerce websites.
+would have a product manager, a UX designer, a data scientist, and a team of engineers. This may be the
+case with larger companies like Nike, Sonos, and other large brands that generate the revenue to
+justify those hires; but often times, smaller e-commerce companies simply cannot afford to hire
+full software teams for their e-commerce websites.
 
-Regardless, a good product manager walks the line between reality and lala land - measuring real
-impacts of business decisions, while simultaneously inspiring teams to reach for more.
+Regardless, a good product manager walks the line between reality and perfection - measuring real
+impacts of business decisions, while simultaneously inspiring teams to reach for more. Whether I
+like it or not, I respect that e-commerce websites are a means to an end. The customers that use
+the websites you build don’t care how the underlying software that runs the website works,
+they simply care that they can find what they’re looking for, and that they can buy it.
 
-I encourage you to be that person for your team.
-
----
-
-## Notes
-
-- Launch on a subdomain, shop.store.com - Measure that subdomain and see what happens with users -
-  A/B Testing
-- For every single day you spend adjusting the colors of your website, making sure the padding
-  around your buttons is 15 pixels and not 16 pixels, you are failing to demonstrate return on
-  investment.
-- You don’t need your ERP to be a PIM, you need it to track stock levels, set prices, and ingest
-  orders. That’s it. There are more important things to worry about
-- E-commerce websites are a means to an end. The customers that use the websites don’t care how
-  software that runs the website (BigCommerce) works, they simply care _that it works_.
+I encourage you to be the person that inspires your team to deliver value from day one, and to
+challenge the status quo of what is considered a successful e-commerce platform migration.
