@@ -77,14 +77,14 @@ export default function RootLayout({
             <main className="mx-auto w-full max-w-2xl flex-1 py-8">
               {children}
             </main>
-            <Suspense>
-              <Footer />
-            </Suspense>
+            <Footer />
           </div>
         </ThemeProvider>
+        <GoogleAnalytics />
+        <Suspense>
+          <SpeedInsights />
+        </Suspense>
       </body>
-      <GoogleAnalytics />
-      <SpeedInsights />
     </html>
   );
 }
