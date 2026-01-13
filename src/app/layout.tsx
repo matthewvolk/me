@@ -70,13 +70,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-background font-sans antialiased px-8">
+      <body className="container mx-auto w-full max-w-2xl min-h-screen bg-background font-sans antialiased px-8">
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen gap-12 flex-col">
             <Header />
-            <main className="mx-auto w-full max-w-2xl flex-1 py-8">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
