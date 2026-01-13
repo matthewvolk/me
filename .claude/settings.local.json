@@ -1,12 +1,7 @@
 {
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "next-devtools",
-    "shadcn"
-  ],
+  "enabledMcpjsonServers": ["next-devtools", "shadcn"],
   "permissions": {
-    "allow": [
-      "mcp__next-devtools__nextjs_docs"
-    ]
+    "allow": ["mcp__next-devtools__nextjs_docs"]
   }
 }
