@@ -177,60 +177,40 @@ export default async function HomePage() {
       </section>
 
       {/* Talks */}
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-2">
         <h2 className="text-xl font-semibold">Talks</h2>
-
         <Link
-          className="relative flex h-72 items-end rounded-md overflow-hidden bg-linear-to-br from-zinc-800 to-zinc-900"
+          className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
           href="https://www.youtube.com/watch?v=EtjQoxNcnc4"
           target="_blank"
         >
-          <div className="z-10 flex w-full flex-col gap-2 p-6 text-white">
-            <p className="flex items-center gap-1.5 text-xs">
-              <MapPin size={12} />
-              <span>San Francisco, CA</span>
-            </p>
-            <p className="font-semibold">
+            <h3 className="font-medium">
               Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
               Performance in E-Commerce
-            </p>
-            <div className="flex items-center justify-between">
-              <p className="flex items-center gap-1.5 text-xs">
-                <span>Watch on YouTube</span>
-                <ExternalLink size={12} />
-              </p>
-              <p className="flex items-center gap-1.5 text-xs">
-                <Calendar size={12} />
-                <span>October 26, 2023</span>
-              </p>
-            </div>
-          </div>
+            </h3>
+          <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+            <Calendar size={14} />
+            <span>October 26, 2023</span>
+            <span>·</span>
+            <MapPin size={14} />
+            <span>San Francisco, CA</span>
+          </p>
         </Link>
-
         <Link
-          className="relative flex h-72 items-end rounded-md overflow-hidden bg-linear-to-br from-zinc-700 to-zinc-800"
+          className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
           href="https://www.youtube.com/watch?v=l3l-5HLjOGo"
           target="_blank"
         >
-          <div className="z-10 flex w-full flex-col gap-2 p-6 text-white">
-            <p className="flex items-center gap-1.5 text-xs">
-              <MapPin size={12} />
-              <span>Remote</span>
-            </p>
-            <p className="font-semibold">
+            <h3 className="font-medium">
               Building BigCommerce Apps with App Extensions
-            </p>
-            <div className="flex items-center justify-between">
-              <p className="flex items-center gap-1.5 text-xs">
-                <span>Watch on YouTube</span>
-                <ExternalLink size={12} />
-              </p>
-              <p className="flex items-center gap-1.5 text-xs">
-                <Calendar size={12} />
-                <span>August 8, 2023</span>
-              </p>
-            </div>
-          </div>
+            </h3>
+          <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+            <Calendar size={14} />
+            <span>August 8, 2023</span>
+            <span>·</span>
+            <MapPin size={14} />
+            <span>Remote</span>
+          </p>
         </Link>
       </section>
 
