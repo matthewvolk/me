@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
@@ -20,8 +22,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
-          <Header />
-          <main className="mx-auto max-w-2xl px-4 py-8">{children}</main>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8">{children}</main>
+            <Suspense>
+              <Footer />
+            </Suspense>
+          </div>
         </ThemeProvider>
       </body>
     </html>

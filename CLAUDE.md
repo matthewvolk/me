@@ -35,7 +35,7 @@ src/
       page.tsx            # blog listing
       [slug]/page.tsx     # blog detail
   components/
-    ui/                   # shadcn components
+    ui/                   # shadcn components - do not add non shadcn components to this folder
     mdx/code-block.tsx    # server-side shiki highlighting
     header.tsx            # nav header
     theme-provider.tsx    # next-themes wrapper
@@ -84,3 +84,9 @@ Next.js 16 exposes MCP at `/_next/mcp`. Use `nextjs_index` and `nextjs_call` too
 - Error diagnostics
 - Build status
 - Cache management
+
+Always use shadcn MCP when building React components. Use `search_items_in_registries`, `get_item_examples_from_registries`, `view_items_in_registries`, `get_add_command_for_items` for:
+- Component discovery
+- Usage examples
+- Implementation details
+- Adding new components to @src/components/ui

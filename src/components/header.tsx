@@ -5,20 +5,17 @@ import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
-    <header>
+    <header className="pt-8">
       <nav className="mx-auto flex max-w-2xl items-center justify-between px-4 py-4">
         <Link href="/" className="font-semibold">
-          <Button variant="ghost" size="icon">
-            <HomeIcon className="h-5 w-5" />
+          <Button variant="ghost" size="icon" className="-ml-2">
+            <HomeIcon className="size-5" />
           </Button>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/blog"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            Blog
-          </Link>
+          <Button variant="ghost">
+            <Link href="/blog">Blog</Link>
+          </Button>
           <ThemeToggle />
         </div>
       </nav>
