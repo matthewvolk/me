@@ -6,9 +6,9 @@ import { ThemeToggle } from "./theme-toggle";
 export function Header() {
   return (
     <header className="pt-8">
-      <nav className="mx-auto flex max-w-2xl items-center justify-between px-4 py-4">
+      <nav className="mx-auto flex max-w-2xl items-center justify-between py-4">
         <Link href="/" className="font-semibold">
-          <Button variant="ghost" size="icon" className="-ml-2">
+          <Button variant="ghost" size="icon" className="md:-ml-2">
             <HomeIcon className="size-5" />
           </Button>
         </Link>

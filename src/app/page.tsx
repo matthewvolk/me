@@ -67,7 +67,7 @@ async function BigRequestLatestVersion() {
 
   return (
     <Link
-      className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
+      className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
       href="https://www.npmjs.com/package/bigrequest"
       target="_blank"
     >
@@ -146,7 +146,7 @@ export default async function HomePage() {
       <section className="flex flex-col gap-2">
         <h2 className="text-xl font-semibold">Open Source Projects</h2>
         <Link
-          className="rounded-md p-4 -mx-4 md:hover:bg-accent"
+          className="rounded-md p-4 -mx-4 hover:bg-accent"
           href="https://github.com/matthewvolk/bigrequest"
           target="_blank"
         >
@@ -180,14 +180,14 @@ export default async function HomePage() {
       <section className="flex flex-col gap-2">
         <h2 className="text-xl font-semibold">Talks</h2>
         <Link
-          className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
+          className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
           href="https://www.youtube.com/watch?v=EtjQoxNcnc4"
           target="_blank"
         >
-            <h3 className="font-medium">
-              Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
-              Performance in E-Commerce
-            </h3>
+          <h3 className="font-medium">
+            Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
+            Performance in E-Commerce
+          </h3>
           <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
             <Calendar size={14} />
             <span>October 26, 2023</span>
@@ -197,13 +197,13 @@ export default async function HomePage() {
           </p>
         </Link>
         <Link
-          className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
+          className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
           href="https://www.youtube.com/watch?v=l3l-5HLjOGo"
           target="_blank"
         >
-            <h3 className="font-medium">
-              Building BigCommerce Apps with App Extensions
-            </h3>
+          <h3 className="font-medium">
+            Building BigCommerce Apps with App Extensions
+          </h3>
           <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
             <Calendar size={14} />
             <span>August 8, 2023</span>
@@ -223,7 +223,7 @@ export default async function HomePage() {
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
+                  className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
                 >
                   <h3 className="font-medium">{post.metadata.title}</h3>
                   <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">

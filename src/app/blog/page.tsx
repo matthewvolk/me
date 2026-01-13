@@ -23,7 +23,7 @@ export default async function BlogPage() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="flex flex-col rounded-md p-4 -mx-4 md:hover:bg-accent"
+                className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
               >
                 <h2 className="font-medium">{post.metadata.title}</h2>
                 <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
