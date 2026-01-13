@@ -128,7 +128,7 @@ button:not(:disabled) {
   @apply cursor-pointer;
 }
 
-/* Shiki dual theme code blocks - !important needed to override inline styles */
+/* Shiki dual theme - !important needed to override inline styles */
 .shiki span {
   background-color: transparent !important;
 }
