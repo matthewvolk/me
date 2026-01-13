@@ -1,0 +1,81 @@
+export const metadata = {
+  title: "Hello World",
+  description: "My first blog post with MDX and syntax highlighting",
+  date: "2026-01-12",
+  tags: ["nextjs", "mdx", "react"],
+};
+
+# Hello World
+
+Welcome to my blog! This is my first post, and I'm excited to share some code examples with you.
+
+## Code Blocks
+
+Here's a simple TypeScript function:
+
+```ts
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+```
+
+### With Filename
+
+Use `// @filename:` to display a title:
+
+```tsx
+// @filename: components/Button.tsx
+export function Button({ children }: { children: React.ReactNode }) {
+  return (
+    <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+      {children}
+    </button>
+  );
+}
+```
+
+### Line Highlighting
+
+Use `// [!code highlight]` to highlight specific lines:
+
+```ts
+// @filename: lib/api.ts
+async function fetchData(url: string) {
+  const response = await fetch(url); // [!code highlight]
+  if (!response.ok) {
+    throw new Error("Failed to fetch"); // [!code highlight]
+  }
+  return response.json();
+}
+```
+
+### Diff Style
+
+Use `// [!code ++]` and `// [!code --]` for diff highlighting:
+
+```tsx
+// @filename: app/page.tsx
+export default async function Page() {
+  const data = await fetchData("/api/posts");
+  const items = data.items; // [!code --]
+  const { items, total } = data; // [!code ++]
+
+  return (
+    <ul>
+      {items.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## What's Next
+
+I'll be writing more about:
+
+- Next.js and React patterns
+- TypeScript best practices
+- Building scalable web applications
+
+Stay tuned!

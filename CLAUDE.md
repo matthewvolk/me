@@ -28,10 +28,39 @@ pnpm typecheck  # tsc --noEmit
 ```
 src/
   app/
-    layout.tsx   # root layout
-    page.tsx     # home page
-    globals.css  # tailwind styles
+    layout.tsx            # root layout w/ theme provider
+    page.tsx              # homepage
+    globals.css           # tailwind + shiki styles
+    blog/
+      page.tsx            # blog listing
+      [slug]/page.tsx     # blog detail
+  components/
+    ui/                   # shadcn components
+    mdx/code-block.tsx    # server-side shiki highlighting
+    header.tsx            # nav header
+    theme-provider.tsx    # next-themes wrapper
+    theme-toggle.tsx      # dark/light toggle
+  content/blog/           # MDX blog posts
+  lib/
+    posts.ts              # blog utilities
+    utils.ts              # shadcn utils
+mdx-components.tsx        # MDX component mapping
 ```
+
+## Blog
+
+Posts are MDX files in `src/content/blog/`. Export metadata:
+
+```tsx
+export const metadata = {
+  title: "Post Title",
+  description: "Description",
+  date: "2026-01-12",
+  tags: ["tag1", "tag2"],
+};
+```
+
+Code blocks use shiki with dual themes (github-light/github-dark-dimmed).
 
 ## cacheComponents
 
