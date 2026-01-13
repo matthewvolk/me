@@ -1,10 +1,9 @@
-"use client";
-
 import { Home } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export function Footer() {
+export async function Footer() {
+  "use cache";
   return (
     <footer className="mx-auto flex w-full max-w-2xl items-center justify-between px-4 pb-8 md:pb-12">
       <Link className="text-sm font-medium" href="/">
