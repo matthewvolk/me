@@ -58,13 +58,9 @@ export async function BigRequestLatestVersion() {
       href="https://www.npmjs.com/package/bigrequest"
       target="_blank"
     >
-      <p className="pb-1 text-xs text-muted-foreground">
-        {formatDate(latest.published_at)}
-      </p>
-      <div className="flex items-center gap-2">
-        <span className="font-medium">
-          BigRequest {latest.tag_name} released
-        </span>
+      <p className="pb-1 text-xs italic">{formatDate(latest.published_at)}</p>
+      <div className="flex text-sm font-medium items-center gap-2">
+        <span>BigRequest {latest.tag_name} released!</span>
         <ExternalLink size={14} />
       </div>
     </Link>

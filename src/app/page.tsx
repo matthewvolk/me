@@ -25,9 +25,9 @@ export default async function HomePage() {
     <div className="flex flex-col gap-12">
       {/* Introduction */}
       <section className="flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Hi, I&apos;m Matt</h1>
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between pb-2">
+          <h1 className="text-2xl font-extrabold">Hi, I&apos;m Matt</h1>
+          <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild aria-label="GitHub">
               <Link href="https://github.com/matthewvolk" target="_blank">
                 <Github className="size-5" />
@@ -50,7 +50,7 @@ export default async function HomePage() {
             </Button>
           </div>
         </div>
-        <p className="text-muted-foreground">
+        <p>
           I&apos;m a software engineer based in Austin, TX, currently building
           products and tooling for the next generation of headless commerce at
           BigCommerce.
@@ -60,7 +60,7 @@ export default async function HomePage() {
       {/* Changelog */}
       <section className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Changelog</h2>
+          <h2 className="text-2xl font-extrabold">Changelog</h2>
           <span className="relative flex h-4 w-4">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
             <span className="relative left-1 top-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
@@ -77,14 +77,14 @@ export default async function HomePage() {
 
       {/* Open Source Projects */}
       <section className="flex flex-col gap-2">
-        <h2 className="text-xl font-semibold">Open Source Projects</h2>
+        <h2 className="text-2xl font-extrabold">Open Source Projects</h2>
         <Link
           className="rounded-md p-4 -mx-4 hover:bg-accent"
           href="https://github.com/matthewvolk/bigrequest"
           target="_blank"
         >
           <div className="flex items-center justify-between">
-            <h3 className="font-medium">matthewvolk/bigrequest</h3>
+            <h3 className="font-semibold">matthewvolk/bigrequest</h3>
             <div className="flex gap-4">
               <Suspense
                 fallback={
@@ -102,7 +102,7 @@ export default async function HomePage() {
               </Suspense>
             </div>
           </div>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="mt-1 text-sm">
             BigRequest is a lightweight, serverless-friendly Node.js API client
             for the BigCommerce API.
           </p>
@@ -111,17 +111,17 @@ export default async function HomePage() {
 
       {/* Talks */}
       <section className="flex flex-col gap-2">
-        <h2 className="text-xl font-semibold">Talks</h2>
+        <h2 className="text-2xl font-extrabold">Talks</h2>
         <Link
           className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
           href="https://www.youtube.com/watch?v=EtjQoxNcnc4"
           target="_blank"
         >
-          <h3 className="font-medium">
+          <h3 className="font-semibold">
             Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
             Performance in E-Commerce
           </h3>
-          <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+          <p className="flex items-center gap-2 py-1 text-sm">
             <Calendar size={14} />
             <span>October 26, 2023</span>
             <span>·</span>
@@ -134,10 +134,10 @@ export default async function HomePage() {
           href="https://www.youtube.com/watch?v=l3l-5HLjOGo"
           target="_blank"
         >
-          <h3 className="font-medium">
+          <h3 className="font-semibold">
             Building BigCommerce Apps with App Extensions
           </h3>
-          <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+          <p className="flex items-center gap-2 py-1 text-sm">
             <Calendar size={14} />
             <span>August 8, 2023</span>
             <span>·</span>
@@ -149,7 +149,7 @@ export default async function HomePage() {
 
       {/* Recent Posts */}
       <section className="flex flex-col gap-2">
-        <h2 className="text-xl font-semibold">Recent Posts</h2>
+        <h2 className="text-2xl font-extrabold">Recent Posts</h2>
         {recentPosts.length > 0 ? (
           <ul className="flex flex-col">
             {recentPosts.map((post) => (
@@ -158,14 +158,12 @@ export default async function HomePage() {
                   href={`/blog/${post.slug}`}
                   className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
                 >
-                  <h3 className="font-medium">{post.metadata.title}</h3>
-                  <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+                  <h3 className="font-semibold">{post.metadata.title}</h3>
+                  <p className="flex items-center gap-2 py-1 text-sm">
                     <Calendar size={14} />
                     <span>{formatDate(post.metadata.date)}</span>
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    {post.metadata.description}
-                  </p>
+                  <p className="text-sm">{post.metadata.description}</p>
                 </Link>
               </li>
             ))}

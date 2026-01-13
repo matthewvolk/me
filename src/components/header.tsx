@@ -5,16 +5,18 @@ import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
-    <header className="pt-8">
-      <nav className="mx-auto flex max-w-2xl items-center justify-between py-4">
+    <header className="pt-8 md:pt-12">
+      <nav className="flex items-center justify-between">
         <Link href="/" className="font-semibold">
-          <Button variant="ghost" size="icon" className="md:-ml-2">
+          <Button variant="ghost" size="icon" className="-ml-2">
             <HomeIcon className="size-5" />
           </Button>
         </Link>
         <div className="flex items-center gap-4">
           <Button variant="ghost">
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog" className="text-base font-semibold">
+              Blog
+            </Link>
           </Button>
           <ThemeToggle />
         </div>

@@ -25,22 +25,20 @@ export default async function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
               >
-                <h2 className="font-medium">{post.metadata.title}</h2>
-                <p className="flex items-center gap-2 py-1 text-sm text-muted-foreground">
+                <h2 className="font-semibold">{post.metadata.title}</h2>
+                <p className="flex items-center gap-2 py-1 text-sm">
                   <Calendar size={14} />
                   <time dateTime={post.metadata.date}>
                     {formatDate(post.metadata.date)}
                   </time>
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  {post.metadata.description}
-                </p>
+                <p className="text-sm">{post.metadata.description}</p>
               </Link>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-muted-foreground">No posts yet.</p>
+        <p>No posts yet.</p>
       )}
     </article>
   );
