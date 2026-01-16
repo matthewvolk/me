@@ -2,7 +2,6 @@ import {
   transformerNotationDiff,
   transformerNotationHighlight,
 } from "@shikijs/transformers";
-import { connection } from "next/server";
 import type { ReactElement } from "react";
 import { codeToHtml } from "shiki";
 
@@ -11,7 +10,6 @@ interface PreProps {
 }
 
 export async function Pre({ children }: PreProps) {
-  await connection();
 
   let code = children.props.children?.trim() || "";
   const className = children.props.className || "";

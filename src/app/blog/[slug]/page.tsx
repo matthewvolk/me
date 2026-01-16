@@ -1,6 +1,8 @@
+"use cache";
+
+import { cacheLife } from "next/cache";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 
 interface Props {
@@ -27,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
+  cacheLife("max");
+
   const { slug } = await params;
 
   try {
@@ -46,13 +50,9 @@ export default async function BlogPostPage({ params }: Props) {
           </h1>
           <p className="mt-2 text-muted-foreground">{metadata.description}</p>
         </header>
-        <Suspense
-          fallback={<div className="animate-pulse">Loading content...</div>}
-        >
-          <div className="prose prose-neutral dark:prose-invert max-w-none">
-            <Content />
-          </div>
-        </Suspense>
+        <div className="prose prose-neutral dark:prose-invert max-w-none">
+          <Content />
+        </div>
       </article>
     );
   } catch {
