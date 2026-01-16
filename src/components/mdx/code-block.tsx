@@ -10,7 +10,6 @@ interface PreProps {
 }
 
 export async function Pre({ children }: PreProps) {
-
   let code = children.props.children?.trim() || "";
   const className = children.props.className || "";
   const lang = className.replace(/language-/, "") || "text";
