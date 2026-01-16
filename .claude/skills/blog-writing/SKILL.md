@@ -18,8 +18,6 @@ export const metadata = {
   date: 'YYYY-MM-DD',
   tags: ['tag1', 'tag2', 'tag3'],
 };
-
-;
 ```
 
 Follow metadata with standard markdown content using `#` for the main title (matching the metadata title), `##` for sections, and `###` for subsections.
