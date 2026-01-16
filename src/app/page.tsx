@@ -114,7 +114,7 @@ export default async function HomePage() {
         <h2 className="text-2xl font-extrabold">Talks</h2>
         <Link
           className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
-          href="https://www.youtube.com/watch?v=EtjQoxNcnc4"
+          href="https://youtu.be/EtjQoxNcnc4?t=388"
           target="_blank"
         >
           <h3 className="font-semibold">
@@ -131,7 +131,7 @@ export default async function HomePage() {
         </Link>
         <Link
           className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
-          href="https://www.youtube.com/watch?v=l3l-5HLjOGo"
+          href="https://www.youtube.com/live/l3l-5HLjOGo"
           target="_blank"
         >
           <h3 className="font-semibold">
