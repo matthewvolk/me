@@ -1,8 +1,9 @@
 "use cache";
 
-import { cacheLife } from "next/cache";
 import type { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
+import { DateChip } from "@/components/date-chip";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 
 interface Props {
@@ -39,12 +40,11 @@ export default async function BlogPostPage({ params }: Props) {
     return (
       <article>
         <header className="mb-8">
-          <time
-            className="text-sm text-muted-foreground"
-            dateTime={metadata.date}
-          >
-            {metadata.date}
-          </time>
+          <DateChip
+            date={metadata.date}
+            showIcon={false}
+            className="text-muted-foreground"
+          />
           <h1 className="mt-2 text-3xl font-bold tracking-tight">
             {metadata.title}
           </h1>
