@@ -15,37 +15,12 @@ Next.js 16 portfolio site with App Router.
 ## Commands
 
 ```bash
-pnpm dev        # start dev server (turbopack)
 pnpm build      # production build
-pnpm start      # start production server
-pnpm check      # biome check
 pnpm fix        # biome check --write
 pnpm typecheck  # tsc --noEmit
 ```
 
-## Structure
-
-```
-src/
-  app/
-    layout.tsx            # root layout w/ theme provider
-    page.tsx              # homepage
-    globals.css           # tailwind + shiki styles
-    blog/
-      page.tsx            # blog listing
-      [slug]/page.tsx     # blog detail
-  components/
-    ui/                   # shadcn components - do not add non shadcn components to this folder
-    mdx/code-block.tsx    # server-side shiki highlighting
-    header.tsx            # nav header
-    theme-provider.tsx    # next-themes wrapper
-    theme-toggle.tsx      # dark/light toggle
-  content/blog/           # MDX blog posts
-  lib/
-    posts.ts              # blog utilities
-    utils.ts              # shadcn utils
-mdx-components.tsx        # MDX component mapping
-```
+You should prefer `pnpm fix` over `pnpm check` to fix linting issues and report errors in one command, as opposed to running them separately. You should prefer `pnpm build` over `pnpm dev` as the former does not start a long-running process.
 
 ## Blog
 
@@ -53,10 +28,10 @@ Posts are MDX files in `src/content/blog/`. Export metadata:
 
 ```tsx
 export const metadata = {
-  title: "Post Title",
-  description: "Description",
-  date: "2026-01-12",
-  tags: ["tag1", "tag2"],
+  title: 'Post Title',
+  description: 'Description',
+  date: '2026-01-12',
+  tags: ['tag1', 'tag2'],
 };
 ```
 
@@ -67,11 +42,11 @@ Code blocks use shiki with dual themes (github-light/github-dark-dimmed).
 With `cacheComponents: true`, data fetching is dynamic by default. Use `"use cache"` directive to opt into caching:
 
 ```tsx
-"use cache"
+'use cache';
 
 export default async function Page() {
-  const data = await fetch('...')
-  return <div>{data}</div>
+  const data = await fetch('...');
+  return <div>{data}</div>;
 }
 ```
 
@@ -80,13 +55,19 @@ Related APIs: `cacheLife()`, `cacheTag()`, `revalidateTag()`
 ## MCP Tools
 
 Next.js 16 exposes MCP at `/_next/mcp`. Use `nextjs_index` and `nextjs_call` tools for:
+
 - Route inspection
 - Error diagnostics
 - Build status
 - Cache management
 
 Always use shadcn MCP when building React components. Use `search_items_in_registries`, `get_item_examples_from_registries`, `view_items_in_registries`, `get_add_command_for_items` for:
+
 - Component discovery
 - Usage examples
 - Implementation details
 - Adding new components to @src/components/ui
+
+## UI Guidelines
+
+- **Light/Dark Mode** - All UI components must be designed to support both light and dark mode. Use semantic Tailwind color tokens (e.g., `bg-card`, `text-foreground`, `border-border`, `text-muted-foreground`) instead of hardcoded color values like `bg-slate-800` or `text-slate-300`.

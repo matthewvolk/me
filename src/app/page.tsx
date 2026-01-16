@@ -1,6 +1,5 @@
 import {
   AtSign,
-  Calendar,
   ChevronRight,
   Github,
   Linkedin,
@@ -14,8 +13,9 @@ import {
   BigRequestLatestVersion,
   BigRequestStars,
 } from "@/components/bigrequest";
+import { DateChip } from "@/components/date-chip";
 import { Button } from "@/components/ui/button";
-import { formatDate, getVisiblePosts } from "@/lib/posts";
+import { getVisiblePosts } from "@/lib/posts";
 
 export default async function HomePage() {
   const posts = await getVisiblePosts();
@@ -122,8 +122,7 @@ export default async function HomePage() {
             Performance in E-Commerce
           </h3>
           <p className="flex items-center gap-2 py-1 text-sm">
-            <Calendar size={14} />
-            <span>October 26, 2023</span>
+            <DateChip date="2023-10-26" />
             <span>·</span>
             <MapPin size={14} />
             <span>San Francisco, CA</span>
@@ -138,11 +137,10 @@ export default async function HomePage() {
             Building BigCommerce Apps with App Extensions
           </h3>
           <p className="flex items-center gap-2 py-1 text-sm">
-            <Calendar size={14} />
-            <span>August 8, 2023</span>
+            <DateChip date="2023-08-08" />
             <span>·</span>
             <MapPin size={14} />
-            <span>Remote</span>
+            <span>Online</span>
           </p>
         </Link>
       </section>
@@ -159,10 +157,7 @@ export default async function HomePage() {
                   className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
                 >
                   <h3 className="font-semibold">{post.metadata.title}</h3>
-                  <p className="flex items-center gap-2 py-1 text-sm">
-                    <Calendar size={14} />
-                    <span>{formatDate(post.metadata.date)}</span>
-                  </p>
+                  <DateChip date={post.metadata.date} className="py-1" />
                   <p className="text-sm">{post.metadata.description}</p>
                 </Link>
               </li>

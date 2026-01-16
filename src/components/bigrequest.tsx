@@ -1,7 +1,7 @@
 import { DownloadCloud, ExternalLink, Star } from "lucide-react";
 import { cacheLife } from "next/cache";
 import Link from "next/link";
-import { formatDate } from "@/lib/posts";
+import { DateChip } from "@/components/date-chip";
 
 export async function BigRequestStars() {
   "use cache";
@@ -58,8 +58,8 @@ export async function BigRequestLatestVersion() {
       href="https://www.npmjs.com/package/bigrequest"
       target="_blank"
     >
-      <p className="pb-1 text-xs italic">{formatDate(latest.published_at)}</p>
-      <div className="flex text-sm font-medium items-center gap-2">
+      <DateChip date={latest.published_at} className="pb-1" />
+      <div className="flex font-semibold items-center gap-2">
         <span>BigRequest {latest.tag_name} released!</span>
         <ExternalLink size={14} />
       </div>

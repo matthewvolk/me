@@ -1,7 +1,7 @@
-import { Calendar } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { formatDate, getVisiblePosts } from "@/lib/posts";
+import { DateChip } from "@/components/date-chip";
+import { getVisiblePosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -26,12 +26,7 @@ export default async function BlogPage() {
                 className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
               >
                 <h2 className="font-semibold">{post.metadata.title}</h2>
-                <p className="flex items-center gap-2 py-1 text-sm">
-                  <Calendar size={14} />
-                  <time dateTime={post.metadata.date}>
-                    {formatDate(post.metadata.date)}
-                  </time>
-                </p>
+                <DateChip date={post.metadata.date} className="py-1" />
                 <p className="text-sm">{post.metadata.description}</p>
               </Link>
             </li>
