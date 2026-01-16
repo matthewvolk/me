@@ -40,11 +40,7 @@ export default async function BlogPostPage({ params }: Props) {
     return (
       <article>
         <header className="mb-8">
-          <DateChip
-            date={metadata.date}
-            showIcon={false}
-            className="text-muted-foreground"
-          />
+          <DateChip date={metadata.date} className="text-muted-foreground" />
           <h1 className="mt-2 text-3xl font-bold tracking-tight">
             {metadata.title}
           </h1>
