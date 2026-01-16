@@ -1,7 +1,7 @@
 import { Calendar } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { formatDate, getAllPosts } from "@/lib/posts";
+import { formatDate, getVisiblePosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const posts = await getVisiblePosts();
 
   return (
     <article>
