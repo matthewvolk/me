@@ -15,10 +15,10 @@ import {
   BigRequestStars,
 } from "@/components/bigrequest";
 import { Button } from "@/components/ui/button";
-import { formatDate, getAllPosts } from "@/lib/posts";
+import { formatDate, getVisiblePosts } from "@/lib/posts";
 
 export default async function HomePage() {
-  const posts = await getAllPosts();
+  const posts = await getVisiblePosts();
   const recentPosts = posts.slice(0, 10);
 
   return (

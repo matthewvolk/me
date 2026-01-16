@@ -6,6 +6,7 @@ export interface PostMetadata {
   description: string;
   date: string;
   tags?: string[];
+  hidden?: boolean;
 }
 
 export interface Post {
@@ -35,6 +36,11 @@ export async function getAllPosts(): Promise<Post[]> {
     (a, b) =>
       new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
   );
+}
+
+export async function getVisiblePosts(): Promise<Post[]> {
+  const posts = await getAllPosts();
+  return posts.filter((post) => !post.metadata.hidden);
 }
 
 export async function getPostBySlug(slug: string) {
