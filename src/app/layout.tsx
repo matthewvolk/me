@@ -48,7 +48,6 @@ export const metadata: Metadata = {
     title: "Matthew Volk - Software Engineer",
     description:
       "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
-    images: ["https://volk.dev/og.png"],
     creator: "@mttvlk",
   },
   icons: {

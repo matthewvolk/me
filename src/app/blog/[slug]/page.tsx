@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: metadata.title,
       description: metadata.description,
+      authors: [{ name: "Matthew Volk", url: "https://volk.dev" }],
     };
   } catch {
     return {};
