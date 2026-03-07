@@ -8,7 +8,7 @@ Next.js 16 portfolio site with App Router.
 - React 19 with React Compiler
 - TypeScript 5.9
 - Tailwind CSS 4
-- Biome (lint/format)
+- oxlint + oxfmt (lint/format)
 - Turbopack (dev server)
 - pnpm 10.28
 
@@ -16,11 +16,11 @@ Next.js 16 portfolio site with App Router.
 
 ```bash
 pnpm build      # production build
-pnpm fix        # biome check --write
+pnpm fix        # oxlint --fix && oxfmt
 pnpm typecheck  # tsc --noEmit
 ```
 
-You should prefer `pnpm fix` over `pnpm check` to fix linting issues and report errors in one command, as opposed to running them separately. You should prefer `pnpm build` over `pnpm dev` as the former does not start a long-running process.
+You should prefer `pnpm fix` over `pnpm check` to fix lint issues and format code in one command, as opposed to running them separately. You should prefer `pnpm build` over `pnpm dev` as the former does not start a long-running process.
 
 ## Blog
 
