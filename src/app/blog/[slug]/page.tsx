@@ -1,10 +1,12 @@
 "use cache";
 
-import type { Metadata } from "next";
 import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
+
 import { DateChip } from "@/components/date-chip";
 import { getAllSlugs, getPostBySlug } from "@/lib/posts";
+
+import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;

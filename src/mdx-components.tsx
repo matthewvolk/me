@@ -1,5 +1,6 @@
-import type { MDXComponents } from "mdx/types";
 import { Pre } from "@/components/mdx/code-block";
+
+import type { MDXComponents } from "mdx/types";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

@@ -1,6 +1,7 @@
 import { AtSign, ChevronRight, Github, Linkedin, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
+
 import {
   BigRequestDownloads,
   BigRequestLatestVersion,
