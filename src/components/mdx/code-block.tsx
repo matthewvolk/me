@@ -1,7 +1,4 @@
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-} from "@shikijs/transformers";
+import { transformerNotationDiff, transformerNotationHighlight } from "@shikijs/transformers";
 import type { ReactElement } from "react";
 import { codeToHtml } from "shiki";
 

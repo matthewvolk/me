@@ -13,10 +13,10 @@ Every blog post must include a metadata export at the top:
 
 ```mdx
 export const metadata = {
-  title: 'Post Title Here',
-  description: 'A brief description for SEO and previews',
-  date: 'YYYY-MM-DD',
-  tags: ['tag1', 'tag2', 'tag3'],
+  title: "Post Title Here",
+  description: "A brief description for SEO and previews",
+  date: "YYYY-MM-DD",
+  tags: ["tag1", "tag2", "tag3"],
 };
 ```
 
@@ -31,7 +31,7 @@ Use triple backticks with a language identifier:
 ````mdx
 ```ts
 function example(): string {
-  return 'hello';
+  return "hello";
 }
 ```
 ````
@@ -129,10 +129,10 @@ Use clear section headers. Lead with the problem, follow with the solution. End 
 
 ````mdx
 export const metadata = {
-  title: 'Solving X with Y',
-  description: 'How to fix the common X problem using Y',
-  date: '2026-01-15',
-  tags: ['typescript', 'nextjs'],
+  title: "Solving X with Y",
+  description: "How to fix the common X problem using Y",
+  date: "2026-01-15",
+  tags: ["typescript", "nextjs"],
 };
 
 # Solving X with Y

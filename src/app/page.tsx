@@ -1,11 +1,4 @@
-import {
-  AtSign,
-  ChevronRight,
-  Github,
-  Linkedin,
-  MapPin,
-  Twitter,
-} from "lucide-react";
+import { AtSign, ChevronRight, Github, Linkedin, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import {
@@ -51,9 +44,8 @@ export default async function HomePage() {
           </div>
         </div>
         <p>
-          I&apos;m a software engineer based in Austin, TX, currently building
-          products and tooling for the next generation of headless commerce at
-          BigCommerce.
+          I&apos;m a software engineer based in Austin, TX, currently building products and tooling
+          for the next generation of headless commerce at BigCommerce.
         </p>
       </section>
 
@@ -66,11 +58,7 @@ export default async function HomePage() {
             <span className="relative left-1 top-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
           </span>
         </div>
-        <Suspense
-          fallback={
-            <div className="mt-2 h-16 w-full animate-pulse rounded-md bg-muted" />
-          }
-        >
+        <Suspense fallback={<div className="mt-2 h-16 w-full animate-pulse rounded-md bg-muted" />}>
           <BigRequestLatestVersion />
         </Suspense>
       </section>
@@ -86,27 +74,27 @@ export default async function HomePage() {
           <div className="flex items-center justify-between">
             <h3 className="font-semibold">matthewvolk/bigrequest</h3>
             <div className="flex gap-4">
-              <Suspense
-                fallback={
-                  <div className="h-5 w-12 animate-pulse rounded-md bg-muted" />
-                }
-              >
+              <Suspense fallback={<div className="h-5 w-12 animate-pulse rounded-md bg-muted" />}>
                 <BigRequestStars />
               </Suspense>
-              <Suspense
-                fallback={
-                  <div className="h-5 w-16 animate-pulse rounded-md bg-muted" />
-                }
-              >
+              <Suspense fallback={<div className="h-5 w-16 animate-pulse rounded-md bg-muted" />}>
                 <BigRequestDownloads />
               </Suspense>
             </div>
           </div>
           <p className="mt-1 text-sm">
-            BigRequest is a lightweight, serverless-friendly Node.js API client
-            for the BigCommerce API.
+            BigRequest is a lightweight, serverless-friendly Node.js API client for the BigCommerce
+            API.
           </p>
         </Link>
+        <div className="flex justify-center pt-4">
+          <Button variant="ghost" asChild>
+            <Link href="/shipped">
+              See all projects
+              <ChevronRight className="size-4" strokeWidth={3} />
+            </Link>
+          </Button>
+        </div>
       </section>
 
       {/* Talks */}
@@ -118,8 +106,7 @@ export default async function HomePage() {
           target="_blank"
         >
           <h3 className="font-semibold">
-            Next.js Conf 2023 - Next.js, BigCommerce, and the Future of
-            Performance in E-Commerce
+            Next.js Conf 2023 - Next.js, BigCommerce, and the Future of Performance in E-Commerce
           </h3>
           <p className="flex items-center gap-2 py-1 text-sm">
             <DateChip date="2023-10-26" />
@@ -133,9 +120,7 @@ export default async function HomePage() {
           href="https://www.youtube.com/live/l3l-5HLjOGo"
           target="_blank"
         >
-          <h3 className="font-semibold">
-            Building BigCommerce Apps with App Extensions
-          </h3>
+          <h3 className="font-semibold">Building BigCommerce Apps with App Extensions</h3>
           <p className="flex items-center gap-2 py-1 text-sm">
             <DateChip date="2023-08-08" />
             <span>·</span>

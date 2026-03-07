@@ -7,12 +7,9 @@ export async function BigRequestStars() {
   "use cache";
   cacheLife("hours");
 
-  const response = await fetch(
-    "https://api.github.com/repos/matthewvolk/bigrequest",
-    {
-      headers: { authorization: `bearer ${process.env.GITHUB_PAT}` },
-    },
-  );
+  const response = await fetch("https://api.github.com/repos/matthewvolk/bigrequest", {
+    headers: { authorization: `bearer ${process.env.GITHUB_PAT}` },
+  });
   const data = await response.json();
 
   return (
@@ -27,9 +24,7 @@ export async function BigRequestDownloads() {
   "use cache";
   cacheLife("hours");
 
-  const response = await fetch(
-    "https://api.npmjs.org/downloads/point/last-year/bigrequest",
-  );
+  const response = await fetch("https://api.npmjs.org/downloads/point/last-year/bigrequest");
   const data = await response.json();
 
   return (

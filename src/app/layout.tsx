@@ -25,14 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
-  keywords: [
-    "Matthew",
-    "Volk",
-    "Software",
-    "Engineer",
-    "Typescript",
-    "Node.js",
-  ],
+  keywords: ["Matthew", "Volk", "Software", "Engineer", "Typescript", "Node.js"],
   metadataBase: new URL("https://volk.dev"),
   openGraph: {
     type: "website",

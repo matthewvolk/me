@@ -33,8 +33,7 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   return posts.sort(
-    (a, b) =>
-      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
+    (a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
   );
 }
 
@@ -44,9 +43,7 @@ export async function getVisiblePosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string) {
-  const { default: Content, metadata } = await import(
-    `@/content/blog/${slug}.mdx`
-  );
+  const { default: Content, metadata } = await import(`@/content/blog/${slug}.mdx`);
   return {
     Content,
     metadata: metadata as PostMetadata,
@@ -55,9 +52,7 @@ export async function getPostBySlug(slug: string) {
 
 export function getAllSlugs(): string[] {
   const files = fs.readdirSync(CONTENT_DIR);
-  return files
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(/\.mdx$/, ""));
+  return files.filter((f) => f.endsWith(".mdx")).map((f) => f.replace(/\.mdx$/, ""));
 }
 
 export function formatDate(dateString: string): string {

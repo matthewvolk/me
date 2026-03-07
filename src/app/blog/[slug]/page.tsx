@@ -42,9 +42,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article>
         <header className="mb-8">
           <DateChip date={metadata.date} className="text-muted-foreground" />
-          <h1 className="mt-2 text-3xl font-bold tracking-tight">
-            {metadata.title}
-          </h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight">{metadata.title}</h1>
           <p className="mt-2 text-muted-foreground">{metadata.description}</p>
         </header>
         <div className="prose prose-neutral dark:prose-invert max-w-none">

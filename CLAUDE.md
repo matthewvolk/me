@@ -28,10 +28,10 @@ Posts are MDX files in `src/content/blog/`. Export metadata:
 
 ```tsx
 export const metadata = {
-  title: 'Post Title',
-  description: 'Description',
-  date: '2026-01-12',
-  tags: ['tag1', 'tag2'],
+  title: "Post Title",
+  description: "Description",
+  date: "2026-01-12",
+  tags: ["tag1", "tag2"],
 };
 ```
 
@@ -42,10 +42,10 @@ Code blocks use shiki with dual themes (github-light/github-dark-dimmed).
 With `cacheComponents: true`, data fetching is dynamic by default. Use `"use cache"` directive to opt into caching:
 
 ```tsx
-'use cache';
+"use cache";
 
 export default async function Page() {
-  const data = await fetch('...');
+  const data = await fetch("...");
   return <div>{data}</div>;
 }
 ```
