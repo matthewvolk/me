@@ -1,9 +1,7 @@
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-} from "@shikijs/transformers";
-import type { ReactElement } from "react";
+import { transformerNotationDiff, transformerNotationHighlight } from "@shikijs/transformers";
 import { codeToHtml } from "shiki";
+
+import type { ReactElement } from "react";
 
 interface PreProps {
   children: ReactElement<{ children: string; className?: string }>;

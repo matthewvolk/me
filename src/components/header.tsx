@@ -1,6 +1,8 @@
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
+
 import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
@@ -13,6 +15,11 @@ export function Header() {
           </Button>
         </Link>
         <div className="flex items-center gap-4">
+          <Button variant="ghost">
+            <Link href="/shipped" className="text-base font-semibold">
+              Shipped
+            </Link>
+          </Button>
           <Button variant="ghost">
             <Link href="/blog" className="text-base font-semibold">
               Blog

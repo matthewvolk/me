@@ -1,11 +1,13 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
+
 import { Footer } from "@/components/footer";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+
+import type { Metadata } from "next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,14 +27,7 @@ export const metadata: Metadata = {
   },
   description:
     "Matthew Volk is a Software Engineer based in Austin, TX building tools and products in Typescript on Node.js.",
-  keywords: [
-    "Matthew",
-    "Volk",
-    "Software",
-    "Engineer",
-    "Typescript",
-    "Node.js",
-  ],
+  keywords: ["Matthew", "Volk", "Software", "Engineer", "Typescript", "Node.js"],
   metadataBase: new URL("https://volk.dev"),
   openGraph: {
     type: "website",

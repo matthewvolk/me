@@ -1,5 +1,6 @@
-import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
+
+import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://volk.dev";
 
