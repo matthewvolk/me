@@ -58,22 +58,9 @@ export default async function HomePage() {
       </section>
 
       {/* Changelog */}
-      <section className="flex flex-col gap-2">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-extrabold">Changelog</h2>
-          <span className="relative flex h-4 w-4">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
-            <span className="relative left-1 top-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-          </span>
-        </div>
-        <Suspense
-          fallback={
-            <div className="mt-2 h-16 w-full animate-pulse rounded-md bg-muted" />
-          }
-        >
-          <BigRequestLatestVersion />
-        </Suspense>
-      </section>
+      <Suspense>
+        <BigRequestLatestVersion />
+      </Suspense>
 
       {/* Open Source Projects */}
       <section className="flex flex-col gap-2">
