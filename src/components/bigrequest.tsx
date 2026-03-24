@@ -15,6 +15,10 @@ export async function BigRequestStars() {
   );
   const data = await response.json();
 
+  if (typeof data.stargazers_count !== "number") {
+    return null;
+  }
+
   return (
     <div className="flex items-center gap-2 text-sm">
       <Star size={16} />
@@ -52,17 +56,30 @@ export async function BigRequestLatestVersion() {
   );
   const latest = await response.json();
 
+  if (!latest.published_at || !latest.tag_name) {
+    return null;
+  }
+
   return (
-    <Link
-      className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
-      href="https://www.npmjs.com/package/bigrequest"
-      target="_blank"
-    >
-      <DateChip date={latest.published_at} className="pb-1" />
-      <div className="flex font-semibold items-center gap-2">
-        <span>BigRequest {latest.tag_name} released!</span>
-        <ExternalLink size={14} />
+    <section className="flex flex-col gap-2">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-extrabold">Changelog</h2>
+        <span className="relative flex h-4 w-4">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+          <span className="relative left-1 top-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+        </span>
       </div>
-    </Link>
+      <Link
+        className="flex flex-col rounded-md p-4 -mx-4 hover:bg-accent"
+        href="https://www.npmjs.com/package/bigrequest"
+        target="_blank"
+      >
+        <DateChip date={latest.published_at} className="pb-1" />
+        <div className="flex font-semibold items-center gap-2">
+          <span>BigRequest {latest.tag_name} released!</span>
+          <ExternalLink size={14} />
+        </div>
+      </Link>
+    </section>
   );
 }
