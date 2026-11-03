@@ -51,9 +51,9 @@ export default async function HomePage() {
           </div>
         </div>
         <p>
-          I&apos;m a software engineer based in Austin, TX, currently building
-          products and tooling for the next generation of headless commerce at
-          BigCommerce.
+          I&apos;m a software engineer based in Austin, TX, currently serving as
+          a technology executive developing proprietary software for a company
+          in the mining and blasting industry.
         </p>
       </section>
 
