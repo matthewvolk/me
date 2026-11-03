@@ -4,7 +4,7 @@ Next.js 16 portfolio site with App Router.
 
 ## Stack
 
-- Next.js 16.1 with cacheComponents enabled
+- Next.js 16.4 with cacheComponents enabled
 - React 19 with React Compiler
 - TypeScript 5.9
 - Tailwind CSS 4
